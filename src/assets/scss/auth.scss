@@ -1,0 +1,84 @@
+#authenticate {
+    .authenticate-background {
+        background: linear-gradient(
+                        rgba(255, 255, 255, 0.4),
+                        rgba(255, 255, 255, 0.4)
+        ),
+        url('/src/assets/images/background3.jpg') !important;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        -webkit-filter: blur(1px);
+        -moz-filter: blur(1px);
+        -o-filter: blur(1px);
+        -ms-filter: blur(1px);
+        filter: blur(1px);
+    }
+
+    .authenticate-wrapper {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 400px;
+
+        .panel {
+            margin-bottom: 0;
+
+            .panel-body {
+                padding: 30px;
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin: 0 0 40px;
+            display: block;
+
+            h1 {
+                display: inline-block;
+                margin: 0;
+                vertical-align: top;
+                color: $primary;
+                font-weight: 600;
+            }
+        }
+
+        .form-control {
+            height: 40px;
+            line-height: 40px;
+        }
+
+        .input-group {
+            .input-group-addon {
+                background: #fff;
+                padding-top: 8px;
+                padding-right: 0;
+
+                i {
+                    color: $theme-dark;
+                }
+            }
+
+            input {
+                border-left: 0;
+            }
+        }
+
+        .bottom-links {
+            margin-top: 10px;
+            text-align: center;
+
+            a {
+                color: $theme;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}

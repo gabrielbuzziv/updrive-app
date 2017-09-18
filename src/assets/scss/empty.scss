@@ -1,0 +1,44 @@
+.empty {
+    text-align: center;
+    display: block;
+
+    i {
+        border: 1px solid #666666;
+        color: #666666;
+        padding: 20px;
+        font-size: 20px;
+        margin-bottom: 10px;
+        border-radius: 100%;
+        display: inline-block;
+        line-height: 0;
+
+        &.big {
+            font-size: 40px !important;
+        }
+
+        &.bigger {
+            font-size: 100px !important;
+        }
+
+        &.no-border {
+            border: 0 !important;
+        }
+
+        &.dark {
+            color: #666;
+            border-color: #666;
+        }
+    }
+
+    h3 {
+        margin: 0 0 15px;
+        font-size: 20px;
+        font-weight: 300;
+    }
+
+    p {
+        color: #666;
+        font-size: 12px;
+        font-weight: 300;
+    }
+}

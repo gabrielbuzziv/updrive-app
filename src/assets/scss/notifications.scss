@@ -1,0 +1,130 @@
+#notifications {
+    background: rgba(0, 0, 0, .7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 9999;
+
+    .notifications-box {
+        background: #fff;
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: block;
+        height: 100%;
+        width: 450px;
+        padding-bottom: 50px;
+
+        .notifications-content {
+            > h3 {
+                font-size: 20px;
+                margin: 0;
+                padding: 20px;
+                font-weight: 400;
+                color: $theme;
+                border-bottom: 1px solid $tableBorder;
+                height: 63px;
+            }
+
+            .notifications {
+                height: calc(100vh - 113px);
+                display: block;
+                overflow-y: auto;
+
+                .notification {
+                    border-bottom: 1px solid $tableBorder;
+                    padding: 20px;
+                    transition: all .2s;
+
+                    &.read {
+                        opacity: 0.9;
+                        background: #f4f4f4;
+                    }
+
+                    &:hover,
+                    &:focus {
+                        background: #eee;
+                    }
+
+                    .left {
+                        display: inline-block;
+                        width: 50px;
+                        margin-right: 15px;
+                        vertical-align: top;
+
+                        img {
+                            max-width: 100%;
+                        }
+                    }
+
+                    .right {
+                        display: inline-block;
+                        font-size: 12px;
+                        font-weight: 300;
+                        width: calc(100% - 70px);
+
+                        .message {
+                            display: block;
+                        }
+                    }
+
+                    .full {
+                        display: block;
+                        font-size: 12px;
+                        font-weight: 300;
+                    }
+
+                    .detail {
+                        display: block;
+                        margin-top: 5px;
+                        font-size: 14px;
+                        font-style: italic;
+                    }
+
+                    .date {
+                        display: block;
+                        margin-top: 10px;
+                        font-size: 10px;
+                    }
+                }
+            }
+        }
+
+        .close {
+            background: #fff;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            line-height: 44px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-align: center;
+            opacity: 1;
+            border-top: 1px solid $tableBorder;
+            color: $theme;
+
+            i {
+                position: relative;
+                top: 3px;
+                font-size: 20px;
+            }
+        }
+
+        .loader {
+            &.spinner {
+                width: 50px;
+                height: 50px;
+                border-width: 0.7em;
+                left: 50%;
+                top: 20px;
+                margin: 0 0 0 -25px;
+            }
+        }
+    }
+}

@@ -1,0 +1,100 @@
+// DIALOG
+.el-dialog {
+    color: $theme;
+    border-radius: 3px;
+    box-shadow: none;
+
+    .el-dialog__header {
+        border-bottom: 1px solid #f3f3f3;
+        padding: 15px 15px 10px;
+
+        .el-dialog__title {
+            font-size: 18px;
+            font-weight: 400;
+            margin: 0;
+        }
+    }
+
+    .el-dialog__body {
+        padding: 15px;
+    }
+
+    .el-dialog__footer {
+        border-top: 1px solid #f3f3f3;
+        padding: 15px;
+
+        &.no-padding {
+            padding: 0;
+        }
+
+        &.no-border {
+            border: 0;
+        }
+    }
+}
+
+// SELECT
+.el-select {
+    &.fullsize {
+        width: 100%;
+    }
+
+    &.remote {
+        cursor: text;
+
+        input {
+            cursor: text;
+        }
+    }
+
+    .el-input {
+        > input {
+            border: 2px solid #ddd;
+
+            &:hover {
+                border-color: #d1d1d1;
+            }
+        }
+    }
+
+    .el-select__tags {
+        .el-tag {
+            background: $primary;
+            color: #fff;
+            border-radius: 3px;
+
+            .el-tag__close {
+                &:hover {
+                    background: $primary-dark;
+                }
+            }
+        }
+    }
+}
+
+.el-select-dropdown {
+    .el-scrollbar__view {
+        padding: 0;
+    }
+
+    .el-select-dropdown__item {
+        &:after {
+            content: '' !important;
+        }
+
+        &.selected {
+            background-color: $theme-light !important;
+            color: $theme-dark !important;
+        }
+
+        .option-label {
+            float:left;
+        }
+
+        .option-description {
+            float: right;
+            font-size: 13px;
+            color: darken($theme-light, 25%);
+        }
+    }
+}

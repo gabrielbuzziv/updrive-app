@@ -1,0 +1,18 @@
+.breadcrumb {
+    &.breadcrumb-quirk {
+        display: inline-block;
+
+        > li {
+            i {
+                margin-top: -3px;
+                margin-right: 3px;
+                vertical-align: middle;
+            }
+        }
+
+        > li + li:before {
+            font-family: 'Material Design Icons';
+            content: "\F142"
+        }
+    }
+}

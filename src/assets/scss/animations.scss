@@ -1,0 +1,103 @@
+.fieldset-enter-active {
+    animation: fadeInUp .2s;
+}
+
+.fieldset-leave-active {
+    animation: fadeOut .2s;
+}
+
+.fade-enter-active {
+    animation: fadeIn .5s;
+}
+
+.fade-leave-active {
+    animation: fadeOut .5s;
+}
+
+.flipX-enter-active {
+    animation: flipInX .5s;
+}
+
+.slideDown-leave-active {
+    animation: flipOutX .5s;
+}
+
+.page-enter-active {
+    //animation: fadeIn .2s;
+}
+
+.page-leave-active {
+    //animation: fadeOut .1s
+}
+
+.tab-enter-active {
+    animation: fadeIn .3s;
+}
+
+.tab-leave-active {
+    display: none
+}
+
+.modal-enter-active {
+    animation: fadeIn .3s;
+}
+
+.modal-leave-active {
+    animation: fadeOut .3s;
+}
+
+.modalBox-enter-active {
+    animation: slideInDown .3s;
+}
+
+.modalBox-leave-active {
+    animation: slideOutUp .3s;
+}
+
+.autocomplete-enter-active {
+    animation: fadeInUp .3s;
+}
+
+.autocomplete-leave-active {
+    animation: fadeOut .3s;
+}
+
+.dropdown-enter-active {
+    animation: fadeIn .3s;
+}
+
+.dropdown-leave-active {
+    animation: fadeOut .3s;
+}
+
+.toolbar-enter-active {
+    animation: fadeIn .5s;
+}
+
+.toolbar-leave-active {
+    display: none;
+}
+
+.folders-enter-active {
+    animation: flipInX .3s;
+}
+
+.folders-leave-active {
+    display: none;
+}
+
+.uploader-enter-active {
+    animation: bounceInRight .3s
+}
+
+.uploader-leave-active {
+    animation: bounceOutRight .3s
+}
+
+.notifications-enter-active {
+    animation: slideInRight .3s;
+}
+
+.notifications-leave-active {
+    animation: slideOutRight .3s;
+}

@@ -1,0 +1,47 @@
+#options-list {
+    background: #fff;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(5, 15, 44, 0.1);
+
+    .search {
+        position: relative;
+
+        i {
+            font-size: 30px;
+            line-height: 30px;
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            color: #a7aab1;
+        }
+
+        input {
+            height: 60px;
+            line-height: 60px;
+            font-size: 16px;
+            font-weight: 400;
+            border: 0;
+            color: #a7aab1;
+            background: #fff;
+            width: calc(100% - 50px);
+            padding-left: 50px;
+        }
+    }
+
+    .pagination {
+        margin: 0;
+        padding-right: 10px;
+        line-height: 60px;
+
+        span {
+            font-style: italic;
+            color: #a7aab1;
+            font-size: 12px;
+        }
+
+        .btn-group {
+            margin-left: 10px;
+        }
+    }
+}

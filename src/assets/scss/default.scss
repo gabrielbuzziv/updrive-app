@@ -1,0 +1,14 @@
+a {
+    color: $primary;
+
+    &:hover {
+        color: $primary-dark;
+    }
+}
+
+.upload-button {
+    input[type=file] {
+        position: fixed;
+        top: -1000px;
+    }
+}

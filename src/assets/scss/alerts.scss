@@ -1,0 +1,43 @@
+.alert {
+    border-radius: 3px;
+
+    h3 {
+        margin: 0 0 20px;
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    &.alert-info {
+        background: lighten($info, 43%);
+        border-left: 4px solid $info;
+
+        h3 {
+            color: darken($info, 20%);
+        }
+    }
+
+    &.alert-success {
+        background: lighten($success, 43%);
+        border-left: 4px solid $success;
+    }
+
+    &.alert-warning {
+        background: lighten($warning, 43%);
+        border-left: 4px solid $warning;
+    }
+
+    &.alert-danger {
+        background: lighten($danger, 25%);
+        border-left: 4px solid $danger;
+        color: darken($danger, 30%);
+
+        ul {
+            list-style: square;
+            padding: 0 0 0 15px;
+        }
+    }
+}

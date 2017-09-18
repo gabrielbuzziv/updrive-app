@@ -1,0 +1,95 @@
+.autocomplete {
+    position: relative;
+
+    .input {
+        position: relative;
+
+        input {
+            padding-right: 40px;
+        }
+
+        .loader {
+            height: 20px;
+            width: 20px;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            margin: -9px 0 0;
+        }
+    }
+
+    .results {
+        background: #fff;
+        margin-top: 5px;
+        border: 1px solid #bdc3d1;
+        border-radius: 0 0 3px;
+        position: absolute;
+        top: 32px;
+        left: 0;
+        width: 100%;
+        display: block;
+        z-index: 9;
+        overflow-y: auto;
+        overflow-x: hidden;
+        max-height: 244px;
+
+        .result {
+            background: #fff;
+            display: block;
+            padding: 10px 20px;
+            border-bottom: 1px solid #bdc3d1;
+            color: #666;
+            transition: all .2s;
+
+            &.active {
+                background: #e3e3e3;
+            }
+
+            &:hover,
+            &:focus {
+                background: #e7e7e7;
+            }
+
+            &:last-child {
+                border-bottom: 0;
+            }
+
+            .icon {
+                font-size: 14px;
+                color: #999;
+                margin-right: 1px;
+                width: auto;
+            }
+
+            .title {
+                color: #454545;
+                font-size: 14px;
+                font-weight: 600;
+                margin: 0;
+            }
+
+            .description {
+                font-size: 12px;
+                font-weight: 300;
+                margin: 3px 0 0;
+            }
+        }
+
+        .more {
+            background: #fff;
+            display: block;
+            padding: 10px 20px;
+            border-bottom: 1px solid #bdc3d1;
+            color: #666;
+            transition: all .2s;
+            font-size: 12px;
+            font-weight: 300;
+            background: #eee;
+
+            &:hover {
+                background: #e7e7e7;
+            }
+        }
+    }
+}

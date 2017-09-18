@@ -1,0 +1,129 @@
+#page-header {
+    border-bottom: 1px solid #ddd;
+    background: #fff;
+
+    .top {
+        padding: 30px;
+        display: block;
+
+        .left {
+            display: inline-block;
+            height: 40px;
+            line-height: 32px;
+
+            .header {
+                display: inline-block;
+                vertical-align: top;
+
+                .title {
+                    font-size: 25px;
+                    font-weight: 600;
+                    margin: 0;
+                    display: inline-block;
+                    vertical-align: middle;
+
+                    a {
+                        color: $text-color;
+                    }
+                }
+
+                .children {
+                    display: inline-block;
+                    margin: 0 0 0 10px;
+
+                    .divider {
+                        display: inline-block;
+                        vertical-align: middle;
+                        margin-top: 5px;
+                    }
+
+                    h3 {
+                        display: inline-block;
+                        margin: 0;
+                        vertical-align: middle;
+                        font-size: 25px;
+                        font-weight: 300;
+                        color: $text-color;
+                    }
+
+                    .el-input {
+                        .el-input__inner {
+                            font-size: 16px;
+                            font-weight: 300;
+                            width: 400px;
+                            vertical-align: middle;
+                            text-overflow: ellipsis;
+                        }
+
+                        .el-input__icon {
+                            margin-top: 0;
+                        }
+                    }
+
+                    .select-label {
+                        display: block;
+                        font-size: 10px;
+                        margin-bottom: 2px;
+                        margin-top: -5px;
+                    }
+                }
+            }
+
+            .slot-left {
+                margin-left: 20px;
+                display: inline-block;
+            }
+        }
+
+        .right {
+            float: right;
+        }
+    }
+
+    .nav {
+        display: block;
+        width: 100%;
+        border-top: 1px solid #eee;
+        padding: 0 30px;
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+            li {
+                display: inline-block;
+
+                &.active {
+                    a {
+                        border-color: $secondary;
+                    }
+                }
+
+                a {
+                    height: 50px;
+                    line-height: 50px;
+                    border-bottom: 2px solid transparent;
+                    color: $theme-darker;
+                    display: block;
+                    padding: 0 15px;
+                    font-weight: 300;
+
+                    i {
+                        color: $theme;
+                    }
+
+                    .badge {
+                        &.badge-danger {
+                            background: $danger;
+                        }
+
+                        &.badge-success {
+                            background: $success;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

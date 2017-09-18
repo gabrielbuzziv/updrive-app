@@ -1,0 +1,12 @@
+.main {
+    margin-left: 200px;
+    padding-top: 50px;
+
+    &.maximize {
+        margin-left: 50px;
+    }
+
+    .content {
+        padding: 0;
+    }
+}

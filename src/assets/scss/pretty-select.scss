@@ -1,0 +1,124 @@
+.pretty-select {
+    display: flex;
+
+    .label {
+        display: inline-block;
+        width: 100px;
+        text-align: left;
+        padding: 0;
+        margin: 0;
+
+        span {
+            background: #ddd;
+            display: inline-block;
+            padding: 0 10px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 12px;
+            font-weight: 600;
+            color: $theme-dark;
+        }
+    }
+
+    .select {
+        display: flex;
+        flex-wrap: wrap;
+        width: calc(100% - 105px);
+
+        .selected {
+            display: inline-block;
+            position: relative;
+            background: #eee;
+            border-radius: 25px;
+            height: 30px;
+            line-height: 30px;
+            padding-right: 10px;
+            margin: 0 10px 10px 0;
+
+            .icon {
+                margin-right: 5px;
+                background: #f00;
+                border-radius: 100%;
+                height: 30px;
+                width: 30px;
+                display: inline-block;
+                line-height: 30px;
+                text-align: center;
+                color: #fff;
+                vertical-align: middle;
+                position: relative;
+                top: -1px;
+            }
+
+            .name {
+                color: $theme-dark;
+            }
+
+            .close {
+                margin-left: 10px;
+                line-height: 30px;
+                font-size: 14px;
+            }
+        }
+
+        .input {
+            flex-grow: 100;
+            display: inline-block;
+            margin-left: 10px;
+            position: relative;
+
+            input {
+                width: 100%;
+                display: table-cell;
+                line-height: 28px;
+                border: 0;
+                outline: 0;
+
+                &:focus {
+                    outline: 0;
+                }
+            }
+        }
+    }
+
+    .options {
+        position: absolute;
+        top: 30px;
+        left: 0;
+        background: #fff;
+        list-style: none;
+        padding: 5px 0;
+        margin: 0;
+        width: 300px;
+        box-shadow: 0 2px 4px rgba(5, 15, 44, 0.1);
+
+        li {
+            display: block;
+            padding: 5px 15px;
+
+            .icon {
+                width: 30px;
+                height: 30px;
+                line-height: 30px;
+                text-align: center;
+                background: $theme-dark;
+                color: #fff;
+                border-radius: 100%;
+                display: inline-block;
+                margin-right: 10px;
+            }
+
+            .name {
+                font-size: 12px;
+            }
+
+            &:hover {
+                background: #eee;
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

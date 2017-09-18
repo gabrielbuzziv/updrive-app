@@ -1,0 +1,165 @@
+//.inner {
+//    .inner-header {
+//        .inner-image {
+//            float: left;
+//            margin-right: 20px;
+//
+//            img {
+//                width: 100px;
+//                height: 100px;
+//            }
+//        }
+//
+//        .inner-icon {
+//            float: left;
+//            margin-right: 20px;
+//            border-radius: 50%;
+//            padding: 4px;
+//            background: #d8dce3;
+//            border: 1px solid #ddd;
+//
+//            i {
+//                background: #fff;
+//                border-radius: 50%;
+//                line-height: 0;
+//                font-size: 66px;
+//                display: inline-block;
+//                padding: 10px;
+//            }
+//        }
+//
+//        .inner-info {
+//            margin-top: 10px;
+//            color: #676a6c;
+//
+//            .inner-title {
+//                font-size: 20px;
+//                font-weight: 300;
+//                margin: 0 0 10px;
+//                color: #676a6c;
+//            }
+//
+//            .inner-subtitle {
+//                font-size: 14px;
+//                font-weight: 600;
+//                color: #676a6c;
+//            }
+//
+//            .inner-description {
+//                font-size: 11px;
+//                font-weight: 400;
+//                margin-top: 20px;
+//            }
+//
+//            .inner-email {
+//                margin-top: 20px;
+//                font-size: 11px;
+//                display: block;
+//            }
+//
+//            .inner-customer {
+//                margin-top: 15px;
+//                display: block;
+//
+//                .label-group {
+//                    margin-right: 5px;
+//
+//                    &:last-child {
+//                        margin: 0;
+//                    }
+//
+//                    .label {
+//                        padding: 3px 6px;
+//                        font-size: 10px;
+//                    }
+//                }
+//            }
+//        }
+//
+//        .inner-summary {
+//            .list-group-item {
+//                padding: 10px;
+//                border: 0;
+//                margin: 0;
+//                border-top: 1px solid $tableBorder;
+//                font-size: 11px;
+//            }
+//        }
+//    }
+//
+//    .panel {
+//        .panel-body {
+//            .row {
+//                &:last-child {
+//                    .inner-column {
+//                        margin-bottom: 20px;
+//                    }
+//                }
+//            }
+//        }
+//    }
+//
+//    .inner-column {
+//        margin-bottom: 20px;
+//
+//        span {
+//            font-size: 13px;
+//            display: block;
+//            margin-bottom: 5px;
+//            font-weight: 300;
+//        }
+//
+//        p {
+//            font-size: 15px;
+//            font-weight: 300;
+//            color: #333;
+//            margin: 0;
+//
+//            &.null {
+//                font-style: italic;
+//            }
+//        }
+//    }
+//
+//    .inner-info {
+//        .fadeout {
+//            border-color: #000;
+//        }
+//    }
+//
+//    .card {
+//        .owner {
+//            position: absolute;
+//            top: 15px;
+//            left: 50%;
+//            transform: translateX(-50%);
+//            font-size: 16px;
+//            font-weight: 300;
+//            color: #fff;
+//
+//            i {
+//                color: #f39c12;
+//            }
+//        }
+//
+//        .dropdown {
+//            position: absolute;
+//            top: 10px;
+//            right: 10px;
+//
+//            button {
+//                color: #fff;
+//                font-size: 16px;
+//            }
+//        }
+//    }
+//
+//    .actived-user {
+//        font-size: 16px;
+//        font-weight: 300;
+//        color: #999;
+//        display: inline-block;
+//        vertical-align: top;
+//    }
+//
+//}

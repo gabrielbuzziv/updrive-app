@@ -1,0 +1,42 @@
+ul {
+    &.sidenav {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        display: block;
+        background: #fff;
+        width: 100%;
+        box-shadow: 0 2px 4px rgba(5, 15, 44, 0.1);
+
+        li {
+            display: block;
+
+            &.active {
+                a {
+                    border-color: $primary;
+                    position: relative;
+                    background: #f7f7f7;
+
+                    &:after {
+                        content: '';
+                        border-top: 10px solid transparent;
+                        border-bottom: 10px solid transparent;
+                        border-left: 10px solid #f7f7f7;
+                        position: absolute;
+                        top: 50%;
+                        right: -10px;
+                        transform: translateY(-50%);
+                    }
+                }
+            }
+
+            a {
+                border-left: 3px solid transparent;
+                color: $theme-darker;
+                padding: 20px;
+                display: block;
+            }
+        }
+    }
+}
+

@@ -1,0 +1,29 @@
+ul {
+    &.data-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        &.data-list-vertical {
+            li {
+                display: inline-block;
+                width: calc(33% - 20px);
+            }
+        }
+
+        li {
+            display: block;
+            margin-bottom: 20px;
+
+            small {
+                display: block;
+                font-style: italic;
+            }
+
+            strong {
+                display: block;
+                font-weight: 600;
+            }
+        }
+    }
+}

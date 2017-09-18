@@ -1,0 +1,131 @@
+.fieldarea {
+    &.customer {
+        .number {
+            width: 230px;
+            display: inline-block;
+            position: relative;
+        }
+
+        .branch {
+            width: 115px;
+            display: inline-block;
+            position: relative;
+        }
+
+        .number,
+        .branch {
+            .helper-block {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                font-size: 10px;
+                color: #888;
+                font-style: italic;
+            }
+        }
+
+        input[type=text] {
+            text-align: right;
+            font-size: 100px;
+            font-weight: 700;
+            background: none;
+            border: 0;
+            width: auto;
+            color: #444;
+            width: 100%;
+
+            &:focus,
+            &:active {
+                outline: 0;
+            }
+        }
+
+        .divider {
+            display: inline-block;
+            margin: 0 10px;
+            font-size: 100px;
+            font-weight: 700;
+            text-align: center;
+            color: #444;
+            vertical-align: top;
+        }
+    }
+
+    .cloneable {
+        .input-group-with-select {
+            display: inline-block;
+            width: calc(100% - 20px);
+
+            input {
+                width: 60%;
+            }
+
+            select {
+                width: 40%;
+            }
+        }
+
+        a {
+            &.more {
+                font-size: 12px;
+                display: block;
+            }
+
+            &.remove {
+                color: #333;
+
+                i {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+
+    .icon {
+        display: inline-block;
+        width: 100px;
+        vertical-align: top;
+
+        i {
+            font-size: 60px;
+            vertical-align: top;
+        }
+    }
+
+    .fields {
+        width: calc(100% - 105px);
+        display: inline-block;
+        border-left: 1px solid #ddd;
+        padding: 25px 0 25px 25px;
+
+        .form-group {
+            &:last-child {
+                margin-bottom: 20px;
+            }
+        }
+
+        a {
+            &.field-anchor {
+                font-size: 16px;
+                font-weight: 300;
+
+                .opcional {
+                    color: #81838a;
+                    font-size: 12px;
+                }
+            }
+
+            &.more-anchor {
+                display: inline-block;
+            }
+        }
+
+        .hideFields {
+            .row:last-child {
+                .form-group {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}

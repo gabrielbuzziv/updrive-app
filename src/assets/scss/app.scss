@@ -1,0 +1,61 @@
+/* BOOTSTRAP SAAS */
+$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+
+/* MATERIAL DESIGN ICONS */
+$mdi-font-path: "~mdi/fonts/";
+@import "~mdi/scss/materialdesignicons";
+
+/* THEME STYLE */
+@import 'theme';
+@import 'animate';
+
+/* VARIABLES */
+@import '_variables';
+
+/* HELPERS */
+@import '_helpers';
+
+/* Layout */
+@import 'default';
+@import 'header';
+@import 'main';
+@import 'sidebar';
+@import 'breadcrumbs';
+@import 'page';
+@import 'inner';
+@import 'animations';
+@import 'forms';
+@import 'top-nav';
+@import 'scrollbar';
+@import 'page-header';
+@import 'page-content';
+@import 'options-list';
+
+/* Components */
+@import 'tables';
+@import 'loading';
+@import 'buttons';
+@import 'panel';
+@import 'label';
+@import 'data-list';
+@import 'elements';
+@import 'alerts';
+@import 'sidenav';
+@import 'first-time';
+@import 'tabs';
+@import 'dropdown';
+
+/* Pages */
+@import 'dashboard';
+@import 'auth';
+@import 'updrive';
+
+/* CHART */
+@import 'chart';
+
+@import 'responsive';
+
+.body, html {
+    overflow-x: hidden;
+}

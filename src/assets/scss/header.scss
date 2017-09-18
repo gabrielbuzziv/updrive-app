@@ -1,0 +1,163 @@
+#header {
+    background: $primary;
+    height: 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2000;
+
+    .logo {
+        width: 200px;
+        background: $primary-dark;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        display: inline-block;
+        transition: all .2s;
+
+        &.minimize {
+            width: 50px;
+        }
+
+        h1 {
+            margin: 0;
+
+            a {
+                color: #fff;
+                font-weight: 300;
+                line-height: 50px;
+                height: 50px;
+                padding: 0;
+                display: block;
+                font-size: 20px;
+            }
+        }
+    }
+
+    .toggle-sidebar {
+        display: inline-block;
+        padding: 0 10px;
+
+        a {
+            color: #fff;
+            font-size: 18px;
+            line-height: 18px;
+        }
+    }
+
+    .header-menu {
+        height: 50px;
+        float: right;
+
+        .menu {
+            li {
+                height: 50px;
+                line-height: 50px;
+                display: inline-block;
+
+                > a {
+
+                }
+
+                &.user-menu {
+                    .dropdown {
+                        position: relative;
+
+                        &.open {
+                            button {
+                                background: $primary-dark;
+                            }
+                        }
+
+                        > button {
+                            padding: 0;
+                            background: none;
+                            border: 0;
+                            height: 50px;
+                            line-height: 50px;
+                            padding: 0 10px;
+                            display: block;
+
+                            .user-img {
+                                display: inline-block;
+                                vertical-align: middle;
+                                margin-right: 5px;
+
+                                img {
+                                    border-radius: 100%;
+                                    width: 25px;
+                                    height: 25px;
+                                }
+                            }
+                        }
+
+                        .dropdown-menu {
+                            min-width: 320px;
+                            padding: 0 0 10px;
+                            border: 0;
+                            border-bottom-left-radius: $border-radius-base;
+                            border-bottom-right-radius: $border-radius-base;
+                            border-top-left-radius: 0;
+                            border-top-right-radius: 0;
+                            border: 1px solid #eee;
+                            border-top-width: 0;
+
+                            .user-header {
+                                padding: 10px;
+                                line-height: normal;
+
+                                .user-img {
+                                    width: 60px;
+                                    margin-right: 10px;
+                                    display: inline-block;
+
+                                    img {
+                                        border-radius: $border-radius-base;
+                                    }
+                                }
+
+                                .user-info {
+                                    display: inline-block;
+                                    width: calc(100% - 75px);
+                                    line-height: normal;
+                                    vertical-align: top;
+
+                                    .name {
+                                        font-size: 16px;
+                                        font-weight: 600;
+                                        display: block;
+                                        margin-bottom: 5px;
+                                    }
+
+                                    .email {
+                                        font-size: 12px;
+                                        font-weight: 400;
+                                    }
+                                }
+
+                            }
+
+                            .item {
+                                line-height: normal;
+
+                                > a {
+                                    padding: 6px 20px;
+                                    color: $theme-light;
+                                    font-size: 14px;
+                                    display: block;
+
+                                    &:hover {
+                                        background: $primary;
+                                        color: #fff;
+                                        transition: all .2s;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,141 @@
+a {
+    &.btn {
+        background-color: buttonface;
+        align-items: flex-start;
+        text-rendering: auto;
+        letter-spacing: normal;
+        word-spacing: normal;
+        text-indent: 0px;
+        text-shadow: none;
+        color: inherit;
+    }
+
+    &.btn-primary,
+    &.btn-secondary,
+    &.btn-warning,
+    &.btn-info,
+    &.btn-success {
+        color: #fff;
+    }
+
+    &.btn-default {
+        color: #696c74;
+    }
+}
+
+.btn {
+    font-size: 13px;
+    font-weight: 600;
+
+    &.btn-rounded {
+        border-radius: 50px;
+
+        &.btn-xs {
+            padding-right: 10px;
+            padding-left: 10px;
+        }
+    }
+
+    &.btn-default {
+        background: #fff;
+    }
+
+    &.btn-blank {
+        background: none;
+        border: 0;
+        color: #444;
+
+        &:hover {
+            background: none;
+        }
+
+        &:active,
+        &:focus {
+            box-shadow: none;
+        }
+    }
+
+    &.btn-success {
+        background: $success;
+
+        &:hover {
+            background: darken($success, 5%);
+        }
+    }
+
+    &.btn-primary {
+        background: $primary;
+
+        &:hover {
+            background: $primary-dark;
+        }
+    }
+
+    &.btn-primary-dark {
+        background: $primary-dark;
+        color: #fff;
+
+        &:hover {
+            background: darken($primary-dark, 20%);
+        }
+    }
+
+    &.btn-secondary {
+        background: $secondary;
+        color: #fff;
+
+        &:hover {
+            background: darken($secondary, 5%);
+            color: #fff;
+        }
+    }
+
+    &.btn-danger {
+        background: $danger;
+
+        &:hover {
+            background: darken($danger, 5%);
+        }
+    }
+
+    &.btn-info {
+        background: $info;
+
+        &:hover {
+            background: darken($info, 5%);
+        }
+    }
+
+    &.btn-warning {
+        background: $warning;
+
+        &:hover {
+            background: darken($warning, 5%);
+        }
+    }
+
+    &.btn-dark {
+        color: #fff;
+        background-color: $theme;
+    }
+
+    &.btn-unfloat {
+        float: none;
+    }
+
+    &.btn-lg {
+        font-size: 16px;
+    }
+
+    &.btn-sm {
+        font-size: 12px;
+    }
+
+    &.btn-xs {
+        font-size: 11px;
+    }
+
+    &.btn-icon-text {
+        border-radius: 50px;
+    }
+}

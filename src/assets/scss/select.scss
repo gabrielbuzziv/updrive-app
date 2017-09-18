@@ -1,0 +1,103 @@
+.v-select {
+    &.open {
+        .dropdown-toggle {
+            .open-indicator {
+                bottom: 8px !important;
+            }
+        }
+    }
+
+    &.loading {
+        .spinner {
+            display: block !important;
+            opacity: 1;
+            bottom: 5px;
+            top: initial;
+            border-width: 0.6em;
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    &.searchable {
+        .dropdown-toggle {
+            border-radius: 3px;
+            padding: 3px;
+
+            .selected-tag {
+                margin: 0 0 3px;
+                padding: 5px 20px 5px 5px;
+                height: auto;
+                width: 100%;
+                position: relative;
+                color: #fff;
+                background: $success;
+                border-radius: 3px;
+                border: 0;
+                font-weight: 300;
+                text-align: left !important;
+
+                .close {
+                    color: #fff;
+                    opacity: 0.7;
+                    position: absolute;
+                    right: 6px;
+                    top: 4px;
+                }
+            }
+
+            input {
+                height: auto;
+                padding: 5px 20px 5px 5px !important;
+                width: 100%;
+                display: block;
+            }
+
+            .open-indicator {
+                font-size: 6px;
+                bottom: 15px;
+            }
+        }
+
+        .dropdown-menu {
+            overflow-x: hidden;
+
+            li {
+                font-weight: 300;
+
+                &:hover {
+                    a {
+                        background: #ccc;
+                    }
+                }
+
+                &.highlight {
+                    a {
+                        background: #ccc;
+                    }
+                }
+
+                &.active {
+                    a {
+                        background: #ddd;
+
+                        &:hover {
+                            background: #ddd;
+                            color: #333;
+                        }
+                    }
+                }
+
+                a {
+                    background: #fff;
+                    color: #333;
+
+                    &:hover {
+                        background: $success;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+}

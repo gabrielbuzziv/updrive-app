@@ -1,0 +1,24 @@
+$theme: #333;
+$theme-dark: #202020;
+$theme-darker: #202020;
+$theme-light: #888888;
+
+$text-color: #444;
+
+$tableBorder: #efefef;
+$tableBackground: #edf0f4;
+
+//$primary: #259dab;
+$success: #27ae60;
+$info: #3498db;
+$danger: #c9302c;
+$warning: #e6ad5c;
+$inverse: #505b72;
+
+$primary-dark: #257fe8;
+$primary: #4a90e2;
+$secondary: #f34167;
+
+$link-color:            $secondary !default;
+$link-hover-color:      darken($link-color, 15%) !default;
+$link-hover-decoration: underline !default;

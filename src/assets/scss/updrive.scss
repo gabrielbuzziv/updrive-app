@@ -1,0 +1,197 @@
+#updrive {
+    .filters {
+        line-height: 60px;
+        float: right;
+        margin-right: 10px;
+
+        .el-checkbox {
+            margin-bottom: 0;
+        }
+
+        .el-select {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.send-document-form {
+    .form-group {
+        .custom-select {
+            width: 100%;
+            border: 0;
+            cursor: text;
+
+            &.no-icon {
+                .el-input {
+                    .el-input__icon {
+                        display: none;
+                    }
+                }
+            }
+
+            &.multiple {
+                .el-input {
+                    input {
+                        vertical-align: top;
+                    }
+                }
+            }
+
+            .el-input {
+                input {
+                    border-radius: $border-radius-base;
+                    border: 2px solid #ddd;
+                    padding: 20px 8px;
+                    cursor: text;
+                    font-size: 12px;
+                }
+            }
+
+            .el-select__tags {
+                padding: 0 2px;
+
+                .el-tag {
+                    padding: 5px 5px 5px 8px;
+                    border: 0;
+                    border-radius: 0;
+                    background: #ddd;
+                    height: auto;
+                    line-height: normal;
+                    color: lighten($theme-dark, 15%);
+
+                    .el-tag__close {
+                        top: 0;
+                        right: 0;
+                        margin-left: 5px;
+                        font-size: 10px;
+
+                        &:hover {
+                            background: none;
+                            color: inherit;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .content {
+        border: 2px solid #ddd;
+        padding: 10px;
+
+        .attachments {
+            display: block;
+
+            .file {
+                border: 1px solid rgba(0, 0, 0, .16);
+                background: rgba(0, 0, 0, .08);
+                display: block;
+                margin-bottom: 5px;
+                padding: 10px 15px;
+                font-size: 12px;
+                color: $theme-darker;
+
+                .data {
+                    display: inline-block;
+                    width: calc(100% - 60px);
+
+                    .name {
+                        font-weight: 600;
+                        display: block;
+                        margin-bottom: 3px;
+                    }
+
+                    .date {
+                        font-size: 10px;
+
+                        .divider {
+                            margin: 0 1px;
+                            display: inline-block;
+                        }
+                    }
+
+                    .form-control {
+                        display: inline-block;
+                        width: 30%;
+                        margin-right: 5px;
+                        padding: 5px;
+                    }
+                }
+
+                .buttons {
+                    vertical-align: top;
+                    width: 50px;
+                    display: inline-block;
+                    text-align: right;
+                    margin-left: 5px;
+
+                    .btn-blank {
+                        border: 0;
+                        background: 0;
+                        padding: 0;
+                        cursor: pointer;
+                    }
+                }
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        textarea.form-control {
+            border: 0;
+            resize: none;
+            font-size: 12px;
+            padding: 0;
+        }
+    }
+
+    .btn-attachment {
+        border: 0;
+        background: none;
+        margin-left: 10px;
+        padding: 0;
+
+        i {
+            font-size: 16px;
+            line-height: 16px;
+        }
+    }
+}
+
+.custom-popper {
+    .el-select-dropdown__item {
+        height: auto;
+        line-height: normal;
+
+        .icon {
+            background: $theme-dark;
+            color: #fff;
+            width: 35px;
+            height: 35px;
+            line-height: 35px !important;
+            text-align: center;
+            margin-right: 10px;
+            display: inline-block;
+            border-radius: 100%;
+            vertical-align: middle;
+        }
+
+        .name {
+            color: $theme-dark;
+            display: inline-block;
+            vertical-align: middle;
+
+            small {
+                color: lighten($theme-dark, 30%);
+                display: block;
+            }
+        }
+    }
+}
+
+.name-popper {
+    max-width: 350px !important;
+    width: auto !important;
+}
