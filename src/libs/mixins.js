@@ -26,7 +26,7 @@ Vue.mixin({
 
     computed: {
         env () {
-            return window.env
+            return process.env
         }
     },
 

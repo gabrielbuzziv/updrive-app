@@ -64,7 +64,7 @@
             },
 
             downloadImportSheet () {
-                return `${window.env.API_URL}/companies/import/download/?token=${this.token}`
+                return `${process.env.API_URL}/companies/import/download/?token=${this.token}`
             },
 
             valid () {
