@@ -1,7 +1,7 @@
 export default {
-    getSubdomain () {
-        const url = window.location.host
-        return url.splice('.')[0]
+    getApiUrl () {
+        const account = window.location.host.split('.')[0]
+        return `${process.env.API_URL}${account}`
     },
 
     getFilename (filename) {
@@ -16,6 +16,8 @@ export default {
     },
 
     getColorByChar (char) {
+        console.log(char)
+
         const character = char.toLowerCase().charAt(0)
 
         const abc = {

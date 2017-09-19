@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import Helper from 'common/Helper'
 import { mapGetters, mapActions } from 'vuex'
 import { find, isEmpty } from 'lodash'
 
@@ -25,8 +26,8 @@ Vue.mixin({
     },
 
     computed: {
-        env () {
-            return process.env
+        API_URL () {
+            return Helper.getApiUrl()
         }
     },
 

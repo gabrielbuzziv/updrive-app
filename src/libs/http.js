@@ -1,12 +1,11 @@
 import axios from 'axios'
 import jwt_decode from 'jwt-decode'
 import store from 'common/vuex'
+import Helper from 'common/Helper'
 import { isEmpty } from 'lodash'
 
-const account = window.location.host.split('.')[0]
-
 window.axios = axios.create({
-    baseURL: `${process.env.API_URL}${account}`,
+    baseURL: Helper.getApiUrl(),
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',

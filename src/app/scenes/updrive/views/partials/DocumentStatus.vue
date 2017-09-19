@@ -50,8 +50,10 @@
             },
 
             getStatusLabel (status) {
+                const action = status.action
+
                 const text = [null, 'Carregou', 'Visualizou', 'Baixou', 'Venceu']
-                return text[status]
+                return text[action]
             },
 
             close () {

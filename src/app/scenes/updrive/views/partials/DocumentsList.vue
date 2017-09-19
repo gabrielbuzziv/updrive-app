@@ -84,7 +84,7 @@
                                                 </a>
                                             </li>
                                             <li class="item" v-if="userCan('manage-updrive')">
-                                                <a :href="`${env.API_URL}/documents/${document.id}/protocol?token=${token}`"
+                                                <a :href="`${API_URL}/documents/${document.id}/protocol?token=${token}`"
                                                    target="_blank">
                                                     <i class="mdi mdi-receipt margin-right-5"></i>
                                                     Gerar Protocolo

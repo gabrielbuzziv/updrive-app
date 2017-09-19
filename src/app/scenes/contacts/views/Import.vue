@@ -64,7 +64,7 @@
             },
 
             downloadImportSheet () {
-                return `${process.env.API_URL}/contacts/import/download/?token=${this.token}`
+                return `${this.API_URL}/contacts/import/download/?token=${this.token}`
             },
 
             valid () {
