@@ -28,6 +28,7 @@
                                     </th>
                                     <th>Nome</th>
                                     <th>E-mail</th>
+                                    <th></th>
                                 </tr>
                             </thead>
 
@@ -38,6 +39,16 @@
                                     </td>
                                     <td>{{ user.name }}</td>
                                     <td>{{ user.email }}</td>
+                                    <td class="text-right">
+                                        <span class="label label-success" v-if="user.active">
+                                            <i class="mdi mdi-check-circle margin-right-5"></i>
+                                            Ativo
+                                        </span>
+                                        <span class="label label-warning" v-else>
+                                            <i class="mdi mdi-alert-circle margin-right-5"></i>
+                                            Pendente
+                                        </span>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

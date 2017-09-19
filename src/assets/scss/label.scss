@@ -1,3 +1,17 @@
+.label {
+    padding: 5px 10px;
+    border-radius: 100px;
+    font-weight: 600;
+
+    &.label-success {
+        background: $primary;
+    }
+
+    &.label-warning {
+        background: $warning;
+    }
+}
+
 .label-group {
     .label {
         font-size: 11px;
