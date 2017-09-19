@@ -52,7 +52,7 @@
             getStatusLabel (status) {
                 const action = status.action
 
-                const text = [null, 'Carregou', 'Visualizou', 'Baixou', 'Venceu']
+                const text = [null, 'Carregou', 'Visualizou', 'Baixou', null, 'Venceu']
                 return text[action]
             },
 
