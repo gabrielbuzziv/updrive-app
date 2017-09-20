@@ -1,5 +1,7 @@
 export default {
     getApiUrl () {
+        return 'http://api.updrive.app/crescercontabilidade'
+
         const account = window.location.host.split('.')[0]
         return `${process.env.API_URL}${account}`
     },

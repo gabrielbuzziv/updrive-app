@@ -22,7 +22,7 @@ new Vue ({
     },
 
     mounted () {
-        if (! isEmpty(this.user)) {
+        if (this.$route.meta.auth) {
             this.$store.dispatch('auth/FETCH_USER')
                 .catch(() => {
                     this.$store.commit('auth/TOKEN', '')

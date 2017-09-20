@@ -91,13 +91,16 @@
         mounted () {
             if (this.$route.query.token) {
                 localStorage.setItem('auth_token', this.$route.query.token)
-                this.$router.push(this.redirectTo)
-            } else {
-                const user = this.$store.getters['auth/GET_USER']
+                this.$store.dispatch('auth/FETCH_USER')
+                        .then(() => {
+                            this.$router.push(this.redirectTo)
+                        })
+            }
 
-                if (user.id) {
-                    this.$router.push(this.redirectTo)
-                }
+            const user = this.$store.getters['auth/GET_USER']
+
+            if (user.id) {
+                this.$router.push(this.redirectTo)
             }
         }
     }

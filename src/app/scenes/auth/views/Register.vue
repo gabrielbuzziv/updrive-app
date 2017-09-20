@@ -91,13 +91,12 @@
         },
 
         mounted () {
-            services.validateInvite(this.$route.query.email)
-                    .then(response => {
-                        this.user = response.data
-                    })
-                    .catch(() => {
-                        this.$router.push('/login')
-                    })
+            const email = this.$route.query.email
+            const token = this.$route.query.token
+
+            services.validateInvite(email, token)
+                    .then(response => this.user = response.data)
+                    .catch(() => this.$router.push('/login'))
         }
     }
 </script>

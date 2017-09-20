@@ -4,8 +4,8 @@ import ResetPassword from './views/ResetPassword'
 import Register from './views/Register'
 
 export default [
-    { path: '/login', component: Login, name: 'auth.login' },
-    { path: '/esqueci-minha-senha', component: ForgotPassword, name: 'auth.password.forgot' },
-    { path: '/resetar-senha', component: ResetPassword, name: 'auth.password.reset' },
-    { path: '/registrar', component: Register, name: 'auth.register' }
+    { path: '/login', component: Login, name: 'auth.login', meta:{ auth: false } },
+    { path: '/esqueci-minha-senha', component: ForgotPassword, name: 'auth.password.forgot', meta:{ auth: false } },
+    { path: '/resetar-senha', component: ResetPassword, name: 'auth.password.reset', meta:{ auth: false } },
+    { path: '/registrar', component: Register, name: 'auth.register', meta:{ auth: false } }
 ]

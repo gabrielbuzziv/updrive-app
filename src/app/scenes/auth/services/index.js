@@ -47,8 +47,8 @@ export default {
      * @param email
      * @returns {*|AxiosPromise}
      */
-    validateInvite (email) {
-        return window.axios.post(`/users/validate-invite`, { email })
+    validateInvite (email, token) {
+        return window.axios.post(`/users/registration/validate`, { email, token })
     },
 
     /**

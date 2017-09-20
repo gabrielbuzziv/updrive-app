@@ -18,7 +18,7 @@
 
                 <div class="filters margin-right-15">
                     <el-select v-model="status"
-                               placeholder="Todos os Status"
+                               placeholder="Status"
                                class="margin-left-20"
                                clearable
                                @change="updateStatus">
