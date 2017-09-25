@@ -300,7 +300,6 @@
             validateContacts (contact) {
                 const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                 const valid = re.test(contact)
-                console.log(valid)
                 if (! valid) {
                     this.$message.error('Precisa preencher um e-mail válido.')
                 }
