@@ -1,7 +1,7 @@
 <template>
     <div class="header-menu">
         <ul class="nav menu">
-            <li class="margin-right-20">
+            <li class="margin-right-20" v-if="userCan('manage-updrive')">
                 <button class="btn btn-primary-dark btn-rounded btn-sm" @click.prevent="$root.$emit('send::documents')">
                     <i class="mdi mdi-plus-circle margin-right-5"></i>
                     Enviar documentos
@@ -29,12 +29,26 @@
                             </div>
                         </div>
 
-                        <div class="divider" v-if="userCan('manage-users')"></div>
+                        <div class="header">Configurações</div>
+
+                        <div class="item">
+                            <route href="settings.profile">
+                                <i class="mdi mdi-account-settings-variant margin-right-5"></i>
+                                Meus dados
+                            </route>
+                        </div>
+
+                        <div class="item" v-if="userCan('manage-account')">
+                            <route href="settings.account">
+                                <i class="mdi mdi-key margin-right-5"></i>
+                                Detalhes da conta
+                            </route>
+                        </div>
 
                         <div class="item" v-if="userCan('manage-users')">
-                            <route href="users">
-                                <i class="mdi mdi-settings margin-right-5"></i>
-                                Configurações do Sistema
+                            <route href="settings.members">
+                                <i class="mdi mdi-account-multiple margin-right-5"></i>
+                                Membros
                             </route>
                         </div>
 

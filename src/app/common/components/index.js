@@ -16,6 +16,8 @@ import FirstTime from './FirstTime'
 import Dropdown from './Dropdown'
 import TabLink from './TabLink'
 import TabContent from './TabContent'
+import Selector from './Selector'
+import SelectorOptions from './SelectorOptions'
 
 Vue.component('PageLoad', PageLoad)
 Vue.component('PageHeader', PageHeader)
@@ -34,4 +36,6 @@ Vue.component('FirstTime', FirstTime)
 Vue.component('Dropdown', Dropdown)
 Vue.component('TabLink', TabLink)
 Vue.component('TabContent', TabContent)
+Vue.component('Selector', Selector)
+Vue.component('SelectorOptions', SelectorOptions)
 

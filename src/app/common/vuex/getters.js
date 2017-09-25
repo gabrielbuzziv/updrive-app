@@ -19,6 +19,10 @@ export default {
         return validation_error
     },
 
+    'global/GET_REQUEST_ERROR' ({ request_error }) {
+        return request_error
+    },
+
     'global/GET_TOASTS' ({ toasts }) {
         return toasts
     }

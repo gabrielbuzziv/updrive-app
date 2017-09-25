@@ -17,11 +17,9 @@ form {
             }
 
             .form-control {
-                border-radius: $border-radius-base;
-                border: 2px solid #ddd;
                 padding: 20px 8px;
                 color: #666;
-                font-size: 12px
+                font-size: 12px;
             }
 
             .helper-block {
@@ -89,8 +87,9 @@ form {
     }
 
     .form-control {
-        border: 2px solid #ddd;
+        border: 1px solid #d1d1d1;
         border-radius: $border-radius-base;
+        background: #fff;
 
         &:focus,
         &:active {
@@ -100,8 +99,9 @@ form {
 
     .input-group {
         .input-group-addon {
-            border-width: 2px !important;
-            border-color: #ddd !important;
+            border-width: 1px !important;
+            border-color: #d1d1d1 !important;
+            background: #f8f8f8;
         }
 
         input:focus ~ .input-group-addon {

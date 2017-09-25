@@ -1,10 +1,10 @@
 import Default from 'common/layout/default/Main'
 import Authenticate from 'common/layout/authenticate/Main'
 import { routes as auth } from './scenes/auth'
-import { routes as users } from './scenes/users'
 import { routes as companies } from './scenes/companies'
 import { routes as contacts } from './scenes/contacts'
 import { routes as updrive } from './scenes/updrive'
+import { routes as settings } from './scenes/settings'
 
 export default [
     {
@@ -20,7 +20,7 @@ export default [
             ...companies,
             ...contacts,
             ...updrive,
-            ...users,
+            ...settings,
         ]
     },
 

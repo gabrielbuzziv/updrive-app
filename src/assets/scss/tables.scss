@@ -189,4 +189,28 @@ table {
             }
         }
     }
+
+    &.table-members {
+        .name {
+            display: block;
+            font-weight: 600;
+            color: #4a90e2;
+            margin-bottom: 3px;
+
+            .label {
+                padding: 3px 8px;
+                margin-left: 5px;
+                font-size: 10px;
+
+                &.label-icon {
+                    padding: 1px 3px;
+                }
+            }
+        }
+
+        .email {
+            font-size: 12px;
+            font-style: italic;
+        }
+    }
 }

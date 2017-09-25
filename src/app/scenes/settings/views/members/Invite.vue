@@ -1,5 +1,5 @@
 <template>
-    <el-dialog title="Adicionar Colaborador" :visible.sync="visible" size="tiny">
+    <el-dialog title="Convidar Membros" :visible.sync="visible" size="tiny">
         <validation-error/>
 
         <v-form @submit="onSubmit" ref="form">
@@ -13,7 +13,7 @@
                 </div>
 
                 <small class="helper-block">
-                    Os colaboradores recerão um e-mail de convite para se cadastrarem no sistema.
+                    Os membros recerão um e-mail de convite para se registrarem na ferramenta.
                 </small>
             </div>
 
@@ -22,7 +22,7 @@
                     <button class="btn btn-success btn-rounded" :disabled="! isValid || submiting">
                         <span class="loader inline button light margin-right-5" v-if="submiting"></span>
                         <i class="mdi mdi-plus margin-right-5" v-else></i>
-                        Adicionar
+                        Convidar
                     </button>
 
                     <button class="btn btn-blank" @click.prevent="close">
@@ -35,7 +35,7 @@
 </template>
 
 <script type="text/babel">
-    import services from '../services'
+    import services from '../../services'
 
     export default {
         data () {
@@ -65,12 +65,12 @@
                 emails.forEach(email => data.append('email[]', email.trim()))
 
                 this.submiting = true
-                services.addUsers(data)
+                services.inviteMembers(data)
                         .then(() => {
-                            this.$message.success('O convite foi enviado para o(s) colaborador(es) convidados.')
+                            this.$message.success('Foi enviado um convite para cada um dos membros convidados.')
                             this.validated()
                             this.close()
-                            this.$store.dispatch('users/FETCH_ALL')
+                            this.$store.dispatch('settings/FETCH_MEMBERS')
                             this.submiting = false
                         })
                         .catch(() => this.submiting = false)
@@ -82,11 +82,11 @@
         },
 
         mounted () {
-            this.$root.$on('create::user', () => this.load())
+            this.$root.$on('invite::members', () => this.load())
         },
 
         beforeDestroy () {
-            this.$root.$off('create::user')
+            this.$root.$off('invite::members')
         }
     }
 </script>

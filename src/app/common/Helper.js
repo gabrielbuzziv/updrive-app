@@ -1,6 +1,8 @@
 export default {
     getApiUrl () {
-        return 'http://api.updrive.app/crescercontabilidade'
+        if (window.location.origin == 'http://localhost:8081') {
+            return 'http://api.updrive.app/sandbox'
+        }
 
         const account = window.location.host.split('.')[0]
         return `${process.env.API_URL}${account}`

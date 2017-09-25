@@ -27,6 +27,10 @@ export default {
         context.commit('global/VALIDATION_ERROR', request)
     },
 
+    'global/SET_REQUEST_ERROR' (context, request) {
+        context.commit('global/REQUEST_ERROR', request)
+    },
+
     'global/ADD_TOAST' (context, request) {
         const toasts = context.getters['global/GET_TOASTS']
         toasts.push(request)

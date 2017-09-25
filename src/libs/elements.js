@@ -6,6 +6,7 @@ import {
     Checkbox,
     Tooltip,
     Dialog,
+    Switch,
     Notification,
     Message,
     MessageBox,
@@ -18,6 +19,7 @@ Vue.use(OptionGroup)
 Vue.use(Checkbox)
 Vue.use(Tooltip)
 Vue.use(Dialog)
+Vue.use(Switch)
 Vue.prototype.$message = Message
 Vue.prototype.$confirm = MessageBox.confirm
 Vue.prototype.$notify = Notification

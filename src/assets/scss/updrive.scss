@@ -40,7 +40,7 @@
             .el-input {
                 input {
                     border-radius: $border-radius-base;
-                    border: 2px solid #ddd;
+                    border: 1px solid #d1d1d1;
                     padding: 20px 8px;
                     cursor: text;
                     font-size: 12px;
@@ -53,17 +53,14 @@
                 .el-tag {
                     padding: 5px 5px 5px 8px;
                     border: 0;
-                    border-radius: 0;
-                    background: #ddd;
                     height: auto;
                     line-height: normal;
-                    color: lighten($theme-dark, 15%);
 
                     .el-tag__close {
                         top: 0;
                         right: 0;
                         margin-left: 5px;
-                        font-size: 10px;
+                        font-size: 8px;
 
                         &:hover {
                             background: none;
@@ -76,29 +73,48 @@
     }
 
     .content {
-        border: 2px solid #ddd;
+        border: 1px solid #d1d1d1;
+        border-radius: $border-radius-base;
         padding: 10px;
 
         .attachments {
             display: block;
 
             .file {
-                border: 1px solid rgba(0, 0, 0, .16);
-                background: rgba(0, 0, 0, .08);
+                border: 1px solid #d1d1d1;
+                background: #f3f3f3;
                 display: block;
                 margin-bottom: 5px;
-                padding: 10px 15px;
+                padding: 0 5px;
+                height: 50px;
+                line-height: 48px;
                 font-size: 12px;
                 color: $theme-darker;
+                border-radius: $border-radius-base;
+
+                .icon {
+                    margin-left: 10px;
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin-right: 10px;
+                    width: 20px;
+                    font-size: 18px;
+                    line-height: 18px;
+                }
 
                 .data {
                     display: inline-block;
-                    width: calc(100% - 60px);
+                    width: calc(100% - 225px);
+                    vertical-align: middle;
+                    line-height: normal;
+
+                    &.no-padding {
+                        padding: 0;
+                    }
 
                     .name {
                         font-weight: 600;
                         display: block;
-                        margin-bottom: 3px;
                     }
 
                     .date {
@@ -119,8 +135,9 @@
                 }
 
                 .buttons {
+                    float: right;
                     vertical-align: top;
-                    width: 50px;
+                    width: 170px;
                     display: inline-block;
                     text-align: right;
                     margin-left: 5px;

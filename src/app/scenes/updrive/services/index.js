@@ -80,8 +80,17 @@ export default {
      * @param company
      * @returns {*}
      */
-    getContacts (company) {
+    getCompanyContacts (company) {
         return window.axios.get(`companies/${company}/contacts`)
+    },
+
+    /**
+     * @param company
+     * @returns {*}
+     */
+    getContacts (filter) {
+        const params = { filter }
+        return window.axios.get(`contacts`, { params })
     },
 
     /**

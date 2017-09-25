@@ -3,5 +3,6 @@ export default {
     axios_queue: 0,
     submiting: false,
     validation_error: {},
+    request_error: {},
     toasts: []
 }

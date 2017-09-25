@@ -22,6 +22,10 @@ export default {
         state.validation_error = data
     },
 
+    'global/REQUEST_ERROR' (state, data) {
+        state.request_error = data
+    },
+
     'global/TOASTS' (state, data) {
         state.toasts = data
     }

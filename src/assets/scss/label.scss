@@ -4,7 +4,15 @@
     font-weight: 600;
 
     &.label-success {
+        background: $success;
+    }
+
+    &.label-primary {
         background: $primary;
+    }
+
+    &.label-secondary {
+        background: $secondary;
     }
 
     &.label-warning {

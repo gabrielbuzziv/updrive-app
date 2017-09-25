@@ -1,61 +1,40 @@
 <template>
     <el-dialog title="Enviar Documentos" :visible.sync="visible">
-        <form action="" class="send-document-form horizontal" @submit.prevent="onSubmit" ref="form" enctype="multipart/form-data">
+        <form action="" class="send-document-form horizontal" @submit.prevent="onSubmit" ref="form">
             <div class="form-group">
                 <label>Empresa:</label>
-                <el-select
-                        multiple
-                        filterable
-                        allow-create
-                        placeholder=""
-                        :multiple-limit="1"
-                        default-first-option
-                        v-model="form.company"
-                        @change="companySelected"
-                        popper-class="custom-popper"
-                        class="custom-select no-icon field"
-                        @visible-change="showMoreCompanies"
-                        no-data-text="Ops, não encontramos nenhuma empresa."
-                        ref="company">
-                    <el-option v-for="company in companies" :value="company.id" :label="company.name" :key="company.id">
-                        <span class="icon" :style="`background: ${getColor(company.name)}`">
-                            {{ company.name | firstLetter }}
-                        </span>
-                        <span class="name">
-                            {{ company.name }}
-                            <small>{{ company.email }}</small>
-                        </span>
-                    </el-option>
-                </el-select>
+                <selector class="field"
+                          v-model="form.company"
+                          option-value="id"
+                          option-label="name"
+                          :options="companies"
+                          :limit="1"
+                          @change="changeCompany">
+                </selector>
             </div>
 
             <div class="form-group" v-if="hasCompany">
                 <label>Para:</label>
-                <el-select
-                        multiple
-                        filterable
-                        allow-create
-                        placeholder=""
-                        default-first-option
-                        v-model="form.contacts"
-                        @change="contactSelected"
-                        popper-class="custom-popper contact-popper"
-                        class="custom-select multiple no-icon field"
-                        no-data-text="Ops, esta empresa ainda não tem contatos, adicione digitando o e-mail do contato desejado."
-                        ref="contacts">
-                    <el-option-group label="Contatos da empresa">
-                        <el-option v-for="contact in contacts" :value="contact.id" :label="contact.email"
-                                   :key="contact.id">
-                            <span class="icon" :style="`background: ${getColor(contact.name)}`">
-                                {{ contact.name | firstLetter }}
-                            </span>
-                            <span class="name">
-                                {{ contact.name }}
-                                <small>{{ contact.email }}</small>
-                            </span>
-                        </el-option>
-                    </el-option-group>
-                </el-select>
+                <selector class="field"
+                          v-model="form.contacts"
+                          option-value="id"
+                          option-label="email"
+                          :options="contacts"
+                          :filter-method="filterContacts"
+                          :validation-method="validateContacts">
+
+                    <template scope="data">
+                        <div class="option-image">
+                            <img :src="data.option.links.gravatar" alt="">
+                        </div>
+
+                        <div class="option-info">
+                            <b>{{ data.option.name }}</b>
+                            <span>{{ data.option.email }}</span>
+                        </div>
+                    </template>
+
+                </selector>
             </div>
 
             <div class="form-group">
@@ -72,6 +51,8 @@
                     <div class="attachments">
                         <div class="file" v-for="file in form.files">
                             <div v-if="! file.editing">
+                                <i class="mdi icon" :class="getFileIcon(file)"></i>
+
                                 <div class="data">
                                     <span class="name">{{ file.name }}</span>
                                     <span class="date" v-if="file.cycle">Competência: <b>{{ file.cycle }}</b></span>
@@ -81,17 +62,22 @@
                                 </div>
 
                                 <div class="buttons">
-                                    <button class="btn btn-blank margin-right-5" @click.prevent="file.editing = true">
-                                        <i class="mdi mdi-pencil"></i>
-                                    </button>
+                                    <div class="btn-group">
+                                        <button class="btn btn-default btn-sm" @click.prevent="file.editing = true">
+                                            <i class="mdi mdi-pencil-circle margin-right-5"></i>
+                                            Editar
+                                        </button>
 
-                                    <button class="btn btn-blank" @click.prevent="removeFile(file)">
-                                        <i class="mdi mdi-close"></i>
-                                    </button>
+                                        <button class="btn btn-default btn-sm" @click.prevent="removeFile(file)">
+                                            <i class="mdi mdi-delete-circle"></i>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
 
                             <div v-else>
+                                <i class="mdi icon" :class="getFileIcon(file)"></i>
+
                                 <div class="data">
                                     <input type="text" class="form-control" v-model="file.name" placeholder="Documento"
                                            @keydown="saveWithEnter($event, file)">
@@ -103,8 +89,10 @@
                                 </div>
 
                                 <div class="buttons">
-                                    <button class="btn btn-success" type="button" @click.prevent="saveFile(file)">
-                                        <i class="mdi mdi-check"></i>
+                                    <button class="btn btn-success btn-sm" type="button"
+                                            @click.prevent="saveFile(file)">
+                                        <i class="mdi mdi-check-circle margin-right-5"></i>
+                                        Atualizar
                                     </button>
                                 </div>
                             </div>
@@ -166,16 +154,8 @@
         },
 
         computed: {
-            company () {
-                return this.$store.getters['updrive/GET_COMPANY']
-            },
-
-            user () {
-                return this.$store.getters['auth/GET_USER']
-            },
-
             hasCompany () {
-                return ! isEmpty(this.form.company)
+                return this.form.company.length
             },
 
             valid () {
@@ -220,18 +200,14 @@
                 services.getCompanies()
                         .then(response => {
                             this.companies = response.data.items
-
-                            if (this.company) {
-                                this.form.company.push(this.company)
-                            }
                         })
             },
 
             onSubmit () {
                 const data = new FormData()
 
-                data.append('company', this.form.company)
-                this.form.contacts.forEach(contact => data.append('contacts[]', contact))
+                data.append('company', this.form.company[0].value)
+                this.form.contacts.forEach(contact => data.append('contacts[]', contact.value))
                 data.append('subject', this.form.subject)
                 data.append('message', this.form.message)
 
@@ -297,41 +273,38 @@
                 e.target.value = null
             },
 
-            companySelected () {
-                this.$refs.company.visible = false
+            changeCompany (value) {
+                this.form.contacts = []
 
-                if (this.hasCompany) {
-                    if (typeof this.form.company [0] != 'string') {
-                        return services.getContacts(this.form.company)
+                if (value.length) {
+                    const company = value[0]
+                    if (typeof company.value == 'number') {
+                        services.getCompanyContacts(company.value)
                                 .then(response => {
-                                    this.contacts = response.data.items
+                                    this.form.contacts = response.data.items.map(contact => {
+                                        return { value: contact.id, label: contact.email }
+                                    })
                                 })
                     }
-
-                    return
-                }
-
-                this.contacts      = []
-                this.form.contacts = []
-            },
-
-            showMoreCompanies () {
-                if (this.hasCompany) {
-                    this.$refs.company.visible = false
-                    setTimeout(() => this.contactInput.focus(), 1)
                 }
             },
 
-            contactSelected (contacts) {
-                contacts.forEach((contact, index) => {
-                    if (typeof contact == 'string') {
-                        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-                        if (re.test(contact) === false) {
-                            this.form.contacts.splice(index, 1)
-                            this.$message.error('Apenas e-mails válidos')
-                        }
-                    }
-                })
+            filterContacts: debounce (function (query) {
+                services.getContacts(query)
+                        .then(response => {
+                            this.contacts = response.data.items
+                            this.$root.$emit('filter::options')
+                        })
+            }, 300),
+
+            validateContacts (contact) {
+                const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                const valid = re.test(contact)
+                console.log(valid)
+                if (! valid) {
+                    this.$message.error('Precisa preencher um e-mail válido.')
+                }
+                return valid;
             },
 
             saveFile (file) {
@@ -353,6 +326,26 @@
 
             getColor (char) {
                 return Helper.getColorByChar(char)
+            },
+
+            getFileIcon (file) {
+                const extension = file.extension
+                const icons     = {
+                    default: 'mdi-file-document-box',
+                    csv: 'mdi-file-excel-box',
+                    xls: 'mdi-file-excel-box',
+                    pdf: 'mdi-file-pdf-box',
+                    doc: 'mdi-file-word-box',
+                    docx: 'mdi-file-word-box',
+                    jpg: 'mdi-image',
+                    png: 'mdi-image',
+                    gif: 'mdi-image',
+                    jpeg: 'mdi-image',
+                    rar: 'mdi-zip-box',
+                    zip: 'mdi-zip-box',
+                }
+
+                return icons[extension] ? icons[extension] : icons['default']
             },
 
             close () {

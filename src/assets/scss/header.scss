@@ -93,7 +93,7 @@
                         }
 
                         .dropdown-menu {
-                            min-width: 320px;
+                            min-width: 260px;
                             padding: 0 0 10px;
                             border: 0;
                             border-bottom-left-radius: $border-radius-base;
@@ -113,7 +113,7 @@
                                     display: inline-block;
 
                                     img {
-                                        border-radius: $border-radius-base;
+                                        border-radius: 100%;
                                     }
                                 }
 
@@ -128,23 +128,41 @@
                                         font-weight: 600;
                                         display: block;
                                         margin-bottom: 5px;
+                                        display: block;
+                                        white-space: nowrap;
+                                        overflow: hidden;
+                                        text-overflow: ellipsis;
                                     }
 
                                     .email {
                                         font-size: 12px;
                                         font-weight: 400;
+                                        display: block;
+                                        white-space: nowrap;
+                                        overflow: hidden;
+                                        text-overflow: ellipsis;
                                     }
                                 }
 
+                            }
+
+                            .header {
+                                padding: 10px 15px;
+                                color: $theme-light;
+                                font-size: 12px;
+                                font-weight: 300;
+                                display: block;
+                                line-height: normal;
+                                height: auto;
                             }
 
                             .item {
                                 line-height: normal;
 
                                 > a {
-                                    padding: 6px 20px;
+                                    padding: 6px 25px;
                                     color: $theme-light;
-                                    font-size: 14px;
+                                    font-size: 12px;
                                     display: block;
 
                                     &:hover {

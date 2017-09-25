@@ -61,13 +61,12 @@
         <div v-else>
             <first-time title="Contatos" icon="account-multiple" message="Ops, a empresa ainda não tem contatos cadastrados.">
                 <template slot="buttons">
-                    <button class="btn btn-primary margin-top-20" @click.prenvet="newContact">
+                    <button class="btn btn-secondary btn-rounded" @click.prenvet="newContact">
                         <i class="mdi mdi-plus-circle margin-right-5"></i>
                         Adicionar Contato
                     </button>
                 </template>
             </first-time>
-
         </div>
 
         <new-contact />

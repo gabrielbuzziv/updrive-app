@@ -54,7 +54,7 @@ Vue.mixin({
             return '###.###.###-##?#'
         },
 
-        validated() {
+        validated () {
             this.$store.dispatch('global/SET_VALIDATION_ERROR', [])
         },
 

@@ -4,7 +4,6 @@
         <documents-list :documents="documents"/>
 
         <document-edit/>
-        <document-protocol/>
         <document-status/>
     </page-load>
 </template>

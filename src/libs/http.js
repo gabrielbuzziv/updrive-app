@@ -54,6 +54,7 @@ window.axios.interceptors.response.use(response => {
         case 422:
             store.dispatch('global/SET_VALIDATION_ERROR', error.response.data)
         default:
+            store.dispatch('global/SET_REQUEST_ERROR', error.response.data)
             return Promise.reject(error)
     }
 
