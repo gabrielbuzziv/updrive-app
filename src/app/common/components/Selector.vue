@@ -72,7 +72,14 @@
 
         watch: {
             options () {
-                this.selectorOptions = this.options
+                if (this.tag.length > 0) {
+                    this.selectorOptions = thisn.options.map(option => {
+                        option.visible = true
+                        return option
+                    })
+                } else {
+                    this.selectorOptions = []
+                }
             },
 
             value (val) {
@@ -96,13 +103,6 @@
                     const label    = option[this.optionLabel].toLowerCase()
                     option.visible = label.indexOf(tag) > - 1 && tag.length ? true : false
 
-                    return option
-                })
-            },
-
-            filterRemote () {
-                this.selectorOptions = this.options.map(option => {
-                    option.visible = true
                     return option
                 })
             },
@@ -174,7 +174,6 @@
 
         mounted () {
             this.tags = this.value
-            this.$root.$on('filter::options', () => setTimeout(() => this.filterRemote(), 1))
         },
 
         beforeDestroy () {

@@ -31,7 +31,7 @@
                                 <span class="column-label">Remetente</span>
                                 <span class="column-value">{{ document.user.name }}</span>
                             </td>
-                            <td class="document-option text-right">
+                            <td class="document-option text-right" width="180">
                                 <div class="btn-group">
                                     <a :href="`${document.links.download}?token=${token}`"
                                        class="btn btn-rounded">

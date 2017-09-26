@@ -311,7 +311,6 @@
                 services.getCompanies(query)
                         .then(response => {
                             this.companies = query.length > 0 ? response.data.items : []
-                            this.$root.$emit('filter::options')
                         })
             }, 300),
 
@@ -319,7 +318,6 @@
                 services.getContacts(query)
                         .then(response => {
                             this.contacts = query.length > 0 ? response.data.items : []
-                            this.$root.$emit('filter::options')
                         })
             }, 300),
 

@@ -77,6 +77,8 @@
         border-bottom-right-radius: $border-radius-base;
         z-index: 9999;
         min-width: 320px;
+        max-height: 255px;
+        overflow-y: auto;
 
         .selector-options__option {
             padding: 12px 15px;
