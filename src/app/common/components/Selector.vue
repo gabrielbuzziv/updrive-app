@@ -100,15 +100,15 @@
             },
 
             addTag () {
-                if (typeof this.validationMethod === 'function' && !this.validationMethod(this.tag)) {
-                    return false;
-                }
-
                 if (this.tag.length) {
                     if (this.visibleOptions.length) {
                         const tag = this.visibleOptions[this.hoverIndex]
                         this.tags.push({ value: tag[this.optionValue], label: tag[this.optionLabel] })
                     } else {
+                        if (typeof this.validationMethod === 'function' && !this.validationMethod(this.tag)) {
+                            return false;
+                        }
+
                         const tag = this.tag.replaceAll(',', '').replaceAll('\n', '')
                         this.tags.push({ value: tag, label: tag })
                     }
