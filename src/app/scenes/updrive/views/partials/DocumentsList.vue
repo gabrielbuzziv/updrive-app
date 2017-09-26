@@ -1,70 +1,45 @@
 <template>
     <page-load v-if="visible">
-        <panel v-if="documents.length">
+        <panel class="nopadding" v-if="documents.length">
             <div class="table-responsive">
                 <table class="table table-documents">
-                    <thead>
-                        <tr>
-                            <th class="document-icon" width="40"></th>
-                            <th class="document-name">Documento</th>
-                            <th class="text-center">
-                                Competência
-                                <el-tooltip content="Mês/ano que o documento é referente." placement="top"
-                                            class="margin-left-5">
-                                    <i class="mdi mdi-information"></i>
-                                </el-tooltip>
-                            </th>
-                            <th class="text-center">
-                                Vencimento
-                                <el-tooltip content="Data limite de validade do documento." placement="top"
-                                            class="margin-left-5">
-                                    <i class="mdi mdi-information"></i>
-                                </el-tooltip>
-                            </th>
-                            <th v-if="showCompany">Empresa</th>
-                            <th>
-                                Status
-                                <el-tooltip placement="top" class="margin-left-5">
-                                    <template slot="content">
-                                        <p><b>Pendente:</b> documento enviado, mas ainda não visualizado/baixado.</p>
-                                        <p><b>Visualizado:</b> documento visualizado/baixado por um dos contatos
-                                            destinatários.</p>
-                                        <p class="margin-bottom-0"><b>Vencido:</b> documento que não foi visualizado antes
-                                            da data de vencimento.</p>
-                                    </template>
-
-                                    <i class="mdi mdi-information"></i>
-                                </el-tooltip>
-                            </th>
-                            <th class="document-option" width="160"></th>
-                        </tr>
-                    </thead>
-
                     <tbody>
-                        <tr v-for="document in documents" :key="document.id">
-                            <td class="document-icon">
-                                <i class="mdi file" :class="document.type.icon"></i>
+                        <tr :class="getStatus(document.status.id).class" v-for="document in documents" :key="document.id">
+                            <td class="document-status" width="100">
+                                <document-label :document="document"/>
                             </td>
                             <td class="document-name">
-                                <document-name :document="document"/>
+                                <span class="name" :class="{ 'margin-bottom-5': document.cycle || document.validity }">
+                                    {{ document.name }}
+                                </span>
+                                <span class="date" v-if="document.cycle || document.validity">
+                                    <span class="margin-right-15" v-if="document.cycle">
+                                        <i class="mdi mdi-calendar margin-right-5"></i>
+                                        {{ document.cycle }}
+                                    </span>
+
+                                    <span v-if="document.validity">
+                                        <i class="mdi mdi-calendar-remove margin-right-5"></i>
+                                        {{ document.validity }}
+                                    </span>
+                                </span>
                             </td>
-                            <td class="text-center">{{ document.cycle || '-' }}</td>
-                            <td class="text-center">{{ document.validity || '-' }}</td>
                             <td v-if="showCompany">
                                 <document-company :document="document"/>
                             </td>
-                            <td>
-                                <document-label :document="document"/>
+                            <td class="document-sender">
+                                <span class="column-label">Remetente</span>
+                                <span class="column-value">{{ document.user.name }}</span>
                             </td>
                             <td class="document-option text-right">
                                 <div class="btn-group">
                                     <a :href="`${document.links.download}?token=${token}`"
-                                       class="btn btn-default btn-rounded">
+                                       class="btn btn-rounded">
                                         <i class="mdi mdi-arrow-down-bold-circle margin-right-5"></i>
                                         Baixar
                                     </a>
 
-                                    <dropdown buttonClass="btn btn-default btn-rounded" right>
+                                    <dropdown buttonClass="btn btn-rounded" right>
                                         <template slot="button">
                                             <i class="mdi mdi-chevron-down"></i>
                                         </template>
@@ -114,12 +89,20 @@
             </div>
         </panel>
 
-        <slot name="not-found" v-else></slot>
+        <slot name="not-found" v-else>
+            <first-time title="Não encontramos documentos" icon="file-multiple" message="Não encontramos documentos aqui.">
+                <template slot="buttons">
+                    <button class="btn btn-secondary btn-rounded" @click="$root.$emit('send::documents')" v-if="userCan('manage-updrive')">
+                        <i class="mdi mdi-plus-circle margin-right-5"></i>
+                        Enviar documentos
+                    </button>
+                </template>
+            </first-time>
+        </slot>
     </page-load>
 </template>
 
 <script type="text/babel">
-    import DocumentName from './DocumentName'
     import DocumentCompany from './DocumentCompany'
     import DocumentLabel from './DocumentLabel'
     import services from '../../services'
@@ -137,7 +120,7 @@
             },
         },
 
-        components: { DocumentName, DocumentCompany, DocumentLabel },
+        components: { DocumentCompany, DocumentLabel },
 
         computed: {
             token () {
@@ -181,6 +164,26 @@
                             })
                 }).catch(() => {
                 })
+            },
+
+            getStatus (status) {
+                switch (status) {
+                    case 2:
+                        return {
+                            class: 'warning',
+                            icon: 'mdi-clock'
+                        }
+                    case 3:
+                        return {
+                            class: 'success',
+                            icon: 'mdi-check'
+                        }
+                    case 4:
+                        return {
+                            class: 'danger',
+                            icon: 'calendar-remove'
+                        }
+                }
             }
         }
     }

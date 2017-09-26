@@ -1,6 +1,12 @@
 .panel {
     box-shadow: 0 2px 4px rgba(5, 15, 44, 0.1);
 
+    &.nopadding {
+        .panel-body {
+            padding: 0;
+        }
+    }
+
     .panel-heading {
         background: #f8f8f8;
         border-bottom: 1px solid #f0f0f0;

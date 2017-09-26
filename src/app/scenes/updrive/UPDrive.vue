@@ -48,7 +48,7 @@
 
         <page-load v-if="! total && ! loading">
             <page-content>
-                <first-time title="UP Drive" icon="file-file-multiple"
+                <first-time title="UP Drive" icon="file-multiple"
                     :advantages="['Envie os documentos de maneira simples.', 'Seu cliente não precisará acessar a ferramenta para baixar os documentos.', 'Saiba se o seu cliente já recebeu os documentos.']">
                     <template slot="buttons">
                         <button class="btn btn-secondary btn-rounded" @click="$root.$emit('send::documents')" v-if="userCan('manage-updrive')">
@@ -83,6 +83,7 @@
                 },
 
                 set (value) {
+                    this.$store.commit('updrive/PAGE', 1)
                     this.$store.commit('updrive/COMPANY', value)
                     this.$store.dispatch('updrive/GET_AMOUNTS')
                     this.$store.dispatch('updrive/FETCH_PENDINGS')

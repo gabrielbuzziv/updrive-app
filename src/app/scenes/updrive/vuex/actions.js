@@ -3,6 +3,7 @@ import { debounce } from 'lodash'
 
 export default {
     'updrive/UPDATE_COMPANY' (context, request) {
+        context.commit('updrive/PAGE', 1)
         context.commit('updrive/COMPANY', request)
         context.dispatch('updrive/FETCH_PENDINGS')
         context.dispatch('updrive/FETCH_ALL')

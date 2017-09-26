@@ -23,6 +23,7 @@
             <div class="selector-options__option"
                  :class="{ 'hover': hoverIndex == index }"
                  @click.stop="addTag"
+                 @mouseenter="hoverOption(index)"
                  v-for="option, index in visibleOptions">
                 <slot :option="option">
                     {{ option[optionLabel] }}
@@ -99,6 +100,13 @@
                 })
             },
 
+            filterRemote () {
+                this.selectorOptions = this.options.map(option => {
+                    option.visible = true
+                    return option
+                })
+            },
+
             addTag () {
                 if (this.tag.length) {
                     if (this.visibleOptions.length) {
@@ -148,6 +156,10 @@
                 }
             },
 
+            hoverOption (index) {
+                this.hoverIndex = index
+            },
+
             removeLastTag () {
                 if (this.tag.length == 0 && ! isEmpty(this.tags)) {
                     const index = this.tags.length - 1
@@ -158,15 +170,11 @@
             removeTag (index) {
                 this.tags.splice(index, 1)
             },
-
-            parseSlotContent () {
-                return this.$slots.default.text
-            }
         },
 
         mounted () {
             this.tags = this.value
-            this.$root.$on('filter::options', () => setTimeout(() => this.filterDefault(), 1))
+            this.$root.$on('filter::options', () => setTimeout(() => this.filterRemote(), 1))
         },
 
         beforeDestroy () {

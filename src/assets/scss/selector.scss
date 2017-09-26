@@ -76,10 +76,10 @@
         border-bottom-left-radius: $border-radius-base;
         border-bottom-right-radius: $border-radius-base;
         z-index: 9999;
-        min-width: 250px;
+        min-width: 320px;
 
         .selector-options__option {
-            padding: 8px 10px;
+            padding: 12px 15px;
             font-size: 12px;
             cursor: pointer;
 
@@ -101,18 +101,44 @@
                 }
             }
 
+            .option-icon {
+                display: inline-block;
+                width: 35px;
+                margin-right: 10px;
+                vertical-align: middle;
+
+                .frame {
+                    background: $secondary;
+                    border-radius: 100%;
+                    height: 35px;
+                    line-height: 35px;
+                    width: 35px;
+                    text-align: center;
+                    display: block;
+                    color: #fff;
+
+                    span {
+                        font-size: 10px;
+                        font-weight: 400;
+                    }
+                }
+            }
+
             .option-info {
                 width: calc(100% - 50px);
                 display: inline-block;
                 vertical-align: middle;
+                color: $theme;
 
                 b {
                     display: block;
                     margin-bottom: 3px;
+                    font-weight: 600;
                 }
 
                 span {
                     display: block;
+                    font-weight: 300;
                 }
             }
         }

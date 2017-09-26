@@ -1,7 +1,8 @@
 export default {
     getApiUrl () {
         if (window.location.origin == 'http://localhost:8081') {
-            return 'http://api.updrive.app/sandbox'
+            // return 'http://api.updrive.app/sandbox'
+            return 'http://api.updrive.app/crescercontabilidade'
         }
 
         const account = window.location.host.split('.')[0]

@@ -18,7 +18,7 @@
                     case 2:
                         return { type: 'warning', description: 'Pendente', icon: 'clock' }
                     case 3:
-                        return { type: 'info', description: 'Visualizado', icon: 'eye' }
+                        return { type: 'success', description: 'Aberto', icon: 'check' }
                     case 4:
                         return { type: 'danger', description: 'Vencido', icon: 'calendar-remove' }
                     default:

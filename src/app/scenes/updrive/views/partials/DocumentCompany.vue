@@ -1,8 +1,8 @@
 <template>
     <div>
         <span class="company">
-            <a href="#" @click.prevent="setCompany(document.company.id)">
-                <i class="mdi mdi-domain margin-right-5"></i>
+            <span class="column-label">Empresa</span>
+            <a href="#" @click.prevent="setCompany(document.company.id)" class="column-value">
                 {{ document.company.name }}
             </a>
         </span>

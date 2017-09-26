@@ -9,7 +9,25 @@
                           option-label="name"
                           :options="companies"
                           :limit="1"
+                          :filter-method="filterCompanies"
                           @change="changeCompany">
+
+                    <template scope="data">
+                        <div class="option-icon">
+                            <div class="frame">
+                                <span v-if="data.option.identifier">
+                                    {{ data.option.identifier }}
+                                </span>
+                                <i class="mdi mdi-domain" v-else></i>
+                            </div>
+                        </div>
+
+                        <div class="option-info">
+                            <b>{{ data.option.name }}</b>
+                            <span>{{ data.option.email }}</span>
+                        </div>
+                    </template>
+
                 </selector>
             </div>
 
@@ -289,10 +307,18 @@
                 }
             },
 
+            filterCompanies: debounce (function (query) {
+                services.getCompanies(query)
+                        .then(response => {
+                            this.companies = query.length > 0 ? response.data.items : []
+                            this.$root.$emit('filter::options')
+                        })
+            }, 300),
+
             filterContacts: debounce (function (query) {
                 services.getContacts(query)
                         .then(response => {
-                            this.contacts = response.data.items
+                            this.contacts = query.length > 0 ? response.data.items : []
                             this.$root.$emit('filter::options')
                         })
             }, 300),
