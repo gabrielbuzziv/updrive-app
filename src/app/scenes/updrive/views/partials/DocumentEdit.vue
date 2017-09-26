@@ -42,9 +42,9 @@
                         Salvar
                     </button>
 
-                    <button class="btn btn-blank" @click="close">
+                    <a href="#" class="btn btn-blank" @click="close">
                         Cancelar
-                    </button>
+                    </a>
                 </div>
             </div>
         </v-form>
