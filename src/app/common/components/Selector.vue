@@ -73,7 +73,7 @@
         watch: {
             options () {
                 if (this.tag.length > 0) {
-                    this.selectorOptions = thisn.options.map(option => {
+                    this.selectorOptions = this.options.map(option => {
                         option.visible = true
                         return option
                     })
