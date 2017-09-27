@@ -28,6 +28,7 @@
     import DocumentEdit from './partials/DocumentEdit'
     import DocumentsList from './partials/DocumentsList'
     import DocumentStatus from './partials/DocumentStatus'
+    import Helper from 'common/Helper'
 
     export default {
         components: { DocumentEdit, DocumentsList, DocumentStatus },
@@ -55,6 +56,14 @@
                         this.loading = false
                     })
                     .catch(() => this.loading = false)
+
+            window.socket.on('updrive:App\\Events\\DocumentStatusUpdated', (data) => {
+                if (data.account == Helper.getAccount()) {
+                    if (this.pendings.filter(document => document.id == data.document.id).length) {
+                        this.$store.dispatch('updrive/FETCH_PENDINGS')
+                    }
+                }
+            })
         }
     }
 </script>

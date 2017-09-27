@@ -5,6 +5,7 @@ import './directives'
 import './breadcrumbs'
 import './elements'
 import './infinite-loading'
+import './socket'
 
 String.prototype.replaceAll = function(str1, str2, ignore)
 {

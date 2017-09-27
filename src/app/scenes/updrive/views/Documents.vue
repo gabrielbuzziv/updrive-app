@@ -14,6 +14,7 @@
     import DocumentsList from './partials/DocumentsList'
     import DocumentStatus from './partials/DocumentStatus'
     import DocumentsFilter from './partials/DocumentsFilter'
+    import Helper from 'common/Helper'
     import { isEmpty, debounce } from 'lodash'
 
     export default {
@@ -48,6 +49,14 @@
 
         mounted () {
             this.load()
+
+            window.socket.on('updrive:App\\Events\\DocumentStatusUpdated', (data) => {
+                if (data.account == Helper.getAccount()) {
+                    if (this.documents.filter(document => document.id == data.document.id).length) {
+                        this.$store.dispatch('updrive/FETCH_ALL')
+                    }
+                }
+            })
         }
     }
 </script>

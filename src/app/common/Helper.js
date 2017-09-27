@@ -1,12 +1,21 @@
 export default {
-    getApiUrl () {
+    getAccount () {
         if (window.location.origin == 'http://localhost:8081') {
-            // return 'http://api.updrive.app/sandbox'
-            return 'http://api.updrive.app/crescercontabilidade'
+            return 'crescercontabilidade'
         }
 
-        const account = window.location.host.split('.')[0]
+        return window.location.host.split('.')[0]
+    },
+
+    getApiUrl () {
+        const account = this.getAccount()
         return `${process.env.API_URL}${account}`
+    },
+
+    getAppUrl () {
+        const account = this.getAccount()
+        const url = process.env.APP_URL.replace('{account}', account)
+        return url
     },
 
     getFilename (filename) {
