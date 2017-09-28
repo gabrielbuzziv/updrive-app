@@ -1,4 +1,7 @@
 import io from 'socket.io-client'
-const socket = io(`${process.env.SOCKET_HOST}:${process.env.SOCKET_PORT}`)
 
-window.socket = socket
+let SOCKET_HOST = process.env.SOCKET_HOST && process.env.SOCKET_HOST.length
+    ? process.env.SOCKET_HOST
+    : `//${window.location.hostname}`
+
+window.socket = io(`${SOCKET_HOST}:${process.env.SOCKET_PORT}`)
