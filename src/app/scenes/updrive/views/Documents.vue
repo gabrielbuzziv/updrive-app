@@ -50,6 +50,8 @@
         mounted () {
             this.load()
 
+            console.log(window.socket)
+
             window.socket.on('updrive:App\\Events\\DocumentStatusUpdated', (data) => {
                 console.log(data)
                 if (data.account == Helper.getAccount()) {
