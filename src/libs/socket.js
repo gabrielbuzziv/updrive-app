@@ -4,4 +4,8 @@ let SOCKET_HOST = process.env.SOCKET_HOST && process.env.SOCKET_HOST.length
     ? process.env.SOCKET_HOST
     : `//${window.location.hostname}`
 
-window.socket = io(`${SOCKET_HOST}:${process.env.SOCKET_PORT}`)
+let SOCKET_PORT = process.env.SOCKET_PORT && process.env.SOCKET_PORT.length
+    ? `:${process.env.SOCKET_PORT}`
+    : ''
+
+window.socket = io(`${SOCKET_HOST}${SOCKET_PORT}`)
