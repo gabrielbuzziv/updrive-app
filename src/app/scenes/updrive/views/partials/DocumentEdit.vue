@@ -42,7 +42,7 @@
                         Salvar
                     </button>
 
-                    <a href="#" class="btn btn-blank" @click="close">
+                    <a href="#" class="btn btn-blank" @click.prevent="close">
                         Cancelar
                     </a>
                 </div>

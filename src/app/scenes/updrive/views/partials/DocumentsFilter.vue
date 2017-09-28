@@ -45,7 +45,7 @@
                 status: 0,
                 statuses: [
                     { id: 2, name: 'Pendente' },
-                    { id: 3, name: 'Visualizado' },
+                    { id: 3, name: 'Aberto' },
                     { id: 4, name: 'Vencido' },
                 ]
             }

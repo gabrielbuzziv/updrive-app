@@ -25,9 +25,9 @@
                         Convidar
                     </button>
 
-                    <button class="btn btn-blank" @click.prevent="close">
+                    <a href="#" class="btn btn-blank" @click.prevent="close">
                         Cancelar
-                    </button>
+                    </a>
                 </div>
             </div>
         </v-form>

@@ -1,72 +1,46 @@
 <template>
-    <el-dialog title="Status do Documento" :visible.sync="visible">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Quem?</th>
-                    <th>O que?</th>
-                    <th class="text-right">Quando?</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <tr v-for="status in document.history">
-                    <td>{{ getStatusUser(status) }}</td>
-                    <td>{{ getStatusLabel(status) }}</td>
-                    <td class="text-right">{{ status.created_at }}</td>
-                </tr>
-            </tbody>
-        </table>
-    </el-dialog>
+    <div class="document-history">
+        <div class="row">
+            <document-status-type :type="sent" />
+            <div class="col-md-1 divider" v-if="opened.length">
+                <i class="mdi mdi-arrow-right"></i>
+            </div>
+            <document-status-type :type="opened" />
+            <div class="col-md-1 divider" v-if="expired.length">
+                <i class="mdi mdi-arrow-right"></i>
+            </div>
+            <document-status-type :type="expired" />
+        </div>
+    </div>
 </template>
 
 <script type="text/babel">
+    import DocumentStatusType from './DocumentStatusType'
     import services from '../../services'
 
     export default {
-        data () {
-            return {
-                document: {},
-                visible: false,
-                loading: true
+        props: ['document'],
+
+        components: { DocumentStatusType },
+
+        computed: {
+            sent () {
+                return this.document && this.document.history
+                        ? this.document.history.filter(history => history.action == 2)
+                        : []
+            },
+
+            opened () {
+                return this.document && this.document.history
+                        ? this.document.history.filter(history => history.action == 3 || history.action == 4)
+                        : []
+            },
+
+            expired () {
+                return this.document && this.document.history
+                        ? this.document.history.filter(history => history.action == 5)
+                        : []
             }
         },
-
-        methods: {
-            load (document) {
-                this.document = {}
-                this.visible  = true
-
-                services.getDocument(document)
-                        .then(response => {
-                            this.document = response.data
-                            this.loading  = false
-                        })
-                        .catch(() => this.loading = false)
-            },
-
-            getStatusUser (status) {
-                return status.user ? status.user.name : 'Sistema'
-            },
-
-            getStatusLabel (status) {
-                const action = status.action
-
-                const text = [null, 'Carregou', 'Enviou', 'Baixou', 'Visualizou', 'Venceu']
-                return text[action]
-            },
-
-            close () {
-                this.visible = false
-            }
-        },
-
-        mounted () {
-            this.$root.$on('status::document', (document) => this.load(document))
-        },
-
-        beforeDestroy () {
-            this.$root.$off('status::document')
-        }
     }
 </script>
