@@ -51,6 +51,7 @@
             this.load()
 
             window.socket.on('updrive:App\\Events\\DocumentStatusUpdated', (data) => {
+                console.log(data)
                 if (data.account == Helper.getAccount()) {
                     if (this.documents.filter(document => document.id == data.document.id).length) {
                         this.$store.dispatch('updrive/FETCH_ALL')
