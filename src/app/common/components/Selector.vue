@@ -124,6 +124,7 @@
 
                 this.tag        = ''
                 this.hoverIndex = 0
+                this.selectorOptions = []
             },
 
             navigateOptions (direction) {
