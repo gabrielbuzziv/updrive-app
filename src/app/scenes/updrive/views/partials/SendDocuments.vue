@@ -72,7 +72,7 @@
                                 <i class="mdi icon" :class="getFileIcon(file)"></i>
 
                                 <div class="data">
-                                    <span class="name">{{ file.name }}</span>
+                                    <span class="name"> {{ file.name }} </span>
                                     <span class="date" v-if="file.cycle">Competência: <b>{{ file.cycle }}</b></span>
                                     <span class="divider" v-if="file.cycle && file.validity">|</span>
                                     <span class="date" v-if="file.validity">
@@ -81,6 +81,14 @@
 
                                 <div class="buttons">
                                     <div class="btn-group">
+                                        <a :href="getFilePreviewUrl(file.file)"
+                                           target="_blank"
+                                           class="btn btn-default btn-sm"
+                                           v-if="file.extension == 'pdf'">
+                                            <i class="mdi mdi-eye margin-right-5"></i>
+                                            Visualizar
+                                        </a>
+
                                         <button class="btn btn-default btn-sm" @click.prevent="file.editing = true">
                                             <i class="mdi mdi-pencil-circle margin-right-5"></i>
                                             Editar
@@ -373,6 +381,11 @@
                 }
 
                 return icons[extension] ? icons[extension] : icons['default']
+            },
+
+            getFilePreviewUrl (file) {
+                console.log(file)
+                return URL.createObjectURL(file)
             },
 
             close () {
