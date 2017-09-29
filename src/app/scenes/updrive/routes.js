@@ -1,6 +1,7 @@
 import UPDrive from './UPDrive'
 import Pending from './views/Pending'
 import Documents from './views/Documents'
+import Emails from './views/Emails'
 
 export default [
     {
@@ -21,6 +22,12 @@ export default [
                 component: Documents,
                 name: 'updrive.documents',
                 meta: { breadcrumb: 'Documentos', auth: true }
+            },
+            {
+                path: '/updrive/emails',
+                component: Emails,
+                name: 'updrive.emails',
+                meta: { breadcrumb: 'E-mails', auth: true, permission: 'manage-updrive' }
             }
         ]
     }

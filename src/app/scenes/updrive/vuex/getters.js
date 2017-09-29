@@ -36,5 +36,17 @@ export default {
 
     'updrive/GET_RECORDS' ({ records }) {
         return records
+    },
+
+    'tracking/GET_TRACKING' ({ tracking }) {
+        return tracking
+    },
+
+    'tracking/GET_PAGE' ({ tracking_page }) {
+        return tracking_page
+    },
+
+    'tracking/GET_RECORDS' ({ tracking_records }) {
+        return tracking_records
     }
 }

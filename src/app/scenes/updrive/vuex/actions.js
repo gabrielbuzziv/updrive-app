@@ -54,5 +54,19 @@ export default {
     'updrive/UPDATE_DOCUMENTS_STATUS' (context, request) {
         context.commit('updrive/DOCUMENTS_STATUS', request)
         context.dispatch('updrive/FETCH_ALL')
+    },
+    
+    'tracking/FETCH_ALL' (context) {
+        const request = {
+            page: context.getters['tracking/GET_PAGE'],
+        }
+
+        return services.getTracks(request)
+            .then(response => {
+                context.commit('tracking/RECORDS', response.data.total)
+                context.commit('tracking/TRACKING', response.data.items)
+
+                return response
+            })
     }
 }

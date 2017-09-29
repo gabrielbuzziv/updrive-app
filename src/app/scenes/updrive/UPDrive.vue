@@ -39,6 +39,16 @@
                             <span class="badge margin-left-10" v-if="amounts.documents">{{ amounts.documents }}</span>
                         </a>
                     </route>
+
+                    <route href="updrive.emails" tag="li">
+                        <a>
+                            <i class="mdi mdi-target margin-right-5"></i>
+                            Rastreamento
+                            <span class="badge margin-left-10">
+                                BETA
+                            </span>
+                        </a>
+                    </route>
                 </template>
             </page-header>
 

@@ -107,5 +107,13 @@ export default {
      */
     generateProtocol (documentId) {
         return window.axios.get(`updrive/${documentId}/protocol`)
+    },
+
+    /**
+     * @returns {*}
+     */
+    getTracks (request) {
+        const params = request
+        return window.axios.get(`updrive/tracking`, { params })
     }
 }

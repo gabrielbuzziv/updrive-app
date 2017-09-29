@@ -8,5 +8,10 @@ export default {
     documents_query: localStorage.getItem('updrive.documents.query') || '',
     documents_status: parseInt(localStorage.getItem('updrive.documents.status')) || '',
     page: 1,
-    records: 0
+    records: 0,
+
+    // Tracking States
+    tracking: [],
+    tracking_page: 1,
+    tracking_records: 0
 }

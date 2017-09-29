@@ -55,6 +55,8 @@
                 </button>
             </td>
         </tr>
+
+        <!-- Details -->
         <tr class="details" v-if="showDetails">
             <td :colspan="detailColspan">
                 <div class="row">

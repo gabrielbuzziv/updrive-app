@@ -40,5 +40,17 @@ export default {
 
     'updrive/RECORDS' (state, data) {
          state.records = data
+    },
+
+    'tracking/TRACKING' (state, data) {
+        state.tracking = data
+    },
+
+    'tracking/PAGE' (state, data) {
+        state.tracking_page = data
+    },
+
+    'tracking/RECORDS' (state, data) {
+        state.tracking_records = data
     }
 }

@@ -5,10 +5,10 @@ var io = require('socket.io')(server);
 var Redis = require('ioredis');
 var redis = new Redis();
 
-redis.subscribe('updrive');
+redis.subscribe('documents');
+redis.subscribe('tracking');
 
 redis.on('message', function(channel, message) {
-    console.log(channel, message)
     message = JSON.parse(message);
     io.emit(`${channel}:${message.event}`, message.data);
 });
