@@ -9,7 +9,7 @@
                             <tr>
                                 <th>Razão Social / Nome</th>
                                 <th>E-mail</th>
-                                <th>Telefone</th>
+                                <th class="hidden-sm hidden-xs">Telefone</th>
                             </tr>
                         </thead>
 
@@ -19,7 +19,7 @@
                                     <route href="companies.details" :params="{ id: company.id }">{{ company.name }}</route>
                                 </td>
                                 <td>{{ company.email }}</td>
-                                <td>{{ company.phone }}</td>
+                                <td class="hidden-sm hidden-xs">{{ company.phone }}</td>
                             </tr>
                         </tbody>
                     </table>

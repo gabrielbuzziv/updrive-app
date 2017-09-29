@@ -1,6 +1,10 @@
 <template>
     <div class="sidebar" :class="{ 'minimize': ! sidebar }">
-        <div class="user-panel">
+        <button class="btn btn-blank btn-toggle hidden-sm hidden-md hidden-lg" @click="toggleMenu">
+            <i class="mdi mdi-menu"></i>
+        </button>
+
+        <div class="user-panel hidden-xs">
             <div class="user-img">
                 <img :src="user.links.gravatar" class="img-responsive">
             </div>
@@ -10,7 +14,7 @@
             </div>
         </div>
 
-        <ul class="nav menu">
+        <ul class="nav menu" :class="{ 'open': menu }">
             <li class="header" v-if="sidebar">Menu</li>
 
             <route href="updrive" tag="li">
@@ -39,6 +43,12 @@
 
 <script type="text/babel">
     export default {
+        data () {
+            return {
+                menu: false,
+            }
+        },
+
         computed: {
             user () {
                 return this.$store.getters['auth/GET_USER']
@@ -46,6 +56,12 @@
 
             sidebar () {
                 return this.$store.getters['global/GET_SIDEBAR']
+            }
+        },
+
+        methods: {
+            toggleMenu () {
+                this.menu = !this.menu
             }
         }
     }

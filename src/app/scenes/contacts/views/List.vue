@@ -2,7 +2,7 @@
     <page-load>
         <page-header title="Contatos" v-if="total">
             <template slot="left">
-                <button class="btn btn-rounded margin-right-5" @click.prevent="$root.$emit('import::contacts')">
+                <button class="btn btn-rounded margin-right-5 hidden-xs hidden-sm" @click.prevent="$root.$emit('import::contacts')">
                     <i class="mdi mdi-arrow-up-bold-circle margin-right-5"></i>
                     Importar
                 </button>
@@ -35,7 +35,7 @@
                                     </th>
                                     <th>Nome</th>
                                     <th>E-mail</th>
-                                    <th></th>
+                                    <th width="80"></th>
                                 </tr>
                             </thead>
 

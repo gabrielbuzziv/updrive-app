@@ -42,12 +42,12 @@
             </div>
 
             <div class="row">
-                <div class="form-group col-md-3 margin-bottom-0">
+                <div class="form-group col-md-3">
                     <label>Inscrição Estadual / RG</label>
                     <input type="text" class="form-control" name="docnumber" v-model="data.docnumber">
                 </div>
 
-                <div class="form-group col-md-3 margin-bottom-0">
+                <div class="form-group col-md-3">
                     <label>Inscrição Municipal</label>
                     <input type="text" class="form-control" name="docnumber_town" v-model="data.docnumber_town">
                 </div>
@@ -88,12 +88,12 @@
             </div>
 
             <div class="row">
-                <div class="form-group col-md-3 margin-bottom-0">
+                <div class="form-group col-md-3">
                     <label>Cidade</label>
                     <input type="text" class="form-control" name="city" v-model="data.address.city">
                 </div>
 
-                <div class="form-group col-md-3 margin-bottom-0">
+                <div class="form-group col-md-3">
                     <label>Estado</label>
                     <input type="text" class="form-control" name="state" v-model="data.address.state">
                 </div>

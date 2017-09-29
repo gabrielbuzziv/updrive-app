@@ -16,7 +16,8 @@
                 </template>
 
                 <template slot="right">
-                    <button class="btn btn-secondary btn-rounded" @click="$root.$emit('send::documents')" v-if="userCan('manage-updrive')">
+                    <button class="btn btn-secondary btn-rounded hidden-sm hidden-xs" @click="$root.$emit('send::documents')"
+                            v-if="userCan('manage-updrive')">
                         <i class="mdi mdi-plus-circle margin-right-5"></i>
                         Enviar Documentos
                     </button>
@@ -42,6 +43,12 @@
             </page-header>
 
             <page-content>
+                <button class="btn btn-secondary btn-block margin-bottom-20 hidden-md hidden-lg"
+                        @click="$root.$emit('send::documents')" v-if="userCan('manage-updrive')">
+                    <i class="mdi mdi-plus-circle margin-right-5"></i>
+                    Enviar Documentos
+                </button>
+
                 <router-view></router-view>
             </page-content>
         </page-load>
@@ -49,9 +56,10 @@
         <page-load v-if="! total && ! loading">
             <page-content>
                 <first-time title="UP Drive" icon="file-multiple"
-                    :advantages="['Envie os documentos de maneira simples.', 'Seu cliente não precisará acessar a ferramenta para baixar os documentos.', 'Saiba se o seu cliente já recebeu os documentos.']">
+                            :advantages="['Envie os documentos de maneira simples.', 'Seu cliente não precisará acessar a ferramenta para baixar os documentos.', 'Saiba se o seu cliente já recebeu os documentos.']">
                     <template slot="buttons">
-                        <button class="btn btn-secondary btn-rounded" @click="$root.$emit('send::documents')" v-if="userCan('manage-updrive')">
+                        <button class="btn btn-secondary btn-rounded" @click="$root.$emit('send::documents')"
+                                v-if="userCan('manage-updrive')">
                             <i class="mdi mdi-plus-circle margin-right-5"></i>
                             Enviar documentos
                         </button>
@@ -110,7 +118,7 @@
                                         })
                                         .catch(() => this.loading = false)
                             } else {
-                                this.loading   = false
+                                this.loading = false
                             }
                         })
                         .catch(() => this.loading = false)

@@ -166,7 +166,7 @@
     }
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 990px) {
     #authenticate {
         .authenticate-wrapper {
             width: 70% !important;
@@ -189,6 +189,168 @@
 
             .panel {
                 box-shadow: none !important;
+            }
+        }
+    }
+
+    .sidebar {
+        background: none;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        width: 100%;
+        bottom: initial;
+
+        .nav {
+            display: none;
+            visible: hidden;
+            opacity: 0;
+
+            &.open {
+                display: block;
+                visible: visible;
+                opacity: 1;
+                background: #fff;
+                height: 9999px;
+                position: absolute;
+                top: 0;
+                right: 0;
+                left: 0;
+                bottom: 0;
+
+                > li {
+                    width: 100%;
+                    border-bottom: 1px solid #eee;
+
+                    a {
+                        background: #fff;
+                        color: #444;
+                        font-size: 18px;
+                        font-weight: 300;
+                        height: 60px;
+                        line-height: 60px;
+
+                        i {
+                            margin-right: 10px;
+                        }
+
+                        span {
+                            visibility: visible;
+                            opacity: 1;
+                            background: #fff;
+                            position: initial;
+                            top: initial;
+                            left: initial;
+                            width: auto;
+                            display: inline-block;
+                            padding: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .main {
+        margin-left: 0;
+
+        #page-header {
+            .top {
+                padding: 10px;
+            }
+
+            .nav {
+                padding: 0;
+
+                li {
+                    display: block;
+                    text-align: center;
+                }
+            }
+        }
+
+        #page-content {
+            padding: 10px;
+        }
+
+        .pagination {
+            float: left !important;
+        }
+
+        .el-select-dropdown {
+            width: 100% !important;
+            left: 0 !important;
+        }
+
+        #updrive {
+            #page-header {
+                .top {
+                    .left {
+                        height: auto;
+                        display: block;
+                        text-align: center;
+
+                        .header {
+                            display: block;
+                            width: 100%;
+
+                            .children {
+                                display: block;
+                                margin: 20px 0 0;
+
+                                > i {
+                                    display: none;
+                                }
+
+                                .el-select {
+                                    .el-input__inner {
+                                        width: 100%;
+                                    }
+                                }
+                            }
+                        }
+
+                        .slot-left {
+                            display: none;
+                        }
+                    }
+                }
+            }
+
+            .table-documents {
+                tbody {
+                    tr {
+                        &.warning {
+                            td {
+                                &:nth-child(2) {
+                                    border-left-color: $warning;
+                                }
+                            }
+                        }
+
+                        &.success {
+                            td {
+                                &:nth-child(2) {
+                                    border-left-color: $success;
+                                }
+                            }
+                        }
+
+                        &.danger {
+                            td {
+                                &:nth-child(2) {
+                                    border-left-color: $danger;
+                                }
+                            }
+                        }
+
+                        &:nth-child(2) {
+                            td {
+                                border-top: 1px solid #fff !important;
+                            }
+                        }
+                    }
+                }
             }
         }
     }

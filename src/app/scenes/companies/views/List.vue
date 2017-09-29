@@ -2,7 +2,7 @@
     <page-load>
         <page-header title="Empresas" v-if="total">
             <template slot="left">
-                <button class="btn btn-rounded margin-right-5" @click.prevent="$root.$emit('import::companies')">
+                <button class="btn btn-rounded margin-right-5 hidden-xs hidden-sm" @click.prevent="$root.$emit('import::companies')">
                     <i class="mdi mdi-arrow-up-bold-circle margin-right-5"></i>
                     Importar
                 </button>
@@ -33,11 +33,11 @@
                                     <th width="50">
                                         <el-checkbox v-model="selectAll"/>
                                     </th>
-                                    <th></th>
+                                    <th class="hidden-sm hidden-xs"></th>
                                     <th>Razão Social</th>
-                                    <th>E-mail</th>
-                                    <th>Telefone</th>
-                                    <th></th>
+                                    <th class="hidden-sm hidden-xs">E-mail</th>
+                                    <th class="hidden-sm hidden-xs">Telefone</th>
+                                    <th width="80"></th>
                                 </tr>
                             </thead>
 
@@ -46,7 +46,7 @@
                                     <td>
                                         <el-checkbox v-model="selected" :label="company.id">&nbsp;</el-checkbox>
                                     </td>
-                                    <td>
+                                    <td class="hidden-sm hidden-xs">
                                         <span v-if="company.identifier">
                                             {{ company.identifier }}
                                         </span>
@@ -56,8 +56,8 @@
                                             {{ company.name }}
                                         </route>
                                     </td>
-                                    <td>{{ company.email }}</td>
-                                    <td>{{ company.phone }}</td>
+                                    <td class="hidden-sm hidden-xs">{{ company.email }}</td>
+                                    <td class="hidden-sm hidden-xs">{{ company.phone }}</td>
                                     <td class="text-right">
                                         <div class="btn-group">
                                             <route href="companies.details" :params="{ id: company.id }" class="btn btn-default btn-sm">

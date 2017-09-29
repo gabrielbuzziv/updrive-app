@@ -4,7 +4,6 @@
         <documents-list :documents="documents"/>
 
         <document-edit/>
-        <document-status/>
     </page-load>
 </template>
 
@@ -12,13 +11,12 @@
     import services from '../services'
     import DocumentEdit from './partials/DocumentEdit'
     import DocumentsList from './partials/DocumentsList'
-    import DocumentStatus from './partials/DocumentStatus'
     import DocumentsFilter from './partials/DocumentsFilter'
     import Helper from 'common/Helper'
     import { isEmpty, debounce } from 'lodash'
 
     export default {
-        components: { DocumentsList, DocumentsFilter, DocumentEdit, DocumentStatus },
+        components: { DocumentsList, DocumentsFilter, DocumentEdit },
 
         data () {
             return {

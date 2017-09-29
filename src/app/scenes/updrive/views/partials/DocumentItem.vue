@@ -1,7 +1,7 @@
 <template>
     <tbody>
         <tr :class="documentStatus">
-            <td class="document-options" width="30" v-if="userCan('manage-updrive')">
+            <td class="document-options hidden-xs" width="30" v-if="userCan('manage-updrive')">
                 <dropdown class="inline" button-class="btn btn-sm btn-blank btn-rounded">
                     <template slot="button">
                         <i class="mdi mdi-settings"></i>
@@ -43,7 +43,7 @@
             </td>
 
             <!-- Document Company -->
-            <td class="document-company" v-if="! company">
+            <td class="document-company hidden-xs hidden-sm" v-if="! company">
                 <document-company :document="document"/>
             </td>
 
@@ -61,7 +61,7 @@
                     <div class="col-md-12 margin-bottom-25">
                         <h3>{{ document.name }}</h3>
 
-                        <div class="pull-right">
+                        <div class="pull-right hidden-sm hidden-xs">
                             <a :href="`${API_URL}/documents/${document.id}/protocol?token=${token}`"
                                class="btn btn-sm btn-rounded margin-right-5"
                                target="_blank" v-if="userCan('manage-updrive')">
@@ -114,7 +114,7 @@
                         </ul>
                     </div>
 
-                    <div class="col-md-12 document-status"  v-if="userCan('manage-updrive')">
+                    <div class="col-md-12 document-status">
                         <b>Histórico</b>
                         <document-status :document="document"/>
                     </div>

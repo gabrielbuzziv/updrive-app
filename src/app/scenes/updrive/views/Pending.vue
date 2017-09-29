@@ -20,18 +20,16 @@
         </documents-list>
 
         <document-edit/>
-        <document-status/>
     </page-load>
 </template>
 
 <script type="text/babel">
     import DocumentEdit from './partials/DocumentEdit'
     import DocumentsList from './partials/DocumentsList'
-    import DocumentStatus from './partials/DocumentStatus'
     import Helper from 'common/Helper'
 
     export default {
-        components: { DocumentEdit, DocumentsList, DocumentStatus },
+        components: { DocumentEdit, DocumentsList },
 
         data () {
             return {

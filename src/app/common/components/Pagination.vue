@@ -1,7 +1,7 @@
 <template>
     <div class="pagination pull-right">
-        <span>{{ records }} resultados.</span>
-        <span>Página {{ page }} de {{ pages }} páginas</span>
+        <span class="hidden-sm hidden-xs">{{ records }} resultados.</span>
+        <span class="hidden-xs">Página {{ page }} de {{ pages }} páginas</span>
 
         <div class="btn-group">
             <button class="btn btn-default" :disabled="! hasPrevious" @click.prevent="previous">
@@ -12,6 +12,8 @@
                 <i class="mdi mdi-chevron-right"></i>
             </button>
         </div>
+
+        <span class="hidden-sm hidden-md hidden-lg margin-left-10">Página {{ page }} de {{ pages }} páginas</span>
     </div>
 </template>
 

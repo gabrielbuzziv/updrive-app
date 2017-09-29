@@ -44,7 +44,7 @@
         <tab-content tab="phones">
             <div class="cloneable">
                 <div class="row" v-for="(phone, index) in data.phones">
-                    <div class="form-group col-md-4 col-sm-6">
+                    <div class="form-group col-md-4 col-sm-12">
                         <div class="input-group-with-select">
                             <input type="text" :name="`phones[${index}][number]`" class="form-control"
                                    placholder="Número"

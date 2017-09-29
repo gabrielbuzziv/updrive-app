@@ -1,7 +1,7 @@
 <template>
     <div class="header-menu">
         <ul class="nav menu">
-            <li class="margin-right-20" v-if="userCan('manage-updrive')">
+            <li class="margin-right-20 hidden-xs" v-if="userCan('manage-updrive')">
                 <button class="btn btn-primary-dark btn-rounded btn-sm" @click.prevent="$root.$emit('send::documents')">
                     <i class="mdi mdi-plus-circle margin-right-5"></i>
                     Enviar documentos
