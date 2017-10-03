@@ -3,7 +3,7 @@
         <tr :class="status.color" @click="toggleDetails">
             <td>
                 <span class="column-label">Remetente</span>
-                <span class="column-value">{{ track.dispatch.user.email }}</span>
+                <span class="column-value">{{ track.dispatch.user.name }}</span>
             </td>
 
             <td>
