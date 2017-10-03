@@ -24,7 +24,7 @@
 </template>
 
 <script type="text/babel">
-    import TrackItem from './TrackItem'
+    import TrackItem from './partials/TrackItem'
     import services from '../services'
     import Helper from 'common/Helper'
 
