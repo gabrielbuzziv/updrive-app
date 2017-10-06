@@ -9,7 +9,7 @@ window.Vue = Vue
 import App from './App'
 import { isEmpty } from 'lodash'
 
-new Vue ({
+new Vue({
     router,
     store,
     el: '#app',
@@ -24,6 +24,9 @@ new Vue ({
     mounted () {
         if (this.$route.meta.auth) {
             this.$store.dispatch('auth/FETCH_USER')
+                .then(response => {
+                    this.$root.$emit('notifications::user', response.data.user.notifications.length)
+                })
                 .catch(() => {
                     this.$store.commit('auth/TOKEN', '')
                     this.$store.commit('auth/USER', '')

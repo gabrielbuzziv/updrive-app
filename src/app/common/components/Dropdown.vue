@@ -5,14 +5,14 @@
         </button>
 
         <transition name="dropdown">
-            <ul class="dropdown-menu" :class="{ 'dropdown-menu-right': right }" v-show="open">
+            <div class="dropdown-menu" :class="{ 'dropdown-menu-right': right }" v-show="open">
                 <slot name="items"></slot>
-            </ul>
+            </div>
         </transition>
     </div>
 </template>
 
-<script type="text/babel">
+<script>
     export default {
         props: {
             buttonClass: String,
@@ -41,11 +41,15 @@
         methods: {
             toggle () {
                 this.open = ! this.open
+
+                if (this.open) {
+                    this.$emit('open')
+                }
             }
         },
 
         mounted () {
-            this.$refs.dropdownButton.addEventListener('blur', () => setTimeout(() => this.open = false, 200))
+//            this.$refs.dropdownButton.addEventListener('blur', () => setTimeout(() => this.open = false, 200))
         }
     }
 </script>

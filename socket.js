@@ -7,8 +7,10 @@ var redis = new Redis();
 
 redis.subscribe('documents');
 redis.subscribe('tracking');
+redis.subscribe('notifications');
 
 redis.on('message', function(channel, message) {
+    console.log(`Channel: ${channel}\nMessage:${message}\n\n`)
     message = JSON.parse(message);
     io.emit(`${channel}:${message.event}`, message.data);
 });

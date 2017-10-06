@@ -1,7 +1,7 @@
 export default {
     getAccount () {
-        if (window.location.origin == 'http://localhost:8081') {
-            return 'crescercontabilidade'
+        if (window.location.hostname == 'localhost') {
+            return 'sandbox'
         }
 
         return window.location.host.split('.')[0]

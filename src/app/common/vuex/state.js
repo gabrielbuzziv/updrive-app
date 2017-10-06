@@ -4,5 +4,5 @@ export default {
     submiting: false,
     validation_error: {},
     request_error: {},
-    toasts: []
+    notifications: []
 }

@@ -30,16 +30,4 @@ export default {
     'global/SET_REQUEST_ERROR' (context, request) {
         context.commit('global/REQUEST_ERROR', request)
     },
-
-    'global/ADD_TOAST' (context, request) {
-        const toasts = context.getters['global/GET_TOASTS']
-        toasts.push(request)
-
-        context.commit('global/TOASTS', toasts)
-
-        setTimeout(() => {
-            toasts.splice(toasts.indexOf(request), 1)
-        }, 3000)
-    }
-
 }

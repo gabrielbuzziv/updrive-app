@@ -53,11 +53,145 @@
         .menu {
             li {
                 height: 50px;
-                line-height: 50px;
+                line-height: normal;
+                float: left;
                 display: inline-block;
 
                 > a {
 
+                }
+
+                .dropdown {
+                    &.open {
+                        > button {
+                            background: $primary-dark;
+                        }
+                    }
+
+                    > button {
+                        padding: 0;
+                        background: none;
+                        border: 0;
+                        height: 50px;
+                        line-height: normal;
+                        padding: 0 10px;
+                        display: block;
+                    }
+
+                    .dropdown-menu {
+                        padding: 0 0 10px;
+                        border: 0;
+                        border-bottom-left-radius: $border-radius-base;
+                        border-bottom-right-radius: $border-radius-base;
+                        border-top-left-radius: 0;
+                        border-top-right-radius: 0;
+                        border: 1px solid #eee;
+                        border-top-width: 0;
+                    }
+                }
+
+                &.notifications {
+                    .dropdown {
+                        > button {
+                            > i {
+                                font-size: 16px;
+                                line-height: normal;
+                            }
+
+                            .notify {
+                                position: relative;
+                                right: -7px;
+                                top: 23px;
+
+                                .heartbit {
+                                    animation: 1s ease-out 0s normal none infinite running heartbit;
+                                    border: 5px solid #ef355d;
+                                    border-radius: 70px;
+                                    height: 25px;
+                                    position: absolute;
+                                    right: -4px;
+                                    top: -20px;
+                                    width: 25px;
+                                    z-index: 10;
+                                }
+
+                                .point {
+                                    background-color: #ef355d;
+                                    border-radius: 30px;
+                                    height: 6px;
+                                    position: absolute;
+                                    right: 6px;
+                                    top: -10px;
+                                    width: 6px;
+                                }
+                            }
+                        }
+
+                        .dropdown-menu {
+                            min-width: 300px;
+                            
+                            .notifications-items {
+                                display: block;
+                                max-height: 302px;
+                                overflow: auto;
+                            }
+
+                            .item {
+                                &.header {
+                                    font-size: 16px;
+                                    padding: 15px 20px;
+                                    text-align: center;
+                                    font-weight: 300;
+                                    line-height: normal;
+                                    border-bottom: 1px solid #e1e1e1;
+                                }
+
+                                &.notification {
+                                    padding: 20px;
+                                    line-height: 20px;
+                                    display: block;
+                                    border-bottom: 1px solid #e1e1e1;
+                                    background: #f8f8f8;
+                                    color: #888;
+
+                                    &:last-child {
+                                        border-bottom: 0;
+                                    }
+
+                                    .icon {
+                                        display: inline-block;
+                                        vertical-align: middle;
+                                        background: $primary;
+                                        color: #fff;
+                                        height: 40px;
+                                        line-height: 40px;
+                                        width: 40px;
+                                        text-align: center;
+                                        margin-right: 15px;
+                                        border-radius: 100%;
+                                        vertical-align: middle;
+
+                                        img {
+                                            max-width: 100%;
+                                            border-radius: 100%;
+                                        }
+                                    }
+
+                                    .message {
+                                        display: inline-block;
+                                        width: calc(100% - 60px);
+                                        vertical-align: middle;
+                                        font-weight: 400;
+
+                                        b {
+                                            font-weight: 600;
+                                            color: #666;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
 
                 &.user-menu {
@@ -71,18 +205,14 @@
                         }
 
                         > button {
-                            padding: 0;
-                            background: none;
-                            border: 0;
-                            height: 50px;
-                            line-height: 50px;
-                            padding: 0 10px;
-                            display: block;
+                            padding: 0 20px;
+                            font-size: 14px;
+                            font-weight: 300;
 
                             .user-img {
                                 display: inline-block;
                                 vertical-align: middle;
-                                margin-right: 5px;
+                                margin-right: 10px;
 
                                 img {
                                     border-radius: 100%;
@@ -94,14 +224,6 @@
 
                         .dropdown-menu {
                             min-width: 260px;
-                            padding: 0 0 10px;
-                            border: 0;
-                            border-bottom-left-radius: $border-radius-base;
-                            border-bottom-right-radius: $border-radius-base;
-                            border-top-left-radius: 0;
-                            border-top-right-radius: 0;
-                            border: 1px solid #eee;
-                            border-top-width: 0;
 
                             .user-header {
                                 padding: 10px;
@@ -164,6 +286,7 @@
                                     color: $theme-light;
                                     font-size: 12px;
                                     display: block;
+                                    border-radius: 0;
 
                                     &:hover {
                                         background: $primary;
@@ -177,5 +300,50 @@
                 }
             }
         }
+    }
+}
+
+@keyframes heartbit {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    25% {
+        opacity: 0.1;
+        transform: scale(0.1);
+    }
+    50% {
+        opacity: 0.3;
+        transform: scale(0.5);
+    }
+    75% {
+        opacity: 0.5;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1);
+    }
+}
+@keyframes heartbit {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    25% {
+        opacity: 0.1;
+        transform: scale(0.1);
+    }
+    50% {
+        opacity: 0.3;
+        transform: scale(0.5);
+    }
+    75% {
+        opacity: 0.5;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1);
     }
 }

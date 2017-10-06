@@ -26,7 +26,7 @@ export default {
         state.request_error = data
     },
 
-    'global/TOASTS' (state, data) {
-        state.toasts = data
+    'global/NOTIFICATIONS' (state, data) {
+        state.notifications = data
     }
 }

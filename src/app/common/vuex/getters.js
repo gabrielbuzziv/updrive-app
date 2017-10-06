@@ -23,7 +23,7 @@ export default {
         return request_error
     },
 
-    'global/GET_TOASTS' ({ toasts }) {
-        return toasts
+    'global/GET_NOTIFICATIONS' ({ notifications }) {
+        return notifications
     }
 }

@@ -384,7 +384,6 @@
             },
 
             getFilePreviewUrl (file) {
-                console.log(file)
                 return URL.createObjectURL(file)
             },
 

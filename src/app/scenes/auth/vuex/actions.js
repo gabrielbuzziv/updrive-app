@@ -45,6 +45,8 @@ export default {
             .then(response => {
                 context.commit('auth/TOKEN', response.data.token)
                 context.commit('auth/USER', response.data.user)
+
+                return response
             })
     }
 

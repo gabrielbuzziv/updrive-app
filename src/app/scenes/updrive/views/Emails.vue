@@ -15,7 +15,7 @@
             <panel class="nopadding">
                 <div class="table-responsive">
                     <table class="table table-tracking">
-                        <track-item :track="track" v-for="track in tracking"/>
+                        <track-item :track="track" v-for="track in tracking" :key="track.id"/>
                     </table>
                 </div>
             </panel>
