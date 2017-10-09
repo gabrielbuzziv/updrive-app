@@ -30,12 +30,19 @@
                     </route>
                 </div>
 
-                <div class="item" v-if="userCan('manage-account')">
-                    <route href="settings.account">
-                        <i class="mdi mdi-key margin-right-5"></i>
-                        Detalhes da conta
+                <div class="item">
+                    <route href="settings.notifications">
+                        <i class="mdi mdi-bell margin-right-5"></i>
+                        Notificações
                     </route>
                 </div>
+
+                <!--<div class="item" v-if="userCan('manage-account')">-->
+                    <!--<route href="settings.account">-->
+                        <!--<i class="mdi mdi-key margin-right-5"></i>-->
+                        <!--Detalhes da conta-->
+                    <!--</route>-->
+                <!--</div>-->
 
                 <div class="item" v-if="userCan('manage-users')">
                     <route href="settings.members">

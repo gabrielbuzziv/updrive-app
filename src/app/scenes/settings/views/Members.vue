@@ -31,7 +31,7 @@
                     <thead>
                         <tr>
                             <th>Membro</th>
-                            <th class="text-center">
+                            <th class="text-center" v-if="userCan('manage-account')">
                                 <i class="mdi mdi-key margin-right-5"></i>
                                 Gerenciar Conta
                             </th>
@@ -60,7 +60,7 @@
                                 </span>
                                 <span class="email">{{ member.email }}</span>
                             </td>
-                            <td class="text-center">
+                            <td class="text-center" v-if="userCan('manage-account')">
                                 <toggle-permission :member.sync="member" permission="manage-account" />
                             </td>
                             <td class="text-center">

@@ -57,5 +57,19 @@ export default {
      */
     getAccount () {
         return window.axios.get(`/account`)
+    },
+
+    /**
+     * @returns {*}
+     */
+    getNotificationSettings () {
+        return window.axios.get(`/users/settings/notifications`)
+    },
+
+    /**
+     * @param notification
+     */
+    toggleNotificationSettings (notification) {
+        return window.axios.post(`/users/settings/notifications`, { notification })
     }
 }

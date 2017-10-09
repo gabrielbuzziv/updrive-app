@@ -14,9 +14,9 @@
                     <span>Notificações</span>
 
                     <el-tooltip content="Configurações de notificação" placement="bottom-end">
-                        <a href="#">
+                        <route href="settings.notifications">
                             <i class="mdi mdi-settings"></i>
-                        </a>
+                        </route>
                     </el-tooltip>
                 </div>
 
@@ -29,7 +29,7 @@
 
                 <div class="notifications-empty" v-else>
                     <h4>Sem novas notificações</h4>
-                    <p>As notificações são exibidas de acordo com as suas <a href="#">configurações de notificação</a>.</p>
+                    <p>As notificações são exibidas de acordo com as suas <route href="settings.notifications">configurações de notificação</route>.</p>
                 </div>
             </template>
         </dropdown>
