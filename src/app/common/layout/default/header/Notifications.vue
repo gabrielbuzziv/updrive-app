@@ -10,13 +10,26 @@
             </template>
 
             <template slot="items">
-                <div class="item header">Notificações</div>
+                <div class="item header">
+                    <span>Notificações</span>
 
-                <div class="notifications-items">
+                    <el-tooltip content="Configurações de notificação" placement="bottom-end">
+                        <a href="#">
+                            <i class="mdi mdi-settings"></i>
+                        </a>
+                    </el-tooltip>
+                </div>
+
+                <div class="notifications-items" v-if="user.notifications.length">
                     <div class="item notification" v-for="notification in user.notifications">
                         <document-opened :data="notification.data" v-if="isDocumentOpened(notification)"/>
                         <email-delivered :data="notification.data" v-if="isEmailDelivered(notification)"/>
                     </div>
+                </div>
+
+                <div class="notifications-empty" v-else>
+                    <h4>Sem novas notificações</h4>
+                    <p>As notificações são exibidas de acordo com as suas <a href="#">configurações de notificação</a>.</p>
                 </div>
             </template>
         </dropdown>
@@ -55,6 +68,18 @@
             readNotifications () {
                 window.axios.post('notifications/read')
                     .then(() => this.hasNotifications = false)
+            },
+
+            notify (notification) {
+                switch (notification.type) {
+                    case 'DocumentOpened':
+                        this.$notify({
+                            title: 'Documento aberto',
+                            message: `${notification.data.contact.name} abriu o documento ${notification.data.document.name}`,
+                            offset: 50
+                        })
+                        break
+                }
             }
         },
 
@@ -66,6 +91,8 @@
                     if (this.user.id == response.data.user.id) {
                         this.$store.dispatch('auth/FETCH_USER')
                             .then(() => this.hasNotifications = true)
+
+                        this.notify(response)
                     }
                 }
             })

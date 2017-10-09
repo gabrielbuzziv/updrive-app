@@ -1,6 +1,6 @@
 <template>
     <div class="dropdown" :class="{ 'open': open }">
-        <button :class="btnClass" @click.prevent="toggle" ref="dropdownButton">
+        <button :class="btnClass" @click.prevent="toggle" @blur="close" ref="dropdownButton">
             <slot name="button"></slot>
         </button>
 
@@ -45,11 +45,11 @@
                 if (this.open) {
                     this.$emit('open')
                 }
+            },
+
+            close () {
+                setTimeout(() => this.open = false, 200)
             }
         },
-
-        mounted () {
-//            this.$refs.dropdownButton.addEventListener('blur', () => setTimeout(() => this.open = false, 200))
-        }
     }
 </script>

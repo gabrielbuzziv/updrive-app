@@ -128,30 +128,50 @@
                         }
 
                         .dropdown-menu {
-                            min-width: 300px;
+                            min-width: 330px;
                             
                             .notifications-items {
                                 display: block;
-                                max-height: 302px;
+                                max-height: 242px;
                                 overflow: auto;
                             }
 
                             .item {
                                 &.header {
-                                    font-size: 16px;
-                                    padding: 15px 20px;
-                                    text-align: center;
-                                    font-weight: 300;
-                                    line-height: normal;
-                                    border-bottom: 1px solid #e1e1e1;
+                                    display: block;
+                                    border-bottom: 1px solid #e8e8e8;
+                                    padding: 10px;
+
+                                    > span {
+                                        display: inline-block;
+                                        font-size: 14px;
+                                        text-align: left;
+                                        font-weight: 400;
+                                        line-height: normal;
+                                        width: calc(100% - 30px);
+                                        vertical-align: middle;
+                                    }
+
+                                    a {
+                                        display: inline-block;
+                                        text-align: right;
+                                        width: 20px;
+                                        vertical-align: middle;
+
+                                        i {
+                                            line-height: normal;
+                                            margin: 0;
+                                            vertical-align: top;
+                                        }
+                                    }
                                 }
 
                                 &.notification {
                                     padding: 20px;
                                     line-height: 20px;
                                     display: block;
-                                    border-bottom: 1px solid #e1e1e1;
-                                    background: #f8f8f8;
+                                    border-bottom: 1px solid #e8e8e8;
+                                    background: #fff;
                                     color: #888;
 
                                     &:last-child {
@@ -188,6 +208,18 @@
                                             color: #666;
                                         }
                                     }
+                                }
+                            }
+
+                            .notifications-empty {
+                                padding: 15px 20px;
+                                color: #777;
+
+                                h4 {
+                                    font-size: 18px;
+                                    font-weight: 300;
+                                    display: block;
+                                    margin-bottom: 15px;
                                 }
                             }
                         }
