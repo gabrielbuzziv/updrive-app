@@ -75,11 +75,6 @@
                                 <b>{{ status.label }} em</b>
                                 <span>{{ track.created_at }}</span>
                             </li>
-
-                            <li class="full" v-if="track.dispatch.message">
-                                <b>Mensagem</b>
-                                <span>{{ track.dispatch.message }}</span>
-                            </li>
                         </ul>
                     </div>
                 </div>

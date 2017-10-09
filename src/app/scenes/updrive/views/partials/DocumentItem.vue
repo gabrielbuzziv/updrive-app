@@ -1,6 +1,6 @@
 <template>
     <tbody>
-        <tr :class="documentStatus" @click.prevent="toggleDetails">
+        <tr :class="documentStatus">
             <td class="document-options hidden-xs" width="30" v-if="userCan('manage-updrive')">
                 <dropdown class="inline" button-class="btn btn-sm btn-blank btn-rounded">
                     <template slot="button">
@@ -26,7 +26,7 @@
             </td>
 
             <!--Document name-->
-            <td class="document-name">
+            <td class="document-name" @click.prevent="toggleDetails">
                 <span class="name">{{ document.name }}</span>
 
                 <span class="date" v-if="document.cycle || document.validity">
@@ -43,12 +43,12 @@
             </td>
 
             <!-- Document Company -->
-            <td class="document-company hidden-xs hidden-sm" v-if="! company">
+            <td class="document-company hidden-xs hidden-sm" v-if="! company" @click.prevent="toggleDetails">
                 <document-company :document="document"/>
             </td>
 
             <!-- Document Options -->
-            <td class="document-options text-right">
+            <td class="document-options text-right" @click.prevent="toggleDetails">
                 <span class="btn btn-sm btn-rounded inline">
                     <i class="mdi mdi-chevron-up" v-if="showDetails"></i>
                     <i class="mdi mdi-chevron-down" v-else></i>
