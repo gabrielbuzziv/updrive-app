@@ -1,5 +1,8 @@
 <template>
-    <el-dialog title="Enviar Documentos" :visible.sync="visible">
+    <el-dialog title="Enviar Documentos"
+               :close-on-click-modal="false"
+               :close-on-press-escape="false"
+               :visible.sync="visible">
         <form action="" class="send-document-form horizontal" @submit.prevent="onSubmit" ref="form">
             <div class="form-group">
                 <label>Empresa:</label>
@@ -138,7 +141,7 @@
                     <label class="upload-button">
                         <input type="file" multiple @change="addFiles">
                         <span class="btn btn-default btn-attachment">
-                            <i class="mdi mdi-attachment margin-right-5"></i>
+                            <i class="mdi mdi-paperclip margin-right-5"></i>
                             Adicionar documentos
                             <span v-if="files.amount">
                                 ({{ files.amount }})

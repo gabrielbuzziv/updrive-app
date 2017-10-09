@@ -1,0 +1,57 @@
+.maximize {
+    #composer {
+        &.fullscreen {
+            left: 65px
+        }
+    }
+}
+
+#composer {
+    background: #fff;
+    min-width: 700px;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    transition: all .2s linear;
+    box-shadow: 0 2px 4px rgba(5, 15, 44, 0.1);
+
+    &.fullscreen {
+        top: 65px;
+        left: 215px;
+    }
+
+    .composer-header {
+        background: $primary;
+        display: block;
+        padding: 10px;
+        float: left;
+        width: 100%;
+        color: #fff;
+
+        .title {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 300;
+            float: left;
+            color: #fff;
+        }
+
+        .options {
+            float: right;
+
+            button {
+                background: none;
+                border: 0;
+                padding: 0;
+                margin: 0 10px;
+            }
+        }
+    }
+
+    .composer-body {
+        display: block;
+        float: left;
+        width: 100%;
+        height: 200px;
+    }
+}
