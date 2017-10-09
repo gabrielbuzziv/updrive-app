@@ -23,13 +23,17 @@
                 <div class="notifications-items" v-if="user.notifications.length">
                     <div class="item notification" v-for="notification in user.notifications">
                         <document-opened :data="notification.data" v-if="isDocumentOpened(notification)"/>
+                        <document-expired :data="notification.data" v-if="isDocumentExpired(notification)"/>
                         <email-delivered :data="notification.data" v-if="isEmailDelivered(notification)"/>
+                        <email-opened :data="notification.data" v-if="isEmailOpened(notification)"/>
                     </div>
                 </div>
 
                 <div class="notifications-empty" v-else>
                     <h4>Sem novas notificações</h4>
-                    <p>As notificações são exibidas de acordo com as suas <route href="settings.notifications">configurações de notificação</route>.</p>
+                    <p>As notificações são exibidas de acordo com as suas
+                        <route href="settings.notifications">configurações de notificação</route>.
+                    </p>
                 </div>
             </template>
         </dropdown>
@@ -38,11 +42,13 @@
 
 <script>
     import DocumentOpened from './notifications/DocumentOpened'
+    import DocumentExpired from './notifications/DocumentExpired'
     import EmailDelivered from './notifications/EmailDelivered'
+    import EmailOpened from './notifications/EmailOpened'
     import Helper from 'common/Helper'
 
     export default {
-        components: { DocumentOpened, EmailDelivered },
+        components: { DocumentOpened, DocumentExpired, EmailDelivered, EmailOpened },
 
         data () {
             return {
@@ -61,8 +67,16 @@
                 return notification.type == 'DocumentOpened'
             },
 
+            isDocumentExpired (notification) {
+                return notification.type == 'DocumentExpired'
+            },
+
             isEmailDelivered (notification) {
                 return notification.type == 'EmailDelivered'
+            },
+
+            isEmailOpened (notification) {
+                return notification.type == 'EmailOpened'
             },
 
             readNotifications () {
@@ -70,16 +84,16 @@
                     .then(() => this.hasNotifications = false)
             },
 
-            notify (notification) {
-                switch (notification.type) {
-                    case 'DocumentOpened':
-                        this.$notify({
-                            title: 'Documento aberto',
-                            message: `${notification.data.contact.name} abriu o documento ${notification.data.document.name}`,
-                            offset: 50
+            isValidNotification (notification) {
+                if (notification.account == Helper.getAccount() && this.user.id == notification.data.user.id) {
+                    return this.$store.dispatch('auth/FETCH_USER')
+                        .then(() => {
+                            this.hasNotifications = true
+                            return true
                         })
-                        break
                 }
+
+                return false
             }
         },
 
@@ -87,13 +101,42 @@
             this.$root.$on('notifications::user', notifications => this.hasNotifications = notifications)
 
             window.socket.on('notifications:App\\Events\\DocumentOpened', (response) => {
-                if (response.account == Helper.getAccount()) {
-                    if (this.user.id == response.data.user.id) {
-                        this.$store.dispatch('auth/FETCH_USER')
-                            .then(() => this.hasNotifications = true)
+                if (this.isValidNotification(response)) {
+                    this.$notify({
+                        title: 'Documento aberto',
+                        message: `${response.data.contact.name} abriu o documento ${response.data.document.name}.`,
+                        offset: 50
+                    })
+                }
+            })
 
-                        this.notify(response)
-                    }
+            window.socket.on('notifications:App\\Events\\DocumentExpired', (response) => {
+                if (this.isValidNotification(response)) {
+                    this.$notify({
+                        title: 'Documento(s) expirados',
+                        message: `Alguns documentos não foram abertos até a data de vencimento.`,
+                        offset: 50
+                    })
+                }
+            })
+
+            window.socket.on('notifications:App\\Events\\EmailDelivered', (response) => {
+                if (this.isValidNotification(response)) {
+                    this.$notify({
+                        title: 'E-mail entregue',
+                        message: `O e-mail "${response.data.subject}" foi entregue para ${response.data.contact.email}.`,
+                        offset: 50
+                    })
+                }
+            })
+
+            window.socket.on('notifications:App\\Events\\EmailOpened', (response) => {
+                if (this.isValidNotification(response)) {
+                    this.$notify({
+                        title: 'E-mail aberto',
+                        message: `${response.data.contact.email} abriu o e-mail "${response.data.subject}".`,
+                        offset: 50
+                    })
                 }
             })
         },

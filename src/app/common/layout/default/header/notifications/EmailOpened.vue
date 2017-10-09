@@ -1,12 +1,12 @@
 <template>
-    <div class="email-delivered">
+    <div class="default">
         <div class="icon">
-            <i class="mdi mdi-email"></i>
+            <i class="mdi mdi-email-open"></i>
         </div>
 
         <span class="message">
             <b>{{ data.contact.email }}</b>
-            recebeu o e-mail "{{ data.subject }}".
+            abriu o e-mail "{{ data.subject }}".
         </span>
     </div>
 </template>
