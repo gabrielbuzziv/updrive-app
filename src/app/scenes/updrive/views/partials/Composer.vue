@@ -62,8 +62,9 @@
                     <input type="text" class="field" placeholder="Assunto" v-model="form.subject">
                 </div>
 
-                <div class="line">
-                    <textarea class="text" v-model="form.message"></textarea>
+                <div class="line editor">
+                    <!--<textarea class="text" v-model="form.message"></textarea>-->
+                    <froala :tag="'textarea'" :config="froalaConfig" v-model="form.message"></froala>
                 </div>
 
                 <composer-attachments :attachments.sync="form.attachments" :open.sync="showAttachment"/>
@@ -115,7 +116,15 @@
                 },
 
                 companies: [],
-                contacts: []
+                contacts: [],
+
+                froalaConfig: {
+                    toolbarButtons: ['fontSize', '|', 'bold', 'italic', 'underline', 'color', '|', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '|', 'insertTable', '|', 'clearFormatting'],
+                    placeholderText: '',
+                    fontSizeSelection: true,
+                    pluginsEnabled: ['align', 'colors', 'fontSize', 'lists', 'quote', 'table'],
+                    countCharacters: false
+                }
             }
         },
 

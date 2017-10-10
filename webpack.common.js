@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 const Dotenv = require('dotenv-webpack');
 
 module.exports = {
@@ -67,6 +68,11 @@ module.exports = {
         new Dotenv({
             path:'./.env',
             sage: true
+        }),
+
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery"
         })
     ]
 }

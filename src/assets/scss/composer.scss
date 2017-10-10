@@ -1,4 +1,5 @@
 $textSize: 300px;
+$attachmentSize: 150px;
 
 .maximize {
     #composer {
@@ -44,8 +45,11 @@ $textSize: 300px;
     &.attachments-closed {
         .composer-body {
             .line {
-                .text {
-                    height: calc(#{$textSize} - 42px);
+                &.editor {
+                    .fr-box.fr-basic.fr-top .fr-wrapper,
+                    .fr-box.fr-basic.fr-top .fr-wrapper .fr-view {
+                        height: calc(#{$textSize} - 42px);
+                    }
                 }
             }
         }
@@ -54,8 +58,11 @@ $textSize: 300px;
     &.attachments-opened {
         .composer-body {
             .line {
-                .text {
-                    height: calc(#{$textSize} - 42px - 200px);
+                &.editor {
+                    .fr-box.fr-basic.fr-top .fr-wrapper,
+                    .fr-box.fr-basic.fr-top .fr-wrapper .fr-view {
+                        height: calc(#{$textSize} - 42px - #{$attachmentSize});
+                    }
                 }
             }
         }
@@ -110,6 +117,26 @@ $textSize: 300px;
             border-bottom: 1px solid #e1e1e1;
             display: table;
             width: 100%;
+
+            &.editor {
+                padding: 0;
+
+                .fr-toolbar.fr-top {
+                    box-shadow: none;
+                    border: 0;
+                    //border-bottom: 1px solid #e1e1e1;
+                }
+
+                .fr-box.fr-basic.fr-top .fr-wrapper,
+                .fr-box.fr-basic.fr-top .fr-wrapper .fr-view {
+                    box-shadow: none;
+                    height: $textSize;
+                }
+
+                .fr-box.fr-basic .fr-element {
+                    color: #444;
+                }
+            }
 
             &.company {
                 label {
@@ -190,7 +217,7 @@ $textSize: 300px;
                 background: #eee;
                 border-bottom: 1px solid #ddd;
                 padding: 5px;
-                height: 200px;
+                height: $attachmentSize;
                 overflow: auto;
 
                 .attachment {
