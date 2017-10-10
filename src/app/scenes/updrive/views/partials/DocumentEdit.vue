@@ -86,7 +86,7 @@
                         .then(response => {
                             this.saving = false
                             this.close()
-                            this.$store.dispatch('updrive/FETCH_PENDINGS')
+//                            this.$store.dispatch('updrive/FETCH_PENDINGS')
                             this.$store.dispatch('updrive/FETCH_ALL')
                             this.$store.dispatch('updrive/GET_AMOUNTS')
                         })

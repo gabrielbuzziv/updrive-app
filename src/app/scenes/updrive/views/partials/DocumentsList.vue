@@ -12,7 +12,7 @@
             <first-time title="Não encontramos documentos" icon="file-multiple"
                         message="Não encontramos documentos aqui.">
                 <template slot="buttons">
-                    <button class="btn btn-secondary btn-rounded" @click="$root.$emit('send::documents')"
+                    <button class="btn btn-secondary btn-rounded" @click="$root.$emit('open:composer')"
                             v-if="userCan('manage-updrive')">
                         <i class="mdi mdi-plus-circle margin-right-5"></i>
                         Enviar documentos
@@ -80,7 +80,7 @@
                     services.removeDocument(id)
                             .then(response => {
                                 this.$message.success('Documento removido com sucesso.')
-                                this.$store.dispatch('updrive/FETCH_PENDINGS')
+//                                this.$store.dispatch('updrive/FETCH_PENDINGS')
                                 this.$store.dispatch('updrive/FETCH_ALL')
                                 this.$store.dispatch('updrive/GET_AMOUNTS')
                             })

@@ -1,23 +1,64 @@
+$textSize: 300px;
+
 .maximize {
     #composer {
         &.fullscreen {
-            left: 65px
+            left: 65px;
         }
     }
 }
 
 #composer {
     background: #fff;
-    min-width: 700px;
-    position: absolute;
-    bottom: 15px;
+    width: 700px;
+    position: fixed;
+    bottom: 0;
     right: 15px;
-    transition: all .2s linear;
     box-shadow: 0 2px 4px rgba(5, 15, 44, 0.1);
+
+    &.minimized {
+        width: 250px;
+    }
 
     &.fullscreen {
         top: 65px;
+        bottom: 15px;
         left: 215px;
+
+        .composer-body {
+            position: absolute;
+            top: 40px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            .composer-footer {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+            }
+        }
+    }
+    
+    &.attachments-closed {
+        .composer-body {
+            .line {
+                .text {
+                    height: calc(#{$textSize} - 42px);
+                }
+            }
+        }
+    }
+
+    &.attachments-opened {
+        .composer-body {
+            .line {
+                .text {
+                    height: calc(#{$textSize} - 42px - 200px);
+                }
+            }
+        }
     }
 
     .composer-header {
@@ -34,6 +75,11 @@
             font-weight: 300;
             float: left;
             color: #fff;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: calc(100% - 80px);
+            line-height: normal;
         }
 
         .options {
@@ -44,6 +90,12 @@
                 border: 0;
                 padding: 0;
                 margin: 0 10px;
+
+                &:active,
+                &:focus {
+                    outline: 0;
+                    border: 0;
+                }
             }
         }
     }
@@ -52,6 +104,160 @@
         display: block;
         float: left;
         width: 100%;
-        height: 200px;
+
+        .line {
+            padding: 10px;
+            border-bottom: 1px solid #e1e1e1;
+            display: table;
+            width: 100%;
+
+            &.company {
+                label {
+                    width: 75px;
+                }
+            }
+
+            &.to {
+                label {
+                    width: 45px;
+                }
+            }
+
+            label {
+                color: $theme-light;
+                display: table-cell;
+
+            }
+
+            .field {
+                border: 0;
+                width: 100%;
+
+                .selector-tags {
+                    border: 0;
+                    padding: 0;
+                    margin: 0;
+
+                    .selector-tags__tag,
+                    .selector-tag__input {
+                        margin: 3px;
+                    }
+                }
+            }
+
+            .text {
+                border: 0;
+                width: 100%;
+                height: $textSize;
+                resize: none;
+                overflow: auto;
+            }
+
+            input:focus,
+            input:active,
+            textarea:focus,
+            textarea:active {
+                outline: 0;
+                background: #fff;
+            }
+        }
+
+        .composer-attachments {
+            .attachments-header {
+                background: #eee;
+                padding: 10px;
+                display: block;
+                border-bottom: 1px solid #ddd;
+
+                .attachments-title {
+                    display: inline-block;
+                    width: calc(100% - 35px);
+                }
+
+                .attachments-options {
+                    display: inline-block;
+                    text-align: right;
+                    width: 30px;
+
+                    button {
+                        padding: 0;
+                    }
+                }
+            }
+
+            .attachments-box {
+                display: block;
+                background: #eee;
+                border-bottom: 1px solid #ddd;
+                padding: 5px;
+                height: 200px;
+                overflow: auto;
+
+                .attachment {
+                    display: block;
+                    background: #fff;
+                    border-radius: 2px;
+                    border: 1px solid #ccc;
+                    padding: 5px;
+                    margin-bottom: 5px;
+
+                    &:last-child {
+                        margin: 0;
+                    }
+
+                    .name {
+                        display: inline-block;
+                        width: calc(100% - 200px);
+                        vertical-align: middle;
+                        font-weight: 400;
+
+                        i {
+                            margin-left: 5px;
+                            display: inline-block;
+                            vertical-align: middle;
+                            font-size: 16px;
+                            line-height: 16px;
+                        }
+
+                        > span,
+                        > a {
+                            display: inline-block;
+                            vertical-align: middle;
+                            font-size: 12px;
+                            color: $theme-light;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            width: calc(100% - 30px);
+                        }
+
+                        input {
+                            display: inline-block;
+                            width: 32%;
+                            border-radius: 3px;
+                            border: 1px solid #ccc;
+                            padding: 5px;
+                            font-size: 12px;
+
+                            &:active,
+                            &:focus {
+                                outline: 0;
+                            }
+                        }
+                    }
+
+                    .options {
+                        display: inline-block;
+                        text-align: right;
+                        width: 195px;
+                    }
+                }
+            }
+        }
+
+        .composer-footer {
+            padding: 10px;
+            background: #eee;
+        }
     }
 }

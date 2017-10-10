@@ -8,7 +8,7 @@ export default [
         path: '/updrive',
         component: UPDrive,
         name: 'updrive',
-        redirect: { name: 'updrive.pending' },
+        redirect: { name: 'updrive.documents' },
         meta: { breadcrumb: 'UP Drive', auth: true } ,
         children: [
             {

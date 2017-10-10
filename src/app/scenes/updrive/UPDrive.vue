@@ -9,14 +9,17 @@
                             no-data-text="Ops, ainda não foram cadastradas empresas."
                             no-match-text="Ops, não encontramos a empresa que está procurando."
                             filterable
-                            clearable>
+                            remote
+                            clearable
+                            default-first-option
+                            :remote-method="filterCompanies">
                         <el-option v-for="company in companies" :value="company.id" :label="company.name"
                                    :key="company.id"/>
                     </el-select>
                 </template>
 
                 <template slot="right">
-                    <button class="btn btn-secondary btn-rounded hidden-sm hidden-xs" @click="$root.$emit('send::documents')"
+                    <button class="btn btn-secondary btn-rounded hidden-sm hidden-xs" @click="$root.$emit('open::composer')"
                             v-if="userCan('manage-updrive')">
                         <i class="mdi mdi-plus-circle margin-right-5"></i>
                         Enviar Documentos
@@ -24,13 +27,13 @@
                 </template>
 
                 <template slot="nav">
-                    <route href="updrive" tag="li" exact>
-                        <a>
-                            <i class="mdi mdi-clock margin-right-5"></i>
-                            Pendentes
-                            <span class="badge margin-left-10" v-if="amounts.pendings">{{ amounts.pendings }}</span>
-                        </a>
-                    </route>
+                    <!--<route href="updrive" tag="li" exact>-->
+                        <!--<a>-->
+                            <!--<i class="mdi mdi-clock margin-right-5"></i>-->
+                            <!--Pendentes-->
+                            <!--<span class="badge margin-left-10" v-if="amounts.pendings">{{ amounts.pendings }}</span>-->
+                        <!--</a>-->
+                    <!--</route>-->
 
                     <route href="updrive.documents" tag="li">
                         <a>
@@ -54,7 +57,7 @@
 
             <page-content>
                 <button class="btn btn-secondary btn-block margin-bottom-20 hidden-md hidden-lg"
-                        @click="$root.$emit('send::documents')" v-if="userCan('manage-updrive')">
+                        @click="$root.$emit('open::composer')" v-if="userCan('manage-updrive')">
                     <i class="mdi mdi-plus-circle margin-right-5"></i>
                     Enviar Documentos
                 </button>
@@ -68,7 +71,7 @@
                 <first-time title="UP Drive" icon="file-multiple"
                             :advantages="['Envie os documentos de maneira simples.', 'Seu cliente não precisará acessar a ferramenta para baixar os documentos.', 'Saiba se o seu cliente já recebeu os documentos.']">
                     <template slot="buttons">
-                        <button class="btn btn-secondary btn-rounded" @click="$root.$emit('send::documents')"
+                        <button class="btn btn-secondary btn-rounded" @click="$root.$emit('open::composer')"
                                 v-if="userCan('manage-updrive')">
                             <i class="mdi mdi-plus-circle margin-right-5"></i>
                             Enviar documentos
@@ -90,7 +93,8 @@
             return {
                 total: 0,
                 loading: true,
-                companies: []
+                companies: [],
+                cachedCompanies: []
             }
         },
 
@@ -104,7 +108,7 @@
                     this.$store.commit('updrive/PAGE', 1)
                     this.$store.commit('updrive/COMPANY', value)
                     this.$store.dispatch('updrive/GET_AMOUNTS')
-                    this.$store.dispatch('updrive/FETCH_PENDINGS')
+//                    this.$store.dispatch('updrive/FETCH_PENDINGS')
                     this.$store.dispatch('updrive/FETCH_ALL')
                 }
             },
@@ -124,6 +128,7 @@
                                 services.getCompanies()
                                         .then(response => {
                                             this.companies = response.data.items
+                                            this.cachedCompanies = this.companies
                                             this.loading   = false
                                         })
                                         .catch(() => this.loading = false)
@@ -132,7 +137,20 @@
                             }
                         })
                         .catch(() => this.loading = false)
-            }
+            },
+
+            filterCompanies: debounce (function (query) {
+                console.log(query)
+
+                if (query.length) {
+                    services.getCompanies(query)
+                        .then(response => {
+                            this.companies = response.data.items
+                        })
+                } else {
+                    this.companies = this.cachedCompanies
+                }
+            }, 300)
         },
 
         mounted () {

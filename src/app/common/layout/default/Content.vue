@@ -6,17 +6,15 @@
             <div class="clearfix"></div>
         </div>
 
-        <send-documents />
         <composer />
     </div>
 </template>
 
 <script type="text/babel">
-    import SendDocuments from '../../../scenes/updrive/views/partials/SendDocuments'
     import Composer from '../../../scenes/updrive/views/partials/Composer'
 
     export default {
-        components: { SendDocuments, Composer },
+        components: { Composer },
 
         computed: {
             sidebar () {

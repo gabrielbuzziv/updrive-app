@@ -170,6 +170,7 @@
                     message: '',
                     files: []
                 },
+                submiting: false,
                 companies: [],
                 contacts: [],
                 submiting: false,
