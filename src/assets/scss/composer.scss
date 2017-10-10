@@ -121,6 +121,10 @@ $attachmentSize: 150px;
             &.editor {
                 padding: 0;
 
+                .fr-wrapper div:first-child:not(.fr-element) {
+                    display: none;
+                }
+
                 .fr-toolbar.fr-top {
                     box-shadow: none;
                     border: 0;
