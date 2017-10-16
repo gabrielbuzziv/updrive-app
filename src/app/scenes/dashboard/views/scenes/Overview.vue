@@ -32,7 +32,7 @@
                         <div class="item">
                             <a href="#" @click.event="setInterval('year')">
                                 <i class="mdi mdi-calendar-multiple margin-right-5"></i>
-                                Último Ano
+                                Últimos 12 meses
                             </a>
                         </div>
                     </template>
