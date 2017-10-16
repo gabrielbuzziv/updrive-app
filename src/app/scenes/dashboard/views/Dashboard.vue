@@ -7,19 +7,19 @@
                     <overview/>
 
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-lg-4 col-md-6">
                             <metrics title="Empresas" icon="mdi-briefcase">
                                 {{ metrics.companies }} <span class="of">/ {{ companies_limit || '&infin;' }}</span>
                             </metrics>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-lg-4 col-md-6">
                             <metrics title="Contatos" icon="mdi-account">
                                 {{ metrics.contacts }} <span class="of">/ &infin;</span>
                             </metrics>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-lg-4 col-md-6">
                             <metrics title="Documentos" icon="mdi-file-document-box">
                                 {{ metrics.documents }} <span class="of">/ &infin;</span>
                             </metrics>
@@ -63,7 +63,9 @@
             },
 
             companies_limit () {
-                return this.account.settings.filter(setting => setting.label == 'companies_limit')[0].value || '&infin;'
+                if (this.account && this.account.settings) {
+                    return this.account.settings.filter(setting => setting.label == 'companies_limit')[0].value
+                }
             }
         },
 

@@ -16,7 +16,7 @@
                     <!--</a>-->
                 <!--</route>-->
 
-                <route href="settings.notifications" tag="li">
+                <route href="settings.notifications" tag="li" v-if="userCan('manage-core')">
                     <a href="#">
                         <i class="mdi mdi-bell margin-right-5"></i>
                         Notificações

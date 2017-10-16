@@ -43,7 +43,7 @@
                         </a>
                     </route>
 
-                    <route href="updrive.emails" tag="li">
+                    <route href="updrive.emails" tag="li" v-if="userCan('manage-core')">
                         <a>
                             <i class="mdi mdi-target margin-right-5"></i>
                             Rastreamento
@@ -140,13 +140,9 @@
             },
 
             filterCompanies: debounce (function (query) {
-                console.log(query)
-
                 if (query.length) {
                     services.getCompanies(query)
-                        .then(response => {
-                            this.companies = response.data.items
-                        })
+                        .then(response => this.companies = response.data.items)
                 } else {
                     this.companies = this.cachedCompanies
                 }

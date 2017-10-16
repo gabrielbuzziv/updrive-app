@@ -5,7 +5,7 @@ export default [
         path: '/',
         component: Dashboard,
         name: 'dashboard',
-        meta: { breadcrumb: 'Dashboard', auth: true },
+        meta: { breadcrumb: 'Dashboard', auth: true, permission: 'manage-core' },
 
     },
 ]

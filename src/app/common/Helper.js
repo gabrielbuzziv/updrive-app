@@ -30,8 +30,6 @@ export default {
     },
 
     getColorByChar (char) {
-        console.log(char)
-
         const character = char.toLowerCase().charAt(0)
 
         const abc = {

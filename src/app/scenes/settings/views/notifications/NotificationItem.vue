@@ -23,7 +23,6 @@
 
         watch: {
             checked () {
-                console.log("as")
                 this.isChecked = this.checked
             }
         },

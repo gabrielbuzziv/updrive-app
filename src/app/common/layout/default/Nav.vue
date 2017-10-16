@@ -19,8 +19,9 @@
 
             <route href="dashboard" tag="li" exact v-if="userCan('manage-core')">
                 <a href="#">
-                    <i class="mdi mdi-speedometer"></i>
-                    <span>Dashboard <i class="mdi mdi-chevron-right"></i></span>
+                    <!--<i class="mdi mdi-speedometer"></i>-->
+                    <i class="mdi mdi-home"></i>
+                    <span>Geral <i class="mdi mdi-chevron-right"></i></span>
                 </a>
             </route>
 

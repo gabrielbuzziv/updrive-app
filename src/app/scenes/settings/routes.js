@@ -33,7 +33,7 @@ export default [
                 path: '/configuracoes/notificacoes',
                 component: Notifications,
                 name: 'settings.notifications',
-                meta: { breadcrumb: 'Notificações', auth: true }
+                meta: { breadcrumb: 'Notificações', auth: true, permission: 'manage-core' }
             },
         ]
     },

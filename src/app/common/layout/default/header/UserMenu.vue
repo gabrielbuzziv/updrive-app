@@ -30,7 +30,7 @@
                     </route>
                 </div>
 
-                <div class="item">
+                <div class="item" v-if="userCan('manage-core')">
                     <route href="settings.notifications">
                         <i class="mdi mdi-bell margin-right-5"></i>
                         Notificações

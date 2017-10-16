@@ -1,7 +1,7 @@
 <template>
     <div class="header-menu">
         <ul class="nav menu">
-            <notifications />
+            <notifications v-if="userCan('manage-core')" />
             <user-menu />
         </ul>
     </div>
