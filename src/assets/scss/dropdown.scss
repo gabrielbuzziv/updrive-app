@@ -12,7 +12,9 @@
 
 .dropdown {
     .dropdown-menu {
+        min-width: 200px;
         border-radius: 2px;
+        padding: 0 0 5px;
 
         .item {
             &.active {
@@ -22,12 +24,25 @@
                 }
             }
 
+            &:first-child {
+                border-top-left-radius: 2px;
+                border-top-right-radius: 2px;
+
+                > a {
+                    border-top-left-radius: 2px;
+                    border-top-right-radius: 2px;
+                }
+            }
+
             > a {
-                border-radius: 2px;
-                font-size: 13px;
+                border-radius: 0;
+                font-size: 12px;
                 font-weight: 300;
                 color: #777;
                 transition: all 0.2s;
+                display: block;
+                padding: 6px 25px;
+                color: $theme-light;
 
                 i {
                     font-size: 14px;
@@ -37,8 +52,8 @@
                 }
 
                 &:hover {
-                    background: none;
-                    color: #111;
+                    background: $primary;
+                    color: #fff;
                 }
             }
         }

@@ -1,4 +1,11 @@
 export default {
+    'global/FETCH_ACCOUNT' (context, request) {
+        window.axios.get(`/account`)
+            .then(response => {
+                context.commit('global/ACCOUNT', response.data)
+            })
+    },
+
     'global/SET_SIDEBAR' (context, request) {
         context.commit('global/SIDEBAR', request)
     },

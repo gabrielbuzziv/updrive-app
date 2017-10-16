@@ -1,125 +1,144 @@
-.dashboard {
-    .dashboard-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
+#dashboard {
+    .dashboard-box {
+        &.dashboard-overview {
+            .overview-resume {
+                .resume {
+                    margin-bottom: 30px;
 
-        li {
-            display: block;
-            border-bottom: 1px solid $tableBorder;
-            padding: 15px 5px;
+                    b {
+                        display: block;
+                        font-size: 30px;
+                        font-weight: 700;
+                        color: #333;
+                    }
 
-            &:last-child {
-                border: 0;
+                    span {
+                        font-size: 16px;
+                        font-weight: 300;
+                        display: block;
+                        margin-top: 5px;
+                    }
+                }
             }
+        }
 
-            .left {
-                display: inline-block;
-                width: 40px;
-                vertical-align: top;
-
-                .icon {
-                    width: 30px;
-                    height: 30px;
-                    line-height: 25px;
-                    background: #fff;
-                    border: 2px solid $theme;
-                    color: $theme;
-                    border-radius: 100%;
+        &.dashboard-pendings {
+            .documents {
+                .document {
                     display: block;
-                    text-align: center;
-                    font-size: 17px;
+                    margin: 15px 0;
+
+                    &:first-child {
+                        margin-top: 0;
+                    }
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+
+                    .icon {
+                        display: inline-block;
+                        margin-right: 10px;
+                        vertical-align: middle;
+                        font-size: 20px;
+                        line-height: 20px;
+                        background: $warning;
+                        color: #fff;
+                        padding: 10px;
+                        border-radius: 100%;
+                    }
+                    
+                    .info {
+                        display: inline-block;
+                        font-size: 12px;
+                        vertical-align: middle;
+
+                        .name {
+                            display: block;
+                            font-weight: 600;
+                            color: $theme;
+                            margin-bottom: 5px;
+
+                            small {
+                                font-weight: 400;
+                            }
+                        }
+
+                        .company {
+                            color: $theme-light;
+                            font-style: italic;
+                        }
+                    }
                 }
             }
+        }
+        
+        .panel-heading {
+            border-bottom: 1px solid #eee;
+            background: #fff;
 
-            .right {
-                display: inline-block;
-                width: calc(100% - 45px);
+            .panel-title {
+                font-size: 20px;
+                font-weight: 700;
+                color: $theme-dark;
+                margin: 0 0 10px;
+                text-transform: uppercase;
+            }
 
-                .description {
-                    font-weight: 300;
-                    font-size: 12px;
-                    display: block
+            .panel-subtitle {
+                font-size: 14px;
+                font-weight: 300;
+                color: $theme-light;
+                margin: 0;
+            }
+
+            .panel-options {
+                float: right;
+
+                button {
+                    display: inline-block;
                 }
 
-                .time {
-                    font-size: 10px;
-                    margin-top: 5px;
-                    display: block;
+                .dropdown {
+                    display: inline-block;
                 }
             }
         }
     }
 
-    .document-reports {
-        .load {
-            text-align: center;
-
-            .loader {
-                &.spinner {
-                    width: 50px;
-                    height: 50px;
-                    border-width: 0.7em;
-                }
-            }
-        }
-    }
-
-    .average-time {
-        .time {
-            font-size: 40px;
-            font-weight: 700;
-            text-align: center;
+    .dashboard-metric {
+        section {
             display: block;
-            margin: 10px 0 30px;
-        }
-
-        p {
-            text-align: center;
-        }
-    }
-
-    #myCompanies {
-        .company {
-            background: #e4dcdc;
-            color: #444;
-            padding: 20px;
-            width: 100%;
-            min-height: 125px;
-            margin-bottom: 20px;
 
             .icon {
                 display: inline-block;
                 font-size: 50px;
-                margin: 5px 20px 0 0;
-                color: rgba(0, 0, 0, .4);
-                line-height: 0;
-                vertical-align: top;
-                width: 50px;
-                
-                i {
-                    line-height: 0;
-                    vertical-align: top;
-                }
+                vertical-align: middle;
+                line-height: 50px;
+                color: $secondary;
             }
 
-            .data {
+            .info {
                 display: inline-block;
-                width: calc(100% - 74px);
-                text-align: center;
+                width: calc(100% - 60px);
+                text-align: right;
+                vertical-align: middle;
 
-                .name {
-                    margin: 0 0 15px;
-                    color: #444;
-                    font-size: 14px;
+                .title {
+                    display: block;
+                    font-size: 18px;
                     font-weight: 300;
-                    line-height: 24px;
+                    margin-bottom: 5px;
+                }
 
-                    .label {
-                        border-radius: 100%;
-                        position: relative;
-                        top: -1px;
-                        margin-left: 10px;
+                .metric {
+                    font-size: 30px;
+                    font-weight: 700;
+                    color: $theme;
+
+                    .of {
+                        font-weight: 300;
+                        color: $theme-light;
                     }
                 }
             }

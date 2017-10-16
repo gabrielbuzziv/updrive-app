@@ -5,7 +5,7 @@
                 <first-time title="Documentos pendentes" icon="clock"
                             message="Não encontramos documentos com vencimento pendente.">
                     <template slot="buttons">
-                        <button class="btn btn-secondary btn-rounded margin-right-10" @click.prevent="$root.$emit('send::documents')" v-if="userCan('manage-updrive')">
+                        <button class="btn btn-secondary btn-rounded margin-right-10" @click.prevent="$root.$emit('send::documents')" v-if="userCan('manage-core')">
                             <i class="mdi mdi-plus-circle margin-right-5"></i>
                             Enviar documentos
                         </button>

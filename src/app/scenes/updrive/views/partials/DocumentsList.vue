@@ -13,7 +13,7 @@
                         message="Não encontramos documentos aqui.">
                 <template slot="buttons">
                     <button class="btn btn-secondary btn-rounded" @click="$root.$emit('open:composer')"
-                            v-if="userCan('manage-updrive')">
+                            v-if="userCan('manage-core')">
                         <i class="mdi mdi-plus-circle margin-right-5"></i>
                         Enviar documentos
                     </button>

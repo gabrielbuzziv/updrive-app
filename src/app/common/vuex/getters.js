@@ -1,4 +1,8 @@
 export default {
+    'global/GET_ACCOUNT' ({ account }) {
+        return account
+    },
+
     'global/GET_SIDEBAR' ({ sidebar }) {
         if (typeof sidebar == 'string') {
             return sidebar === 'true'

@@ -17,6 +17,13 @@
         <ul class="nav menu" :class="{ 'open': menu }">
             <li class="header" v-if="sidebar">Menu</li>
 
+            <route href="dashboard" tag="li" exact v-if="userCan('manage-core')">
+                <a href="#">
+                    <i class="mdi mdi-speedometer"></i>
+                    <span>Dashboard <i class="mdi mdi-chevron-right"></i></span>
+                </a>
+            </route>
+
             <route href="updrive" tag="li">
                 <a href="#">
                     <i class="mdi mdi-file-multiple"></i>
@@ -24,14 +31,14 @@
                 </a>
             </route>
 
-            <route href="companies.list" tag="li" v-if="userCan('manage-companies')">
+            <route href="companies.list" tag="li" v-if="userCan('manage-core')">
                 <a href="#">
                     <i class="mdi mdi-domain"></i>
                     <span>Empresas<i class="mdi mdi-chevron-right"></i></span>
                 </a>
             </route>
 
-            <route href="contacts.list" tag="li" v-if="userCan('manage-contacts')">
+            <route href="contacts.list" tag="li" v-if="userCan('manage-core')">
                 <a href="#">
                     <i class="mdi mdi-account-multiple"></i>
                     <span>Contatos<i class="mdi mdi-chevron-right"></i></span>

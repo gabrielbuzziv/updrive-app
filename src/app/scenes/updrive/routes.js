@@ -27,7 +27,7 @@ export default [
                 path: '/updrive/emails',
                 component: Emails,
                 name: 'updrive.emails',
-                meta: { breadcrumb: 'E-mails', auth: true, permission: 'manage-updrive' }
+                meta: { breadcrumb: 'E-mails', auth: true, permission: 'manage-core' }
             }
         ]
     }

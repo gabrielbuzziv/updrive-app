@@ -1,6 +1,6 @@
 <template>
     <div>
-        <transition name="fade">
+        <transition name="pageLoad">
             <div class="page" v-if="loaded && ! loading">
                 <slot></slot>
             </div>

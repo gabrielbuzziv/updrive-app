@@ -20,7 +20,7 @@
 
                 <template slot="right">
                     <button class="btn btn-secondary btn-rounded hidden-sm hidden-xs" @click="$root.$emit('open::composer')"
-                            v-if="userCan('manage-updrive')">
+                            v-if="userCan('manage-core')">
                         <i class="mdi mdi-plus-circle margin-right-5"></i>
                         Enviar Documentos
                     </button>
@@ -57,7 +57,7 @@
 
             <page-content>
                 <button class="btn btn-secondary btn-block margin-bottom-20 hidden-md hidden-lg"
-                        @click="$root.$emit('open::composer')" v-if="userCan('manage-updrive')">
+                        @click="$root.$emit('open::composer')" v-if="userCan('manage-core')">
                     <i class="mdi mdi-plus-circle margin-right-5"></i>
                     Enviar Documentos
                 </button>
@@ -72,7 +72,7 @@
                             :advantages="['Envie os documentos de maneira simples.', 'Seu cliente não precisará acessar a ferramenta para baixar os documentos.', 'Saiba se o seu cliente já recebeu os documentos.']">
                     <template slot="buttons">
                         <button class="btn btn-secondary btn-rounded" @click="$root.$emit('open::composer')"
-                                v-if="userCan('manage-updrive')">
+                                v-if="userCan('manage-core')">
                             <i class="mdi mdi-plus-circle margin-right-5"></i>
                             Enviar documentos
                         </button>
@@ -156,6 +156,11 @@
         mounted () {
             this.load()
             this.$root.$on('load::companies', () => this.load())
+
+            if (this.$route.query && this.$route.query.empresas == 'todas') {
+                this.company = ''
+            }
+
         },
 
         beforeDestroy () {

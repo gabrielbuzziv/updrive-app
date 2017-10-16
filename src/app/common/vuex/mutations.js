@@ -1,4 +1,8 @@
 export default {
+    'global/ACCOUNT' (state, data) {
+        state.account = data
+    },
+
     'global/SIDEBAR' (state, data) {
         localStorage.setItem('sidebar', data)
         state.sidebar = data

@@ -101,3 +101,12 @@
 .notifications-leave-active {
     animation: slideOutRight .3s;
 }
+
+.pageLoad-enter-active {
+    animation: fadeIn .5s;
+}
+
+.pageLoad-leave-active {
+    //animation: fadeOut .5s;
+    display: none;
+}

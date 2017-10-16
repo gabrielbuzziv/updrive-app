@@ -21,6 +21,10 @@
             exact: {
                 type: Boolean,
                 default: false
+            },
+
+            query: {
+                type: Object
             }
         },
 
@@ -28,8 +32,9 @@
             to () {
                 const name = this.href
                 const params = this.params || {}
+                const query = this.query || {}
 
-                return { name: name, params: params }
+                return { name, params, query }
             }
         }
     }

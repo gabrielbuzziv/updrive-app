@@ -1,21 +1,21 @@
 <template>
     <tbody>
         <tr :class="documentStatus">
-            <td class="document-options hidden-xs" width="30" v-if="userCan('manage-updrive')">
+            <td class="document-options hidden-xs" width="30" v-if="userCan('manage-core')">
                 <dropdown class="inline" button-class="btn btn-sm btn-blank btn-rounded">
                     <template slot="button">
                         <i class="mdi mdi-settings"></i>
                     </template>
 
                     <template slot="items">
-                        <li class="item" v-if="userCan('manage-updrive')">
+                        <li class="item" v-if="userCan('manage-core')">
                             <a href="#" @click.prevent="edit">
                                 <i class="mdi mdi-pencil-circle margin-right-5"></i>
                                 Editar
                             </a>
                         </li>
-                        <div class="divider" v-if="userCan('manage-updrive')"></div>
-                        <li class="item" v-if="userCan('manage-updrive')">
+                        <div class="divider" v-if="userCan('manage-core')"></div>
+                        <li class="item" v-if="userCan('manage-core')">
                             <a href="#" @click.prevent="remove">
                                 <i class="mdi mdi-delete-circle margin-right-5"></i>
                                 Excluir
@@ -66,7 +66,7 @@
                         <div class="pull-right hidden-sm hidden-xs">
                             <a :href="`${API_URL}/documents/${document.id}/protocol?token=${token}`"
                                class="btn btn-sm btn-rounded margin-right-5"
-                               target="_blank" v-if="userCan('manage-updrive')">
+                               target="_blank" v-if="userCan('manage-core')">
                                 <i class="mdi mdi-file margin-right-5"></i>
                                 Gerar Protocolo
                             </a>
@@ -82,12 +82,12 @@
                             </a>
 
                             <a href="#" @click.prevent="edit" class="btn btn-sm btn-rounded margin-right-5"
-                               title="Editar" v-if="userCan('manage-updrive')">
+                               title="Editar" v-if="userCan('manage-core')">
                                 <i class="mdi mdi-pencil"></i>
                             </a>
 
                             <a href="#" @click.prevent="remove" class="btn btn-sm btn-rounded" title="Excluir"
-                               v-if="userCan('manage-updrive')">
+                               v-if="userCan('manage-core')">
                                 <i class="mdi mdi-delete"></i>
                             </a>
                         </div>
