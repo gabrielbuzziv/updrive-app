@@ -63,8 +63,7 @@
                 </div>
 
                 <div class="line editor">
-                    <!--<textarea class="text" v-model="form.message"></textarea>-->
-                    <froala :tag="'textarea'" :config="froalaConfig" v-model="form.message"></froala>
+                    <vue-summernote ref="editor" placeholder=""></vue-summernote>
                 </div>
 
                 <composer-attachments :attachments.sync="form.attachments" :open.sync="showAttachment"/>
@@ -117,14 +116,6 @@
 
                 companies: [],
                 contacts: [],
-
-                froalaConfig: {
-                    toolbarButtons: ['fontSize', '|', 'bold', 'italic', 'underline', 'color', '|', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '|', 'insertTable', '|', 'clearFormatting'],
-                    placeholderText: '',
-                    fontSizeSelection: true,
-                    pluginsEnabled: ['align', 'colors', 'fontSize', 'lists', 'quote', 'table'],
-                    countCharacters: false
-                }
             }
         },
 
@@ -282,6 +273,8 @@
 
         mounted () {
             this.$root.$on('open::composer', () => ! this.isVisible ? this.load() : '')
+
+            this.$refs.editor
         },
 
         beforeDestroy () {

@@ -949,6 +949,10 @@ bootstrap-sass@^3.3.7:
   version "3.3.7"
   resolved "https://registry.yarnpkg.com/bootstrap-sass/-/bootstrap-sass-3.3.7.tgz#6596c7ab40f6637393323ab0bc80d064fc630498"
 
+bootstrap@^3.3.7:
+  version "3.3.7"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-3.3.7.tgz#5a389394549f23330875a3b150656574f8a9eb71"
+
 brace-expansion@^1.1.7:
   version "1.1.8"
   resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-1.1.8.tgz#c07b211c7c952ec1f8efd51a77ef0d1d3990a292"
@@ -1196,6 +1200,10 @@ coa@~1.0.1:
 code-point-at@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
+
+codemirror@^5.19.0:
+  version "5.30.0"
+  resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.30.0.tgz#86e57dd5ea5535acbcf9c720797b4cefe05b5a70"
 
 color-convert@^1.3.0, color-convert@^1.9.0:
   version "1.9.0"
@@ -1677,6 +1685,15 @@ electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.18:
   version "1.3.24"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.24.tgz#9b7b88bb05ceb9fa016a177833cc2dde388f21b6"
 
+element-ui@^1.0.9:
+  version "1.4.7"
+  resolved "https://registry.yarnpkg.com/element-ui/-/element-ui-1.4.7.tgz#18ce26559cd32d2f9fc8a51d0d56c061dd3c9e54"
+  dependencies:
+    async-validator "1.6.9"
+    babel-helper-vue-jsx-merge-props "^2.0.0"
+    deepmerge "^1.2.0"
+    throttle-debounce "^1.0.1"
+
 element-ui@^1.4.1:
   version "1.4.6"
   resolved "https://registry.yarnpkg.com/element-ui/-/element-ui-1.4.6.tgz#2f4f718fb3b12f23ef6508251adfae80d7f81793"
@@ -1971,10 +1988,6 @@ follow-redirects@^1.2.3:
   dependencies:
     debug "^2.4.5"
 
-font-awesome@>=4.4.0:
-  version "4.7.0"
-  resolved "https://registry.yarnpkg.com/font-awesome/-/font-awesome-4.7.0.tgz#8fa8cf0411a1a31afd07b06d2902bb9fc815a133"
-
 for-in@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/for-in/-/for-in-1.0.2.tgz#81068d295a8142ec0ac726c6e2200c30fb6d5e80"
@@ -2016,13 +2029,6 @@ forwarded@~0.1.2:
 fresh@0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/fresh/-/fresh-0.5.2.tgz#3d8cadd90d976569fa835ab1f8e4b23a105605a7"
-
-froala-editor@^2.7.0:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/froala-editor/-/froala-editor-2.7.0.tgz#d85acc6535541ca3811c6ca2287ab7e26d812428"
-  dependencies:
-    font-awesome ">=4.4.0"
-    jquery ">=1.11.0"
 
 fs.realpath@^1.0.0:
   version "1.0.0"
@@ -2627,9 +2633,9 @@ isstream@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
 
-jquery@>=1.11.0:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.2.1.tgz#5c4d9de652af6cd0a770154a631bba12b015c787"
+jquery@2.1.4:
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-2.1.4.tgz#228bde698a0c61431dc2630a6a154f15890d2317"
 
 js-base64@^2.1.8, js-base64@^2.1.9:
   version "2.3.2"
@@ -4445,6 +4451,12 @@ style-loader@^0.18.2:
     loader-utils "^1.0.2"
     schema-utils "^0.3.0"
 
+summernote@^0.8.2:
+  version "0.8.8"
+  resolved "https://registry.yarnpkg.com/summernote/-/summernote-0.8.8.tgz#3244ff945e5ac1670519d4b0c418e403411cae3e"
+  dependencies:
+    bootstrap "^3.3.7"
+
 supports-color@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-2.0.0.tgz#535d045ce6b6363fa40117084629995e9df324c7"
@@ -4693,13 +4705,6 @@ vue-breadcrumbs@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vue-breadcrumbs/-/vue-breadcrumbs-1.1.2.tgz#b83e03693d07628614c3d5683d74a5dd20d36f6c"
 
-vue-froala-wysiwyg@^2.7.0:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/vue-froala-wysiwyg/-/vue-froala-wysiwyg-2.7.0.tgz#9d199990ad301b32e67223687f655b64e789a6fd"
-  dependencies:
-    froala-editor "^2.7.0"
-    vue "^2.2.4"
-
 vue-hot-reload-api@^2.1.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.1.1.tgz#1ba6712166182fd651753804b9d8d8d02d855579"
@@ -4737,6 +4742,16 @@ vue-style-loader@^3.0.0:
     hash-sum "^1.0.2"
     loader-utils "^1.0.2"
 
+vue-summernote@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/vue-summernote/-/vue-summernote-1.0.3.tgz#86f407ff30cd3b57af3ab2242ca74c12a6524086"
+  dependencies:
+    bootstrap "^3.3.7"
+    codemirror "^5.19.0"
+    element-ui "^1.0.9"
+    jquery "2.1.4"
+    summernote "^0.8.2"
+
 vue-template-compiler@^2.3.3:
   version "2.4.4"
   resolved "https://registry.yarnpkg.com/vue-template-compiler/-/vue-template-compiler-2.4.4.tgz#2cde3b704124985c27d50b5387c9691ba515fb57"
@@ -4748,7 +4763,7 @@ vue-template-es2015-compiler@^1.2.2:
   version "1.5.3"
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.5.3.tgz#22787de4e37ebd9339b74223bc467d1adee30545"
 
-vue@^2.2.4, vue@^2.3.3:
+vue@^2.3.3:
   version "2.4.4"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.4.4.tgz#ea9550b96a71465fd2b8b17b61673b3561861789"
 

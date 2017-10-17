@@ -1,4 +1,4 @@
-$textSize: 300px;
+$textSize: 250px;
 $attachmentSize: 150px;
 
 .maximize {
@@ -46,9 +46,8 @@ $attachmentSize: 150px;
         .composer-body {
             .line {
                 &.editor {
-                    .fr-box.fr-basic.fr-top .fr-wrapper,
-                    .fr-box.fr-basic.fr-top .fr-wrapper .fr-view {
-                        height: calc(#{$textSize} - 42px);
+                    .note-editable {
+                        height: calc(#{$textSize} - 42px) !important;
                     }
                 }
             }
@@ -59,9 +58,8 @@ $attachmentSize: 150px;
         .composer-body {
             .line {
                 &.editor {
-                    .fr-box.fr-basic.fr-top .fr-wrapper,
-                    .fr-box.fr-basic.fr-top .fr-wrapper .fr-view {
-                        height: calc(#{$textSize} - 42px - #{$attachmentSize});
+                    .note-editable {
+                        height: calc(#{$textSize} - 42px - #{$attachmentSize}) !important;
                     }
                 }
             }
@@ -121,23 +119,28 @@ $attachmentSize: 150px;
             &.editor {
                 padding: 0;
 
-                .fr-wrapper div:first-child:not(.fr-element) {
-                    display: none;
+                .note-toolbar {
+                    padding: 5px;
+
+                    .note-color .dropdown-menu {
+                        min-width: 350px;
+                    }
+
+                    .btn-group {
+                        margin-top: 0;
+                    }
                 }
 
-                .fr-toolbar.fr-top {
-                    box-shadow: none;
+                .note-editor {
                     border: 0;
-                    //border-bottom: 1px solid #e1e1e1;
-                }
-
-                .fr-box.fr-basic.fr-top .fr-wrapper,
-                .fr-box.fr-basic.fr-top .fr-wrapper .fr-view {
                     box-shadow: none;
-                    height: $textSize;
+                    margin: 0;
                 }
 
-                .fr-box.fr-basic .fr-element {
+                .note-editable {
+                    height: $textSize !important;
+                    min-height: auto !important;
+                    max-height: auto !important;
                     color: #444;
                 }
             }

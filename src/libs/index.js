@@ -6,7 +6,7 @@ import './breadcrumbs'
 import './elements'
 import './infinite-loading'
 import './socket'
-import './wyswig'
+import './wysiwyg'
 
 String.prototype.replaceAll = function(str1, str2, ignore)
 {
