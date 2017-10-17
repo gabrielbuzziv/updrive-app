@@ -51,6 +51,7 @@ module.exports = {
             'common': path.resolve(__dirname, './src/app/common'),
             'libs': path.resolve(__dirname, './src/libs'),
             'root': path.resolve(__dirname, './src'),
+            'jquery': path.resolve(__dirname, './node_modules/jquery/dist/jquery.js')
         },
         extensions: ['*', '.js', '.vue']
     },

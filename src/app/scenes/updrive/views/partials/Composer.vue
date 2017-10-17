@@ -175,8 +175,6 @@
                     this.$refs.focus.$el.querySelector('label').focus()
 
                     const editor = this.$refs.editor
-                    console.log(editor)
-
                     editor.$on('onChange', content => this.form.message = content)
                 }, 100)
             },
