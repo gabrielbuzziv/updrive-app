@@ -171,7 +171,14 @@
                     attachments: []
                 }
 
-                setTimeout(() => this.$refs.focus.$el.querySelector('label').focus(), 100)
+                setTimeout(() => {
+                    this.$refs.focus.$el.querySelector('label').focus()
+
+                    const editor = this.$refs.editor
+                    console.log(editor)
+
+                    editor.$on('onChange', content => this.form.message = content)
+                }, 100)
             },
 
             onSubmit () {
@@ -273,8 +280,6 @@
 
         mounted () {
             this.$root.$on('open::composer', () => ! this.isVisible ? this.load() : '')
-
-            this.$refs.editor
         },
 
         beforeDestroy () {
