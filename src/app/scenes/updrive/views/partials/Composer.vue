@@ -57,9 +57,9 @@
                         </template>
                     </selector>
 
-                    <dropdown class="options" buttonClass="btn btn-blank" right>
+                    <dropdown class="options" buttonClass="btn btn-blank" right v-if="suggestedContacts.length">
                         <template slot="button">
-                            <i class="mdi mdi-chevron-down"></i>
+                            <i class="mdi mdi-account-multiple"></i>
                         </template>
 
                         <template slot="items">
