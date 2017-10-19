@@ -56,6 +56,25 @@
                             </div>
                         </template>
                     </selector>
+
+                    <dropdown class="options" buttonClass="btn btn-blank" right>
+                        <template slot="button">
+                            <i class="mdi mdi-chevron-down"></i>
+                        </template>
+
+                        <template slot="items">
+                            <div class="item header">
+                                Contatos relacionados
+                            </div>
+
+                            <div class="item" v-for="contact in suggestedContacts">
+                                <a href="#" @click.prevent="addContact(contact)">
+                                    <i class="mdi mdi-email margin-right-5"></i>
+                                    {{ contact.email }}
+                                </a>
+                            </div>
+                        </template>
+                    </dropdown>
                 </div>
 
                 <div class="line subject">
@@ -116,6 +135,7 @@
 
                 companies: [],
                 contacts: [],
+                suggestedContacts: []
             }
         },
 
@@ -170,6 +190,7 @@
                     message: '',
                     attachments: []
                 }
+                this.suggestedContacts = []
 
                 setTimeout(() => {
                     this.$refs.focus.$el.querySelector('label').focus()
@@ -247,9 +268,7 @@
                     if (typeof company.value == 'number') {
                         services.getCompanyContacts(company.value)
                             .then(response => {
-                                this.form.contacts = response.data.items.map(contact => {
-                                    return { value: contact.id, label: contact.email }
-                                })
+                                this.suggestedContacts = response.data.items
                             })
                     }
                 }
@@ -274,6 +293,10 @@
 
                 return true
             },
+
+            addContact (contact) {
+                this.form.contacts.push({ value: contact.id, label: contact.email })
+            }
         },
 
         mounted () {

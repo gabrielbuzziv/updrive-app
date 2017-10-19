@@ -121,6 +121,8 @@ $attachmentSize: 150px;
 
                 .note-toolbar {
                     padding: 5px;
+                    background: #fff;
+                    border: 0;
 
                     .note-color .dropdown-menu {
                         min-width: 350px;
@@ -160,12 +162,19 @@ $attachmentSize: 150px;
             label {
                 color: $theme-light;
                 display: table-cell;
-
+                font-size: 12px;
             }
 
             .field {
                 border: 0;
                 width: 100%;
+                font-size: 12px;
+                min-height: 31px;
+                line-height: 31px;
+
+                &::placeholder {
+                    color: $theme-light;
+                }
 
                 .selector-tags {
                     border: 0;
@@ -175,6 +184,35 @@ $attachmentSize: 150px;
                     .selector-tags__tag,
                     .selector-tag__input {
                         margin: 3px;
+                    }
+
+                    .selector-tag__input {
+                        width: 300px;
+                    }
+                }
+            }
+
+            .options {
+                &.dropdown {
+                    display: table-cell;
+
+                    .dropdown-toggle {
+                        padding: 0;
+                    }
+
+                    .dropdown-menu {
+                        min-width: 300px;
+
+                        .header {
+                            padding: 10px 15px;
+                            color: #888888;
+                            font-size: 12px;
+                            font-weight: 300;
+                            display: block;
+                            line-height: normal;
+                            height: auto;
+                            color: #999;
+                        }
                     }
                 }
             }

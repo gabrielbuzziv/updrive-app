@@ -48,7 +48,7 @@
             },
 
             close () {
-                setTimeout(() => this.open = false, 200)
+//                setTimeout(() => this.open = false, 200)
             }
         },
     }

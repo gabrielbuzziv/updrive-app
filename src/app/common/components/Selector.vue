@@ -16,6 +16,7 @@
                    @keydown.188.prevent="addTag"
                    @keydown.down.prevent="navigateOptions('next')"
                    @keydown.up.prevent="navigateOptions('prev')"
+                   @blur="addTag"
             />
         </label>
 
