@@ -14,9 +14,7 @@ export default {
         const company = context.state.company
 
         return services.getPending(company)
-            .then(response => {
-                context.commit('updrive/PENDINGS', response.data.items)
-            })
+            .then(response => context.commit('updrive/PENDINGS', response.data.items))
     },
 
     'updrive/FETCH_ALL' (context) {
@@ -54,6 +52,11 @@ export default {
     'updrive/UPDATE_DOCUMENTS_STATUS' (context, request) {
         context.commit('updrive/DOCUMENTS_STATUS', request)
         context.dispatch('updrive/FETCH_ALL')
+    },
+
+    'updrive/FETCH_TAGS' (context) {
+        return services.getTags()
+            .then(response => context.commit('updrive/TAGS', response.data.items))
     },
     
     'tracking/FETCH_ALL' (context) {

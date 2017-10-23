@@ -42,6 +42,10 @@ export default {
          state.records = data
     },
 
+    'updrive/TAGS' (state, data) {
+        state.tags = data
+    },
+
     'tracking/TRACKING' (state, data) {
         state.tracking = data
     },

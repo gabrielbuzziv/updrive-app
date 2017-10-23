@@ -38,6 +38,10 @@ export default {
         return records
     },
 
+    'updrive/GET_TAGS' ({ tags }) {
+        return tags
+    },
+
     'tracking/GET_TRACKING' ({ tracking }) {
         return tracking
     },

@@ -1,12 +1,14 @@
 <template>
     <div class="selector" :class="{ 'with-options': visibleOptions.length }">
         <label class="selector-tags">
-            <div class="selector-tags__tag" v-for="tag, index in tags">
-                {{ tag.label }}
-                <a href="#" class="remove" @click.prevent="removeTag(index)">
-                    <i class="mdi mdi-close"></i>
-                </a>
-            </div>
+            <slot name="tags" :options="tags">
+                <div class="selector-tags__tag" v-for="tag, index in tags">
+                    {{ tag.label }}
+                    <a href="#" class="remove" @click.prevent="removeTag(index)">
+                        <i class="mdi mdi-close"></i>
+                    </a>
+                </div>
+            </slot>
             <input v-model="tag"
                    class="selector-tag__input"
                    :disabled="overLimit"
@@ -112,14 +114,15 @@
                 if (this.tag.length) {
                     if (this.visibleOptions.length) {
                         const tag = this.visibleOptions[this.hoverIndex]
-                        this.tags.push({ value: tag[this.optionValue], label: tag[this.optionLabel] })
+                        const options = tag.options ? tag.options : {}
+                        this.tags.push({ value: tag[this.optionValue], label: tag[this.optionLabel], options: options })
                     } else {
                         if (typeof this.validationMethod === 'function' && !this.validationMethod(this.tag)) {
                             return false;
                         }
 
                         const tag = this.tag.replaceAll(',', '').replaceAll('\n', '')
-                        this.tags.push({ value: tag, label: tag })
+                        this.tags.push({ value: tag, label: tag, options: {} })
                     }
                 }
 

@@ -10,6 +10,9 @@ export default {
     page: 1,
     records: 0,
 
+    //
+    tags: [],
+
     // Tracking States
     tracking: [],
     tracking_page: 1,

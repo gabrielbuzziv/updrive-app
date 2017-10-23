@@ -18,6 +18,7 @@ import TabLink from './TabLink'
 import TabContent from './TabContent'
 import Selector from './Selector'
 import TimelineHorizontal from './TimelineHorizontal'
+import ContextMenu from './ContextMenu'
 
 Vue.component('PageLoad', PageLoad)
 Vue.component('PageHeader', PageHeader)
@@ -38,4 +39,5 @@ Vue.component('TabLink', TabLink)
 Vue.component('TabContent', TabContent)
 Vue.component('Selector', Selector)
 Vue.component('TimelineHorizontal', TimelineHorizontal)
+Vue.component('ContextMenu', ContextMenu)
 

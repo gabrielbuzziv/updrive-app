@@ -20,9 +20,9 @@
                         <template scope="data">
                             <div class="option-icon">
                                 <div class="frame">
-                                <span v-if="data.option.identifier">
-                                    {{ data.option.identifier }}
-                                </span>
+                                    <span v-if="data.option.identifier">
+                                        {{ data.option.identifier }}
+                                    </span>
                                     <i class="mdi mdi-domain" v-else></i>
                                 </div>
                             </div>
@@ -37,27 +37,17 @@
 
                 <div class="line to" v-if="hasCompany">
                     <label>Para</label>
-                    <selector class="field"
-                              v-model="form.contacts"
-                              option-value="id"
-                              option-label="email"
-                              :options="contacts"
-                              :filter-method="filterContacts"
-                              :validation-method="validateContacts">
+                    <selector-contacts
+                            v-model="form.contacts"
+                            :options="contacts"
+                            :filter-method="filterContacts"
+                            :validation-method="validateContacts"/>
 
-                        <template scope="data">
-                            <div class="option-image">
-                                <img :src="data.option.links.gravatar" alt="">
-                            </div>
-
-                            <div class="option-info">
-                                <b>{{ data.option.name }}</b>
-                                <span>{{ data.option.email }}</span>
-                            </div>
-                        </template>
-                    </selector>
-
-                    <dropdown class="options" buttonClass="btn btn-blank" right v-if="suggestedContacts.length">
+                    <dropdown class="options"
+                              title="Contatos Relacionados"
+                              buttonClass="btn btn-blank"
+                              right
+                              v-if="suggestedContacts.length">
                         <template slot="button">
                             <i class="mdi mdi-account-multiple"></i>
                         </template>
@@ -71,6 +61,13 @@
                                 <a href="#" @click.prevent="addContact(contact)">
                                     <i class="mdi mdi-email margin-right-5"></i>
                                     {{ contact.email }}
+
+                                    <span class="tags">
+                                        <span class="label" v-for="tag in contact.tags">
+                                            <i class="mdi mdi-label margin-right-5"></i>
+                                            {{ tag.name }}
+                                        </span>
+                                    </span>
                                 </a>
                             </div>
                         </template>
@@ -111,11 +108,12 @@
     import ComposerHeader from './composer/ComposerHeader'
     import ComposerAttachments from './composer/ComposerAttachments'
     import ComposerUpload from './composer/ComposerUpload'
+    import SelectorContacts from './composer/SelectorContacts'
     import services from '../../services'
     import { debounce } from 'lodash'
 
     export default {
-        components: { ComposerHeader, ComposerAttachments, ComposerUpload },
+        components: { ComposerHeader, ComposerAttachments, ComposerUpload, SelectorContacts },
 
         data () {
             return {
@@ -177,6 +175,10 @@
 
             hasExceededSize () {
                 return this.files.size > 52428800
+            },
+
+            tags () {
+                return this.$store.getters['updrive/GET_TAGS']
             }
         },
 
@@ -192,21 +194,30 @@
                 }
                 this.suggestedContacts = []
 
-                setTimeout(() => {
+                this.$store.dispatch('updrive/FETCH_TAGS')
+
+                Vue.nextTick(() => {
                     this.$refs.focus.$el.querySelector('label').focus()
 
                     const editor = this.$refs.editor
                     editor.$on('onChange', content => this.form.message = content)
-                }, 100)
+                })
             },
 
             onSubmit () {
                 const data = new FormData()
 
                 data.append('company', this.form.company[0].value)
-                this.form.contacts.forEach(contact => data.append('contacts[]', contact.value))
+                this.form.contacts.forEach(contact => data.append('contacts[]', contact))
                 data.append('subject', this.form.subject)
                 data.append('message', this.form.message)
+
+                this.form.contacts.forEach((contact, index) => {
+                    data.append(`contacts[${index}][value]`, contact.value)
+                    contact.options.tags.forEach(tag => {
+                        data.append(`contacts[${index}][tags][]`, parseInt(tag))
+                    })
+                })
 
                 this.form.attachments.forEach(attachment => {
                     data.append(`documents[]`, JSON.stringify(attachment))
@@ -237,11 +248,6 @@
                             this.$root.$emit('load::companies')
                             this.$message.success('Os documentos foram enviados.')
                             this.$store.dispatch('updrive/UPDATE_COMPANY', response.data.company)
-                            this.$store.dispatch('updrive/FETCH_PENDINGS')
-                            this.$store.dispatch('updrive/FETCH_ALL')
-                                .then(response => {
-                                    this.$router.push({ name: 'updrive.documents' })
-                                })
                         })
                         .catch(() => this.submiting = false)
                 } else {
@@ -277,7 +283,14 @@
             filterContacts: debounce(function (query) {
                 services.getContacts(query)
                     .then(response => {
-                        this.contacts = query.length > 0 ? response.data.items : []
+                        const contacts = response.data.items.map(contact => {
+                            const tags = contact.tags.map(tag => tag.id)
+                            delete contact['tags']
+
+                            return { ...contact, options: { tags } }
+                        })
+
+                        this.contacts = query.length > 0 ? contacts : []
                     })
             }, 200),
 
@@ -295,8 +308,13 @@
             },
 
             addContact (contact) {
-                this.form.contacts.push({ value: contact.id, label: contact.email })
-            }
+                this.form.contacts.push({
+                    value: contact.id,
+                    label: contact.email,
+                    options: { tags: contact.tags.map(tag => tag.id) }
+                })
+            },
+
         },
 
         mounted () {

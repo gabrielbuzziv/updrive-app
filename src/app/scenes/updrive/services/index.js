@@ -115,5 +115,12 @@ export default {
     getTracks (request) {
         const params = request
         return window.axios.get(`updrive/tracking`, { params })
+    },
+
+    /**
+     * @returns {*}
+     */
+    getTags () {
+        return window.axios.get(`tags`)
     }
 }

@@ -19,7 +19,8 @@
                 </template>
 
                 <template slot="right">
-                    <button class="btn btn-secondary btn-rounded hidden-sm hidden-xs" @click="$root.$emit('open::composer')"
+                    <button class="btn btn-secondary btn-rounded hidden-sm hidden-xs"
+                            @click="$root.$emit('open::composer')"
                             v-if="userCan('manage-core')">
                         <i class="mdi mdi-plus-circle margin-right-5"></i>
                         Enviar Documentos
@@ -28,11 +29,11 @@
 
                 <template slot="nav">
                     <!--<route href="updrive" tag="li" exact>-->
-                        <!--<a>-->
-                            <!--<i class="mdi mdi-clock margin-right-5"></i>-->
-                            <!--Pendentes-->
-                            <!--<span class="badge margin-left-10" v-if="amounts.pendings">{{ amounts.pendings }}</span>-->
-                        <!--</a>-->
+                    <!--<a>-->
+                    <!--<i class="mdi mdi-clock margin-right-5"></i>-->
+                    <!--Pendentes-->
+                    <!--<span class="badge margin-left-10" v-if="amounts.pendings">{{ amounts.pendings }}</span>-->
+                    <!--</a>-->
                     <!--</route>-->
 
                     <route href="updrive.documents" tag="li">
@@ -94,7 +95,7 @@
                 total: 0,
                 loading: true,
                 companies: [],
-                cachedCompanies: []
+                cachedCompanies: [],
             }
         },
 
@@ -119,27 +120,31 @@
         },
 
         methods: {
-            load () {
-                services.getTotal()
-                        .then(response => {
-                            this.total = response.data.total
-
-                            if (this.total) {
-                                services.getCompanies()
-                                        .then(response => {
-                                            this.companies = response.data.items
-                                            this.cachedCompanies = this.companies
-                                            this.loading   = false
-                                        })
-                                        .catch(() => this.loading = false)
-                            } else {
-                                this.loading = false
-                            }
-                        })
-                        .catch(() => this.loading = false)
+            doSomething () {
+                this.$message('doSomething')
             },
 
-            filterCompanies: debounce (function (query) {
+            load () {
+                services.getTotal()
+                    .then(response => {
+                        this.total = response.data.total
+
+                        if (this.total) {
+                            services.getCompanies()
+                                .then(response => {
+                                    this.companies = response.data.items
+                                    this.cachedCompanies = this.companies
+                                    this.loading = false
+                                })
+                                .catch(() => this.loading = false)
+                        } else {
+                            this.loading = false
+                        }
+                    })
+                    .catch(() => this.loading = false)
+            },
+
+            filterCompanies: debounce(function (query) {
                 if (query.length) {
                     services.getCompanies(query)
                         .then(response => this.companies = response.data.items)
