@@ -1,7 +1,7 @@
 export default {
     getAccount () {
         if (window.location.hostname == 'localhost') {
-            return 'crescercontabilidade'
+            return 'sandbox'
         }
 
         return window.location.host.split('.')[0]

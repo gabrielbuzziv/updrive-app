@@ -25,6 +25,7 @@
                         <document-opened :data="notification.data" v-if="isDocumentOpened(notification)"/>
                         <document-expired :data="notification.data" v-if="isDocumentExpired(notification)"/>
                         <email-delivered :data="notification.data" v-if="isEmailDelivered(notification)"/>
+                        <email-dropped :data="notification.data" v-if="isEmailDropped(notification)"/>
                         <email-opened :data="notification.data" v-if="isEmailOpened(notification)"/>
                     </div>
                 </div>
@@ -44,11 +45,12 @@
     import DocumentOpened from './notifications/DocumentOpened'
     import DocumentExpired from './notifications/DocumentExpired'
     import EmailDelivered from './notifications/EmailDelivered'
+    import EmailDropped from './notifications/EmailDropped'
     import EmailOpened from './notifications/EmailOpened'
     import Helper from 'common/Helper'
 
     export default {
-        components: { DocumentOpened, DocumentExpired, EmailDelivered, EmailOpened },
+        components: { DocumentOpened, DocumentExpired, EmailDelivered, EmailDropped, EmailOpened },
 
         data () {
             return {
@@ -73,6 +75,10 @@
 
             isEmailDelivered (notification) {
                 return notification.type == 'EmailDelivered'
+            },
+
+            isEmailDropped (notification) {
+                return notification.type == 'EmailDropped'
             },
 
             isEmailOpened (notification) {
@@ -127,6 +133,17 @@
                         message: `O e-mail "${response.data.subject}" foi entregue para ${response.data.contact.email}.`,
                         offset: 50
                     })
+                }
+            })
+
+            window.socket.on('notifications:App\\Events\\DocumentDropped', (response) => {
+                if (this.isValidNotification(response)) {
+                    console.log(response.data)
+//                    this.$notify({
+//                        title: 'Falha ao enviar e-mail',
+//                        message: `${response.data.contact.name} abriu o documento ${response.data.document.name}.`,
+//                        offset: 50
+//                    })
                 }
             })
 

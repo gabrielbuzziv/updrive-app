@@ -215,9 +215,12 @@
 
                 this.form.contacts.forEach((contact, index) => {
                     data.append(`contacts[${index}][value]`, contact.value)
-                    contact.options.tags.forEach(tag => {
-                        data.append(`contacts[${index}][tags][]`, parseInt(tag))
-                    })
+
+                    if (contact.options && contact.options.tags && contact.options.tags.length) {
+                        contact.options.tags.forEach(tag => {
+                            data.append(`contacts[${index}][tags][]`, parseInt(tag))
+                        })
+                    }
                 })
 
                 this.form.attachments.forEach(attachment => {
