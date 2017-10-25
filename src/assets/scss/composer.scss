@@ -15,7 +15,7 @@ $attachmentSize: 150px;
     position: fixed;
     bottom: 0;
     right: 15px;
-    box-shadow: 0 2px 4px rgba(5, 15, 44, 0.1);
+    box-shadow:  0 2px 8px rgba(0, 0, 0, 0.3);
 
     &.minimized {
         width: 250px;
@@ -41,7 +41,7 @@ $attachmentSize: 150px;
             }
         }
     }
-    
+
     &.attachments-closed {
         .composer-body {
             .line {

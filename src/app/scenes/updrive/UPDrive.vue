@@ -14,7 +14,11 @@
                             default-first-option
                             :remote-method="filterCompanies">
                         <el-option v-for="company in companies" :value="company.id" :label="company.name"
-                                   :key="company.id"/>
+                                   :key="company.id">
+                            <span class="inline" v-if="company.identifier">
+                                {{ company.identifier }} -
+                            </span> {{ company.name }}
+                        </el-option>
                     </el-select>
                 </template>
 
@@ -28,29 +32,11 @@
                 </template>
 
                 <template slot="nav">
-                    <!--<route href="updrive" tag="li" exact>-->
-                    <!--<a>-->
-                    <!--<i class="mdi mdi-clock margin-right-5"></i>-->
-                    <!--Pendentes-->
-                    <!--<span class="badge margin-left-10" v-if="amounts.pendings">{{ amounts.pendings }}</span>-->
-                    <!--</a>-->
-                    <!--</route>-->
-
                     <route href="updrive.documents" tag="li">
                         <a>
                             <i class="mdi mdi-archive margin-right-5"></i>
                             Documentos
                             <span class="badge margin-left-10" v-if="amounts.documents">{{ amounts.documents }}</span>
-                        </a>
-                    </route>
-
-                    <route href="updrive.emails" tag="li" v-if="userCan('manage-core')">
-                        <a>
-                            <i class="mdi mdi-target margin-right-5"></i>
-                            Rastreamento
-                            <span class="badge margin-left-10">
-                                BETA
-                            </span>
                         </a>
                     </route>
                 </template>
@@ -109,7 +95,6 @@
                     this.$store.commit('updrive/PAGE', 1)
                     this.$store.commit('updrive/COMPANY', value)
                     this.$store.dispatch('updrive/GET_AMOUNTS')
-//                    this.$store.dispatch('updrive/FETCH_PENDINGS')
                     this.$store.dispatch('updrive/FETCH_ALL')
                 }
             },

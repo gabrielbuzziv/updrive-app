@@ -13,8 +13,7 @@
                  tabindex="-1"
                  ref="contextmenu"
                  v-show="optionsVisible"
-                 :style="optionsPosition"
-                 @blur="handleHide">
+                 :style="optionsPosition">
                 <slot></slot>
             </div>
         </transition>
@@ -40,12 +39,18 @@
                 Vue.nextTick(() => {
                     this.$refs.contextmenu.focus()
                     this.setMenuPosition(e.y, e.x)
+                    this.$emit('show')
                 })
 
             },
 
-            handleHide () {
-                this.optionsVisible = false
+            handleHide (e) {
+                let el = this.$refs.contextmenu
+                let target = e.target
+
+                if (el !== target && ! el.contains(target) && ! target.className.includes('focusable')) {
+                    this.optionsVisible = false
+                }
             },
 
             setMenuPosition (top, left) {
@@ -55,6 +60,11 @@
 
         mounted () {
             document.body.appendChild(this.$refs.contextmenu)
+            document.addEventListener('click', this.handleHide)
+        },
+
+        destroyed () {
+            document.removeEventListener('click', this.handleHide)
         }
     }
 </script>

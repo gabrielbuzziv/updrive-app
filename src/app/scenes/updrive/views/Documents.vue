@@ -4,6 +4,7 @@
         <documents-list :documents="documents"/>
 
         <document-edit/>
+        <document-dispatch-details/>
     </page-load>
 </template>
 
@@ -12,11 +13,12 @@
     import DocumentEdit from './partials/DocumentEdit'
     import DocumentsList from './partials/DocumentsList'
     import DocumentsFilter from './partials/DocumentsFilter'
+    import DocumentDispatchDetails from './partials/DocumentDispatchDetails'
     import Helper from 'common/Helper'
     import { isEmpty, debounce } from 'lodash'
 
     export default {
-        components: { DocumentsList, DocumentsFilter, DocumentEdit },
+        components: { DocumentsList, DocumentsFilter, DocumentEdit, DocumentDispatchDetails },
 
         data () {
             return {
@@ -37,11 +39,11 @@
         methods: {
             load () {
                 this.$store.dispatch('updrive/FETCH_ALL')
-                        .then(() => {
-                            this.$store.dispatch('updrive/GET_AMOUNTS')
-                            this.loading = false
-                        })
-                        .catch(() => this.loading = false)
+                    .then(() => {
+                        this.$store.dispatch('updrive/GET_AMOUNTS')
+                        this.loading = false
+                    })
+                    .catch(() => this.loading = false)
             },
         },
 

@@ -1,12 +1,8 @@
 <template>
     <page-load v-if="visible">
-        <panel class="nopadding" v-if="documents.length">
-            <div class="table-responsive">
-                <table class="table table-documents">
-                    <document-item :document="document" v-for="document in documents" :key="document.id" />
-                </table>
-            </div>
-        </panel>
+        <div class="documents-list" v-if="documents.length">
+            <document-item :document="document" v-for="document in documents" :key="document.id" />
+        </div>
 
         <slot name="not-found" v-else>
             <first-time title="Não encontramos documentos" icon="file-multiple"
@@ -25,8 +21,6 @@
 
 <script type="text/babel">
     import DocumentItem from './DocumentItem'
-    import DocumentCompany from './DocumentCompany'
-    import DocumentLabel from './DocumentLabel'
     import services from '../../services'
 
     export default {
@@ -42,7 +36,7 @@
             },
         },
 
-        components: { DocumentItem, DocumentCompany, DocumentLabel },
+        components: { DocumentItem },
 
         computed: {
             token () {

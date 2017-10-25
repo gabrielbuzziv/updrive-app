@@ -185,6 +185,7 @@
         methods: {
             load () {
                 this.isVisible = true
+                this.isOpen = true
                 this.form = {
                     company: [],
                     contacts: [],

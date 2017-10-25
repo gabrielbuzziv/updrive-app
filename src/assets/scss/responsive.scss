@@ -1,19 +1,5 @@
 @media only screen and (min-width: 1200px) {
     .main {
-        &.maximize {
-            #updrive {
-                .filters {
-                    width: 175px;
-                }
-
-                .table-documents {
-                    .document-icon {
-                        display: table-cell;
-                    }
-                }
-            }
-        }
-
         #updrive {
             .filters {
                 width: 140px;
@@ -32,113 +18,11 @@
     }
 }
 
-@media only screen and (max-width: 1366px) {
-    .toggle-sidebar {
-        display: none !important;
-    }
-
-    #header {
-        .logo {
-            width: 50px;
-        }
-    }
-
-    .sidebar {
-        width: 50px;
-
-        .user-panel {
-            background: $theme-dark;
-            padding: 10px;
-            border: 0;
-
-            .user-img {
-                max-width: 100%;
-            }
-
-            .user-info {
-                display: none;
-            }
-        }
-
-        .menu {
-            > li {
-                display: block;
-                position: relative;
-                width: 50px;
-
-                &.header {
-                    display: none;
-                }
-
-                &.active {
-                    > a {
-                        background: $theme-dark;
-                        color: #fff;
-                    }
-                }
-
-                &:hover,
-                &:focus,
-                &:active {
-                    > a {
-                        background: $theme-dark;
-                        color: #fff;
-
-                        > span {
-                            background: $theme-dark;
-                            color: #fff;
-                            visibility: visible;
-                            opacity: 1;
-                        }
-                    }
-                }
-
-                > a {
-                    display: block;
-                    position: relative;
-                    color: $theme-light;
-                    width: 100%;
-                    text-align: center;
-                    padding: 0;
-
-                    i {
-                        margin: 0;
-                    }
-
-                    span {
-                        visibility: hidden;
-                        opacity: 0;
-                        position: absolute;
-                        top: 0;
-                        left: 50px;
-                        background: $theme;
-                        border-top-right-radius: $border-radius-base;
-                        border-bottom-right-radius: $border-radius-base;
-                        width: 150px;
-                        padding: 0 15px;
-                        display: block;
-                        z-index: 99;
-                        text-align: left;
-                        font-weight: 300;
-                        height: 42px;
-                        line-height: 42px;
-
-                        > i {
-                            float: right;
-                            color: $theme-light;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    .main {
-        margin-left: 50px;
-    }
-}
-
 @media only screen and (max-width: 1200px) {
+    .el-dialog--tiny {
+        with: 50%;
+    }
+
     .main {
         #updrive {
             #options-list {

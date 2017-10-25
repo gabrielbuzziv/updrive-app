@@ -21,14 +21,6 @@ export default {
     /**
      * @returns {*}
      */
-    getPending (company) {
-        const params = { company }
-        return window.axios.get(`updrive/pending`, { params })
-    },
-
-    /**
-     * @returns {*}
-     */
     getDocuments (request) {
         const params = request
         return window.axios.get(`updrive/documents`, { params })
@@ -112,15 +104,21 @@ export default {
     /**
      * @returns {*}
      */
-    getTracks (request) {
-        const params = request
-        return window.axios.get(`updrive/tracking`, { params })
+    getTags () {
+        return window.axios.get(`tags`)
     },
 
     /**
-     * @returns {*}
+     * @param tagName
      */
-    getTags () {
-        return window.axios.get(`tags`)
+    createTag (tagName) {
+        return window.axios.post(`tags`, { tag: tagName })
+    },
+
+    /**
+     * @param id
+     */
+    getDispatchDetails (id) {
+        return window.axios.get(`updrive/${id}/document-dispatch`)
     }
 }

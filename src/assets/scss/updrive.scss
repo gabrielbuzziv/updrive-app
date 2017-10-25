@@ -149,6 +149,486 @@
             }
         }
     }
+
+    .documents-list {
+        .document-item {
+            border-left: 5px solid $primary;
+            display: block;
+            margin-bottom: 5px;
+            width: 100%;
+
+            &.warning {
+                border-color: $warning;
+
+                .document-header {
+                    .column {
+                        &.status {
+                            background: $warning;
+                        }
+                    }
+                }
+            }
+
+            &.success {
+                border-color: $success;
+
+                .document-header {
+                    .column {
+                        &.status {
+                            background: $success;
+                        }
+                    }
+                }
+            }
+
+            &.danger {
+                border-color: $danger;
+
+                .document-header {
+                    .column {
+                        &.status {
+                            background: $danger;
+                        }
+                    }
+                }
+            }
+
+            .document-header {
+                background: #f9f9f9;
+                display: table;
+                padding: 0;
+                height: 80px;
+                line-height: 80px;
+                border-radius: 2px;
+                width: 100%;
+                cursor: pointer;
+                transition: all .2s;
+
+                &:hover,
+                &.opened {
+                    background: #f3f3f3;
+                }
+
+                .column {
+                    display: table-cell;
+                    vertical-align: middle;
+                    line-height: normal;
+
+                    &.toggle {
+                        width: 70px;
+                        text-align: center;
+
+                        i {
+                            font-size: 16px;
+                        }
+                    }
+
+                    &.name {
+                        line-height: normal;
+                        vertical-align: middle;
+
+                        h3 {
+                            display: block;
+                            font-size: 16px;
+                            font-weight: 700;
+                            color: $theme;
+                            line-height: 20px;
+                            margin: 0;
+                        }
+
+                        span {
+                            display: block;
+                            font-weight: 300;
+
+                            .company-anchor {
+                                font-weight: 400;
+                                color: $theme;
+                            }
+                        }
+                    }
+
+                    &.status {
+                        background: $primary;
+                        height: 80px;
+                        line-height: 80px;
+                        width: 80px;
+                        color: #fff;
+                        text-align: center;
+
+                        > div {
+                            line-height: normal;
+                            vertical-align: middle;
+                            display: inline-block;
+
+                            i {
+                                display: block;
+                                margin-bottom: 15px;
+                                font-size: 25px;
+                                line-height: 20px;
+                            }
+
+                            span {
+                                display: block;
+                                font-size: 12px;
+                                line-height: normal;
+                            }
+                        }
+                    }
+
+                    &.options {
+                        width: 30px;
+                        text-align: center;
+
+                        .dropdown {
+                            display: block;
+                            height: 100%;
+
+                            button {
+                                &.btn {
+                                    width: 100%;
+                                    height: 100%;
+                                    display: block;
+                                    float: left;
+                                    border-radius: 0;
+                                    padding: 0;
+
+                                    &:hover {
+                                        background: darken(#DCDCDC, 5%);
+                                    }
+                                }
+                            }
+
+                            .dropdown-menu {
+                                .item {
+                                    a {
+                                        height: auto;
+                                        line-height: normal;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .document-details {
+                display: block;
+                width: 100%;
+                background: #fff;
+                padding: 30px;
+
+                .details {
+                    display: block;
+
+                    .item {
+                        margin-bottom: 25px;
+
+                        b {
+                            font-weight: 600;
+                            display: block;
+                            margin-bottom: 3px;
+                        }
+
+                        span {
+                            font-weight: 300;
+                        }
+                    }
+
+                    .document-progress {
+                        margin-top: 60px;
+                        padding: 0 0 10px 0;
+
+                        &.danger {
+                            .step {
+                                &.active {
+                                    .dot {
+                                        .info {
+                                            i {
+                                                color: $danger
+                                            }
+
+                                            span {
+                                                background: $danger;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .dot {
+                                    background: $danger;
+                                }
+
+                                .progress {
+                                    .progress-bar {
+                                        background: $danger;
+                                    }
+                                }
+                            }
+                        }
+
+                        &.warning {
+                            .step {
+                                &.active {
+                                    .dot {
+                                        .info {
+                                            i {
+                                                color: $warning
+                                            }
+
+                                            span {
+                                                background: $warning;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .dot {
+                                    background: $warning;
+                                }
+
+                                .progress {
+                                    .progress-bar {
+                                        background: $warning;
+                                    }
+                                }
+                            }
+                        }
+
+                        &.primary {
+                            .step {
+                                &.active {
+                                    .dot {
+                                        .info {
+                                            i {
+                                                color: $primary
+                                            }
+
+                                            span {
+                                                background: $primary;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .dot {
+                                    background: $primary;
+                                }
+
+                                .progress {
+                                    .progress-bar {
+                                        background: $primary;
+                                    }
+                                }
+                            }
+                        }
+
+                        .step {
+                            padding: 0;
+                            position: relative;
+
+                            .dot {
+                                position: absolute;
+                                width: 26px;
+                                height: 26px;
+                                display: block;
+                                background: $success;
+                                top: 25px;
+                                left: 50%;
+                                margin-top: -15px;
+                                margin-left: -15px;
+                                border-radius: 50%;
+
+                                &:after {
+                                    content: ' ';
+                                    width: 10px;
+                                    height: 10px;
+                                    background: #fff;
+                                    border-radius: 50px;
+                                    position: absolute;
+                                    top: 8px;
+                                    left: 8px;
+                                }
+
+                                .info {
+                                    display: none;
+                                }
+                            }
+
+                            .progress {
+                                position: relative;
+                                border-radius: 0px;
+                                height: 8px;
+                                box-shadow: none;
+                                margin: 20px 0;
+                                background-color: #ddd;
+
+                                .progress-bar {
+                                    width: 0px;
+                                    box-shadow: none;
+                                    background: $success;
+                                }
+                            }
+
+                            &.complete {
+                                .progress {
+                                    .progress-bar {
+                                        width: 100%;
+                                    }
+                                }
+                            }
+
+                            &.active {
+                                .dot {
+                                    height: 60px;
+                                    width: 60px;
+                                    top: 8px;
+
+                                    &:after {
+                                        height: 40px;
+                                        width: 40px;
+                                        top: 10px;
+                                        left: 10px;
+                                    }
+
+                                    .info {
+                                        display: block;
+
+                                        i {
+                                            position: absolute;
+                                            top: 50%;
+                                            left: 19px;
+                                            font-size: 22px;
+                                            color: $success;
+                                            z-index: 1;
+                                            transform: translateY(-50%);
+                                        }
+
+                                        .name {
+                                            position: absolute;
+                                            top: 50%;
+                                            transform: translateY(-50%);
+                                            left: 55px;
+                                            background: $success;
+                                            color: #fff;
+                                            height: 30px;
+                                            line-height: 30px;
+                                            padding: 0 15px;
+                                            text-transform: uppercase;
+                                            font-weight: 700;
+                                            z-index: 2;
+                                            font-style: 11px;
+
+                                            .triangle {
+                                                position: absolute;
+                                                background: inherit;
+                                                text-align: left;
+                                                width: 17px;
+                                                height: 17px;
+                                                border-top-right-radius: 5px;
+                                                transform: rotate(-90deg) skewX(-30deg) scale(1, .866);
+                                                top: 2px;
+                                                right: -13px;
+
+                                                &:before,
+                                                &:after {
+                                                    content: '';
+                                                    position: absolute;
+                                                    background: inherit;
+                                                    width: 17px;
+                                                    height: 17px;
+                                                    border-top-right-radius: 5px;
+                                                }
+
+                                                &:before {
+                                                    transform: rotate(-135deg) skewX(-45deg) scale(1.414, .707) translate(0, -50%);
+                                                }
+
+                                                &:after {
+                                                    transform: rotate(135deg) skewY(-45deg) scale(.707, 1.414) translate(50%);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .progress {
+                                    .progress-bar {
+                                        width: 50%;
+                                    }
+                                }
+                            }
+
+                            &.disabled {
+                                .dot {
+                                    background-color: #ddd;
+                                    pointer-events: none;
+
+                                    &:after {
+                                        opacity: 0;
+                                    }
+                                }
+                            }
+
+                            &:first-child {
+                                &.active {
+                                    .progress {
+                                        .progress-bar {
+                                            width: 0%;
+                                        }
+                                    }
+                                }
+
+                                .progress {
+                                    left: 50%;
+                                    width: 50%;
+                                }
+                            }
+
+                            &:last-child {
+                                &.opened {
+                                    &.active {
+                                        .dot {
+                                            .info {
+                                                .name {
+                                                    left: -80px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                                &.active {
+                                    .dot {
+                                        .info {
+                                            .name {
+                                                left: -85px;
+
+                                                .triangle {
+                                                    top: 11px;
+                                                    left: -15px;
+                                                    transform: rotate(90deg) skewX(-30deg) scale(1, 0.866)
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    .progress {
+                                        .progress-bar {
+                                            width: 100%;
+                                        }
+                                    }
+                                }
+
+                                .progress {
+                                    width: 50%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 .send-document-form {

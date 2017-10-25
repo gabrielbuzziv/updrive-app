@@ -8,20 +8,20 @@
 
                     <div class="row">
                         <div class="col-lg-4 col-md-6">
-                            <metrics title="Empresas" icon="mdi-briefcase">
-                                {{ metrics.companies }} <span class="of">/ {{ companies_limit || '&infin;' }}</span>
+                            <metrics title="Empresas" icon="mdi-store">
+                                {{ metrics.companies }}
                             </metrics>
                         </div>
 
                         <div class="col-lg-4 col-md-6">
                             <metrics title="Contatos" icon="mdi-account">
-                                {{ metrics.contacts }} <span class="of">/ &infin;</span>
+                                {{ metrics.contacts }}
                             </metrics>
                         </div>
 
                         <div class="col-lg-4 col-md-6">
                             <metrics title="Documentos" icon="mdi-file-document-box">
-                                {{ metrics.documents }} <span class="of">/ &infin;</span>
+                                {{ metrics.documents }}
                             </metrics>
                         </div>
                     </div>
@@ -32,20 +32,17 @@
                 </div>
             </div>
         </page-content>
-
-        <document-details />
     </page-load>
 </template>
 
 <script>
     import Overview from './scenes/Overview'
     import Pendings from './scenes/Pendings'
-    import DocumentDetails from './scenes/DocumentDetails'
     import Metrics from './partials/Metrics'
     import services from '../services'
 
     export default {
-        components: { Overview, Pendings, Metrics, DocumentDetails },
+        components: { Overview, Pendings, Metrics },
 
         data () {
             return {
@@ -57,18 +54,6 @@
             }
         },
 
-        computed: {
-            account () {
-                return this.$store.getters['global/GET_ACCOUNT']
-            },
-
-            companies_limit () {
-                if (this.account && this.account.settings) {
-                    return this.account.settings.filter(setting => setting.label == 'companies_limit')[0].value
-                }
-            }
-        },
-
         methods: {
             load () {
                 services.getMetrics()
@@ -76,8 +61,6 @@
                         this.metrics.companies = response.data.companies
                         this.metrics.contacts = response.data.contacts
                         this.metrics.documents = response.data.documents
-
-                        this.$store.dispatch('global/FETCH_ACCOUNT')
                     })
             }
         },

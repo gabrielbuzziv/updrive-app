@@ -1,6 +1,6 @@
 <template>
     <div class="composer-attachments" v-if="attachments.length">
-        <header class="attachments-header" @click.prevent="toggle">
+        <header class="attachments-header cursor-pointer" @click.prevent="toggle">
             <div class="attachments-title">
                 <i class="mdi mdi-paperclip margin-right-5"></i>
                 {{ attachments.length }} documentos anexados
@@ -18,9 +18,12 @@
             <div class="attachment" v-for="attachment in attachments">
                 <div v-if="attachment.editing">
                     <div class="name">
-                        <input type="text" v-model="attachment.name" placeholder="Documento" @keypress.enter="attachment.editing = false">
-                        <input type="text" v-model="attachment.cycle" placeholder="Competência" v-mask="'##/####'" @keypress.enter="attachment.editing = false">
-                        <input type="text" v-model="attachment.validity" placeholder="Vencimento" v-mask="'##/##/####'" @keypress.enter="attachment.editing = false">
+                        <input type="text" v-model="attachment.name" placeholder="Documento"
+                               @keypress.enter="attachment.editing = false">
+                        <input type="text" v-model="attachment.cycle" placeholder="Competência" v-mask="'##/####'"
+                               @keypress.enter="attachment.editing = false">
+                        <input type="text" v-model="attachment.validity" placeholder="Vencimento" v-mask="'##/##/####'"
+                               @keypress.enter="attachment.editing = false">
                     </div>
                     <div class="options">
                         <button class="btn btn-success btn-sm" @click.prevent="attachment.editing = false">
@@ -39,12 +42,18 @@
                     </div>
                     <div class="options">
                         <div class="btn-group">
+                            <a :href="getFilePreviewUrl(attachment.file)" target="_blank"
+                               class="btn btn-default btn-sm" title="Visualizar">
+                                <i class="mdi mdi-eye"></i>
+                            </a>
+
                             <button class="btn btn-default btn-sm" @click.prevent="attachment.editing = true"
                                     title="Editar">
                                 <i class="mdi mdi-pencil"></i>
                             </button>
 
-                            <button class="btn btn-default btn-sm" title="Remover" @click.prevent="removeAttachment(attachment)">
+                            <button class="btn btn-default btn-sm" title="Remover"
+                                    @click.prevent="removeAttachment(attachment)">
                                 <i class="mdi mdi-delete"></i>
                             </button>
                         </div>

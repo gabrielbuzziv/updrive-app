@@ -1,5 +1,5 @@
 <template>
-    <div class="main" :class="{ 'maximize': ! sidebar }">
+    <div class="main">
         <div class="content">
             <slot></slot>
 

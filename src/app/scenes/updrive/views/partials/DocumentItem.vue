@@ -1,140 +1,132 @@
 <template>
-    <tbody>
-        <tr :class="documentStatus">
-            <td class="document-options hidden-xs" width="30" v-if="userCan('manage-core')">
-                <dropdown class="inline" button-class="btn btn-sm btn-blank btn-rounded">
+    <div class="document-item" :class="status.color">
+        <div class="document-header">
+            <div class="column toggle" @click.prevent="toggleDetails" :class="{ 'opened': showDetails }">
+                <i class="mdi mdi-chevron-down"></i>
+            </div>
+
+            <div class="column name" @click="toggleDetails" :class="{ 'opened': showDetails }">
+                <h3 :class="{ 'margin-bottom-5': ! company }">{{ document.name }}</h3>
+
+                <span v-if="! company">
+                    Enviado para <b class="company-anchor">{{ document.company.name }}</b>
+                </span>
+            </div>
+
+            <div class="column status" @click.prevent="toggleDetails" :class="{ 'opened': showDetails }">
+                <div>
+                    <i class="mdi" :class="status.icon"></i>
+                    <span>{{ status.label }}</span>
+                </div>
+            </div>
+
+            <div class="column options" v-if="userCan('manage-core')">
+                <dropdown button-class="btn" right>
                     <template slot="button">
-                        <i class="mdi mdi-settings"></i>
+                        <i class="mdi mdi-dots-vertical"></i>
                     </template>
 
                     <template slot="items">
-                        <li class="item" v-if="userCan('manage-core')">
+                        <div class="item">
                             <a href="#" @click.prevent="edit">
-                                <i class="mdi mdi-pencil-circle margin-right-5"></i>
+                                <i class="mdi mdi-pencil margin-right-5"></i>
                                 Editar
-                            </a>
-                        </li>
-                        <div class="divider" v-if="userCan('manage-core')"></div>
-                        <li class="item" v-if="userCan('manage-core')">
-                            <a href="#" @click.prevent="remove">
-                                <i class="mdi mdi-delete-circle margin-right-5"></i>
-                                Excluir
-                            </a>
-                        </li>
-                    </template>
-                </dropdown>
-            </td>
-
-            <!--Document name-->
-            <td class="document-name" @click.prevent="toggleDetails">
-                <span class="name">{{ document.name }}</span>
-
-                <span class="date" v-if="document.cycle || document.validity">
-                    <span class="margin-right-15" v-if="document.cycle">
-                        <i class="mdi mdi-calendar margin-right-5"></i>
-                        {{ document.cycle }}
-                    </span>
-
-                    <span v-if="document.validity">
-                        <i class="mdi mdi-calendar-remove margin-right-5"></i>
-                        {{ document.validity }}
-                    </span>
-                </span>
-            </td>
-
-            <!-- Document Company -->
-            <td class="document-company hidden-xs hidden-sm" v-if="! company" @click.prevent="toggleDetails">
-                <document-company :document="document"/>
-            </td>
-
-            <!-- Document Options -->
-            <td class="document-options text-right" @click.prevent="toggleDetails">
-                <span class="btn btn-sm btn-rounded inline">
-                    <i class="mdi mdi-chevron-up" v-if="showDetails"></i>
-                    <i class="mdi mdi-chevron-down" v-else></i>
-                </span>
-            </td>
-        </tr>
-
-        <!-- Details -->
-        <tr class="details" v-if="showDetails">
-            <td :colspan="detailColspan">
-                <div class="row">
-                    <div class="col-md-12 margin-bottom-25">
-                        <h3>{{ document.name }}</h3>
-
-                        <div class="pull-right hidden-sm hidden-xs">
-                            <a :href="`${API_URL}/documents/${document.id}/protocol?token=${token}`"
-                               class="btn btn-sm btn-rounded margin-right-5"
-                               target="_blank" v-if="userCan('manage-core')">
-                                <i class="mdi mdi-file margin-right-5"></i>
-                                Gerar Protocolo
-                            </a>
-
-                            <a :href="`${document.links.download}?token=${token}`"
-                               class="btn btn-sm btn-rounded margin-right-5" title="Download">
-                                <i class="mdi mdi-download"></i>
-                            </a>
-
-                            <a :href="`${document.links.visualize}?token=${token}`"
-                               class="btn btn-sm btn-rounded margin-right-5" target="_blank" title="Visualizar">
-                                <i class="mdi mdi-magnify"></i>
-                            </a>
-
-                            <a href="#" @click.prevent="edit" class="btn btn-sm btn-rounded margin-right-5"
-                               title="Editar" v-if="userCan('manage-core')">
-                                <i class="mdi mdi-pencil"></i>
-                            </a>
-
-                            <a href="#" @click.prevent="remove" class="btn btn-sm btn-rounded" title="Excluir"
-                               v-if="userCan('manage-core')">
-                                <i class="mdi mdi-delete"></i>
                             </a>
                         </div>
 
-                        <div class="clearfix"></div>
-                    </div>
+                        <div class="item">
+                            <a href="#" @click.prevent="$root.$emit('details::dispatch', document.dispatch.id)" v-if="hasDocumentDispatch">
+                                <i class="mdi mdi-email margin-right-5"></i>
+                                Detalhes do e-mail
+                            </a>
+                        </div>
 
-                    <div class="col-md-12 document-details">
-                        <ul>
-                            <li>
-                                <b>Competência:</b>
-                                <span>{{ document.cycle || 'Sem competência' }}</span>
-                            </li>
-                            <li>
-                                <b>Vencimento:</b>
-                                <span>{{ document.validity || 'Sem vencimento' }}</span>
-                            </li>
-                            <li>
-                                <b>Empresa:</b>
-                                <span>{{ document.company.name }}</span>
-                            </li>
-                            <li>
-                                <b>Remetente</b>
-                                <span>{{ document.user.name }}</span>
-                            </li>
-                        </ul>
-                    </div>
+                        <div class="divider"></div>
 
-                    <div class="col-md-12 document-status">
-                        <b>Histórico</b>
-                        <document-status :document="document"/>
+                        <div class="item">
+                            <a href="#" @click.prevent="remove">
+                                <i class="mdi mdi-delete margin-right-5"></i>
+                                Remover
+                            </a>
+                        </div>
+                    </template>
+                </dropdown>
+            </div>
+        </div>
+
+        <div class="document-details" v-if="showDetails">
+            <div class="row details">
+                <div class="col-md-4 item">
+                    <b>Data de envio</b>
+                    <span>{{ document.created_at }}</span>
+                </div>
+
+                <div class="col-md-4 item">
+                    <b>Competência</b>
+                    <span>{{ document.cycle || 'Sem Competência' }}</span>
+                </div>
+
+                <div class="col-md-4 item">
+                    <b>Vencimento</b>
+                    <span>{{ document.validity || 'Sem Validade' }}</span>
+                </div>
+
+                <div class="col-md-4 item">
+                    <b>Empresa</b>
+                    <span>{{ document.company.name }}</span>
+                </div>
+
+                <div class="col-md-4 item">
+                    <b>Remetente</b>
+                    <span>{{ document.user.name }}</span>
+                </div>
+
+                <div class="col-md-4 item">
+                    <b>Destinatário</b>
+                    <span>{{ sharedWith }}</span>
+                </div>
+
+                <div class="col-md-12">
+                    <document-progress :document="document"/>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="text-center block margin-top-50">
+                        <a :href="`${API_URL}/documents/${document.id}/protocol?token=${token}`"
+                           class="btn margin-right-5"
+                           target="_blank" v-if="userCan('manage-core')">
+                            <i class="mdi mdi-clipboard-text margin-right-5"></i>
+                            Gerar Protocolo
+                        </a>
+
+                        <a :href="`${document.links.download}?token=${token}`"
+                           class="btn margin-right-5" title="Download">
+                            <i class="mdi mdi-download"></i>
+                            Download
+                        </a>
+
+                        <a :href="`${document.links.visualize}?token=${token}`"
+                           class="btn margin-right-5" target="_blank" title="Visualizar">
+                            <i class="mdi mdi-eye margin-right-5"></i>
+                            Visualizar
+                        </a>
                     </div>
                 </div>
-            </td>
-        </tr>
-    </tbody>
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script type="text/babel">
-    import DocumentCompany from './DocumentCompany'
-    import DocumentStatus from './DocumentStatus'
+    import DocumentProgress from './DocumentProgress'
     import services from '../../services'
 
     export default {
         props: ['document'],
 
-        components: { DocumentCompany, DocumentStatus },
+        components: { DocumentProgress },
 
         data () {
             return {
@@ -143,14 +135,30 @@
         },
 
         computed: {
-            documentStatus () {
+            hasDocumentDispatch () {
+                return this.document.dispatch && this.document.dispatch.id
+            },
+
+            status () {
                 switch (this.document.status.id) {
                     case 2:
-                        return 'warning'
+                        return {
+                            label: 'Pendente',
+                            color: 'warning',
+                            icon: 'mdi-clock'
+                        }
                     case 3:
-                        return 'success'
+                        return {
+                            label: 'Aberto',
+                            color: 'success',
+                            icon: 'mdi-check-circle'
+                        }
                     case 4:
-                        return 'danger'
+                        return {
+                            label: 'Vencido',
+                            color: 'danger',
+                            icon: 'mdi-close-circle'
+                        }
                 }
             },
 
@@ -162,8 +170,8 @@
                 return localStorage.getItem('auth_token')
             },
 
-            detailColspan () {
-                return this.company ? 3 : 4
+            sharedWith () {
+                return this.document.sharedWith.map(contact => contact.name).join(', ')
             }
         },
 
@@ -183,14 +191,18 @@
                     type: 'error'
                 }).then(() => {
                     services.removeDocument(this.document.id)
-                            .then(() => {
-                                this.$message.success('Documento removido com sucesso.')
-//                                this.$store.dispatch('updrive/FETCH_PENDINGS')
-                                this.$store.dispatch('updrive/FETCH_ALL')
-                                this.$store.dispatch('updrive/GET_AMOUNTS')
-                            })
+                        .then(() => {
+                            this.$message.success('Documento removido com sucesso.')
+                            this.$store.dispatch('updrive/FETCH_ALL')
+                            this.$store.dispatch('updrive/GET_AMOUNTS')
+                        })
                 })
             },
+
+            goToCompany () {
+                this.toggleDetails()
+                this.$store.dispatch('updrive/UPDATE_COMPANY', this.document.company.id)
+            }
         },
     }
 </script>
