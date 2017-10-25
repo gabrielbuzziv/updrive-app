@@ -85,7 +85,7 @@
                             Adicionar contato
                         </route>
 
-                        <button class="btn btn-primary btn-rounded margin-left-10">
+                        <button class="btn btn-primary btn-rounded margin-left-10" @click.prevent="$root.$emit('import::contacts')">
                             <i class="mdi mdi-import margin-right-5"></i>
                             Importar contatos
                         </button>
@@ -130,6 +130,22 @@
         },
 
         methods: {
+            load () {
+                services.getTotal()
+                    .then(response => {
+                        this.total = response.data.total
+
+                        if (this.total) {
+                            this.$store.dispatch('contacts/FETCH_ALL')
+                                .then(() => this.loading = false)
+                                .catch(() => this.loading = false)
+                        } else {
+                            this.loading = false
+                        }
+                    })
+                    .catch(() => this.loading = false)
+            },
+
             onRemove () {
                 if (! this.selected.length) {
                     this.$message.info('Você precisa selecionar os contatos que deseja excluir.')
@@ -155,19 +171,12 @@
         },
 
         mounted () {
-            services.getTotal()
-                    .then(response => {
-                        this.total = response.data.total
-
-                        if (this.total) {
-                            this.$store.dispatch('contacts/FETCH_ALL')
-                                    .then(() => this.loading = false)
-                                    .catch(() => this.loading = false)
-                        } else {
-                            this.loading = false
-                        }
-                    })
-                    .catch(() => this.loading = false)
+            this.load()
+            this.$root.$on('list::contacts', () => this.load())
         },
+
+        beforeDestroy () {
+            this.$root.$off('list::contacts')
+        }
     }
 </script>

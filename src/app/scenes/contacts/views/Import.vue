@@ -86,9 +86,9 @@
                 services.import(data)
                         .then(response => {
                             const amount = response.data.length
-                            this.$message.success(`Foram importadas ${amount} contatos.`)
+                            this.$message.success(`Foram importados ${amount} contatos.`)
                             this.importing = false
-                            this.$store.dispatch('contacts/FETCH_ALL')
+                            this.$root.$emit('list::contacts')
                             this.close()
                         })
                         .catch(() => {

@@ -46,8 +46,9 @@
             limit: Number,
             optionValue: String,
             optionLabel: String,
+            defaultOptions: Object,
             filterMethod: Function,
-            validationMethod: Function
+            validationMethod: Function,
         },
 
         data () {
@@ -122,7 +123,8 @@
                         }
 
                         const tag = this.tag.replaceAll(',', '').replaceAll('\n', '')
-                        this.tags.push({ value: tag, label: tag, options: {} })
+                        const options = this.defaultOptions ? this.defaultOptions : {}
+                        this.tags.push({ value: tag, label: tag, options: options })
                     }
                 }
 

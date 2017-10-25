@@ -88,7 +88,7 @@
                             const amount = response.data.length
                             this.$message.success(`Foram importadas ${amount} empresas.`)
                             this.importing = false
-                            this.$store.dispatch('companies/FETCH_ALL')
+                            this.$root.$emit('list::companies')
                             this.close()
                         })
                         .catch(() => {

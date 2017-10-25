@@ -74,7 +74,7 @@
 
                             <tbody v-else>
                                 <tr>
-                                    <td colspan="4">
+                                    <td colspan="5">
                                         Nenhuma empresa encontrada.
                                     </td>
                                 </tr>
@@ -139,6 +139,22 @@
         },
 
         methods: {
+            load () {
+                services.getTotal()
+                    .then(response => {
+                        this.total = response.data.total
+
+                        if (this.total) {
+                            this.$store.dispatch('companies/FETCH_ALL')
+                                .then(() => this.loading = false)
+                                .catch(() => this.loading = false)
+                        } else {
+                            this.loading = false
+                        }
+                    })
+                    .catch(() => this.loading = false)
+            },
+
             onRemove () {
                 if (! this.selected.length) {
                     this.$message.info('Você precisa selecionar as empresas que deseja excluir.')
@@ -164,19 +180,12 @@
         },
 
         mounted () {
-            services.getTotal()
-                    .then(response => {
-                        this.total = response.data.total
-
-                        if (this.total) {
-                            this.$store.dispatch('companies/FETCH_ALL')
-                                    .then(() => this.loading = false)
-                                    .catch(() => this.loading = false)
-                        } else {
-                            this.loading = false
-                        }
-                    })
-                    .catch(() => this.loading = false)
+            this.load()
+            this.$root.$on('list::companies', () => this.load())
         },
+
+        beforeDestroy () {
+            this.$root.$off('list::companies')
+        }
     }
 </script>

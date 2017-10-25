@@ -4,6 +4,7 @@
               option-value="id"
               option-label="email"
               :options="options"
+              :defaultOptions="{ tags: [] }"
               :filter-method="filterMethod"
               :validation-method="validationMethod">
 
