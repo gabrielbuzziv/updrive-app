@@ -43,15 +43,6 @@ export default {
     },
 
     /**
-     * @param company
-     * @returns {*}
-     */
-    getAmounts (company) {
-        const params = { company }
-        return window.axios.get(`updrive/amounts`, { params })
-    },
-
-    /**
      * @param action
      * @param data
      * @returns {*|AxiosPromise}

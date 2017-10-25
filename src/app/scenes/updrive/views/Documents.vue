@@ -39,10 +39,7 @@
         methods: {
             load () {
                 this.$store.dispatch('updrive/FETCH_ALL')
-                    .then(() => {
-                        this.$store.dispatch('updrive/GET_AMOUNTS')
-                        this.loading = false
-                    })
+                    .then(() => this.loading = false)
                     .catch(() => this.loading = false)
             },
         },

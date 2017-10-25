@@ -6,7 +6,6 @@ export default {
         context.commit('updrive/PAGE', 1)
         context.commit('updrive/COMPANY', request)
         context.dispatch('updrive/FETCH_ALL')
-        context.dispatch('updrive/GET_AMOUNTS')
     },
 
     'updrive/FETCH_PENDINGS' (context) {
@@ -30,16 +29,6 @@ export default {
                 context.commit('updrive/DOCUMENTS', response.data.items)
 
                 return response
-            })
-    },
-
-    'updrive/GET_AMOUNTS' (context) {
-        const company = context.getters['updrive/GET_COMPANY']
-
-        return services.getAmounts(company)
-            .then(response => {
-                context.commit('updrive/PENDINGS_AMOUNT', response.data.pendings)
-                context.commit('updrive/DOCUMENTS_AMOUNT', response.data.documents)
             })
     },
 

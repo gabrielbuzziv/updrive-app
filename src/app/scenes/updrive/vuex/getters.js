@@ -11,13 +11,6 @@ export default {
         return documents
     },
 
-    'updrive/GET_AMOUNTS' ({ pendings_amount, documents_amount }) {
-        return {
-            pendings: pendings_amount,
-            documents: documents_amount
-        }
-    },
-
     'updrive/GET_DOCUMENTS_TOTAL' ({ documents_total }) {
         return documents_total
     },

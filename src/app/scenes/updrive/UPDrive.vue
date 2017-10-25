@@ -36,7 +36,6 @@
                         <a>
                             <i class="mdi mdi-archive margin-right-5"></i>
                             Documentos
-                            <span class="badge margin-left-10" v-if="amounts.documents">{{ amounts.documents }}</span>
                         </a>
                     </route>
                 </template>
@@ -94,21 +93,12 @@
                 set (value) {
                     this.$store.commit('updrive/PAGE', 1)
                     this.$store.commit('updrive/COMPANY', value)
-                    this.$store.dispatch('updrive/GET_AMOUNTS')
                     this.$store.dispatch('updrive/FETCH_ALL')
                 }
-            },
-
-            amounts () {
-                return this.$store.getters['updrive/GET_AMOUNTS']
             }
         },
 
         methods: {
-            doSomething () {
-                this.$message('doSomething')
-            },
-
             load () {
                 services.getTotal()
                     .then(response => {

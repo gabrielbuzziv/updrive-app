@@ -74,9 +74,7 @@
                     services.removeDocument(id)
                             .then(response => {
                                 this.$message.success('Documento removido com sucesso.')
-//                                this.$store.dispatch('updrive/FETCH_PENDINGS')
                                 this.$store.dispatch('updrive/FETCH_ALL')
-                                this.$store.dispatch('updrive/GET_AMOUNTS')
                             })
                 }).catch(() => {
                 })
