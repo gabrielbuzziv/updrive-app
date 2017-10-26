@@ -108,7 +108,7 @@
             },
 
             delivered () {
-                return this.document.dispatch && this.document.tracking
+                return this.document.dispatch && this.document.dispatch.tracking
                     ? this.document.dispatch.tracking.filter(tracking => tracking.status == 'delivered')
                     : []
             },
