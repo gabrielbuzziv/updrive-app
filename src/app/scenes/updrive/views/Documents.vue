@@ -57,9 +57,7 @@
 
             window.socket.on('tracking:App\\Events\\NewMailTracking', (data) => {
                 if (data.account == Helper.getAccount()) {
-                    if (this.documents.filter(document => document.id == data.document.id).length) {
-                        this.$store.dispatch('updrive/FETCH_ALL')
-                    }
+                    this.$store.dispatch('updrive/FETCH_ALL')
                 }
             })
         }
