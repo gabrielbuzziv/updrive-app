@@ -6,6 +6,7 @@ import { routes as contacts } from './scenes/contacts'
 import { routes as updrive } from './scenes/updrive'
 import { routes as settings } from './scenes/settings'
 import { routes as dashboard } from './scenes/dashboard'
+import { routes as reports } from './scenes/reports'
 
 export default [
     {
@@ -13,16 +14,12 @@ export default [
         component: Default,
         meta: { auth: true },
         children: [
-            // {
-            //     path: '/',
-            //     redirect: { name: 'updrive' },
-            //     meta: { auth: true },
-            // },
             ...dashboard,
             ...companies,
             ...contacts,
             ...updrive,
             ...settings,
+            ...reports,
         ]
     },
 

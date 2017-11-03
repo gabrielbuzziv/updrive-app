@@ -28,6 +28,13 @@
                     Contatos
                 </a>
             </route>
+
+            <route href="reports" tag="li" v-if="userCan('manage-core')">
+                <a href="#">
+                    <i class="mdi mdi-chart-areaspline"></i>
+                    Relatórios
+                </a>
+            </route>
         </ul>
     </div>
 </template>
