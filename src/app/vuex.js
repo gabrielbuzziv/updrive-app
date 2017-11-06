@@ -4,6 +4,7 @@ import { vuex as contacts } from './scenes/contacts'
 import { vuex as updrive } from './scenes/updrive'
 import { vuex as settings } from './scenes/settings'
 import { vuex as dashboard } from './scenes/dashboard'
+import { vuex as reports } from './scenes/reports'
 
 export default {
     auth,
@@ -11,5 +12,6 @@ export default {
     companies,
     contacts,
     updrive,
-    settings
+    settings,
+    reports
 }

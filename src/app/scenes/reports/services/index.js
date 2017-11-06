@@ -1,8 +1,20 @@
 import Helper from 'common/Helper'
 
 export default {
-    fetchReportSent (filters) {
-        return window.axios.get(`reports/sent`, { params: { ...filters }})
+    submitReport (action, data) {
+        return window.axios.post(action, data)
+    },
+
+    getReportsById (id) {
+        return window.axios.get(`reports/${id}`)
+    },
+
+    findReport (id) {
+        return window.axios.get(`reports/${id}/show`)
+    },
+
+    getStatusReport (id) {
+        return window.axios.get(`reports/${id}/status/`)
     },
 
     fetchCompanies () {
@@ -11,5 +23,5 @@ export default {
 
     fetchSenders () {
         return window.axios.get(`users`)
-    }
+    },
 }

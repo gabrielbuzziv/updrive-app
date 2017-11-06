@@ -1,6 +1,7 @@
 import Reports from './Reports'
 import General from './views/General'
-import Sent from './views/Sent'
+import Status from './views/Status'
+import ReportStatus from './views/reports/Status'
 
 export default [
     {
@@ -16,8 +17,14 @@ export default [
             },
             {
                 path: '/relatorios/relatorio-documentos-enviados',
-                component: Sent,
-                name: 'reports.sent',
+                component: Status,
+                name: 'reports.status',
+                meta: { auth: true, permission: 'manage-core' }
+            },
+            {
+                path: '/relatorios/relatorio-documentos-enviados/:id',
+                component: ReportStatus,
+                name: 'reports.status.result',
                 meta: { auth: true, permission: 'manage-core' }
             },
         ]

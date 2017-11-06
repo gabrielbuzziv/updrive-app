@@ -10,7 +10,7 @@
                     </a>
                 </route>
 
-                <route href="reports.sent" tag="li">
+                <route href="reports.status" tag="li">
                     <a>
                         <i class="mdi mdi-pulse margin-right-5"></i>
                         Situação Documentos
