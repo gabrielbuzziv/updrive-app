@@ -29,7 +29,7 @@
                 </a>
             </route>
 
-            <route href="reports" tag="li" v-if="userCan('manage-core')">
+            <route href="reports.status" tag="li" v-if="userCan('manage-core')">
                 <a href="#">
                     <i class="mdi mdi-chart-areaspline"></i>
                     Relatórios

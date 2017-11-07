@@ -7,7 +7,6 @@ import 'common/components'
 window.Vue = Vue
 
 import App from './App'
-import { isEmpty } from 'lodash'
 
 new Vue({
     router,

@@ -5,16 +5,16 @@ export default {
         return window.axios.post(action, data)
     },
 
-    getReportsById (id) {
-        return window.axios.get(`reports/${id}`)
+    getReportsById (id, params) {
+        return window.axios.get(`reports/${id}`, { params })
     },
 
     findReport (id) {
         return window.axios.get(`reports/${id}/show`)
     },
 
-    getStatusReport (id) {
-        return window.axios.get(`reports/${id}/status/`)
+    getStatusReport (id, params) {
+        return window.axios.get(`reports/${id}/status/`, { params })
     },
 
     fetchCompanies () {

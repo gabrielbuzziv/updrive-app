@@ -1,8 +1,12 @@
 export default {
-    /**
-     * Report Status
-     */
+    report: 0,
     reports: [],
-    reports_page: 1,
-    reports_records: 0
+    page: 1,
+    records: 0,
+
+    result_report: 0,
+    result: 0,
+    results: [],
+    results_page: 1,
+    results_records: 0
 }

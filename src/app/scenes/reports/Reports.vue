@@ -3,14 +3,7 @@
         <page-header title="Relatórios">
 
             <template slot="nav">
-                <route href="reports" tag="li" exact>
-                    <a>
-                        <i class="mdi mdi-apps margin-right-5"></i>
-                        Visão Geral
-                    </a>
-                </route>
-
-                <route href="reports.status" tag="li">
+                <route href="reports.status" tag="li" exact>
                     <a>
                         <i class="mdi mdi-pulse margin-right-5"></i>
                         Situação Documentos

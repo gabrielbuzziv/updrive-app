@@ -5,7 +5,8 @@
                 <div class="row">
                     <div class="form-group col-md-6">
                         <i class="mdi mdi-file-document-box icon margin-right-10"></i>
-                        <input type="text" name="document" class="form-control field" placeholder="Documento">
+                        <input type="text" name="document" class="form-control field" placeholder="Documento"
+                               v-model="filters.document">
                     </div>
 
                     <div class="form-group col-md-6">
@@ -19,10 +20,9 @@
                                 filterable
                                 clearable
                                 default-first-option>
-                            <el-option v-for="stat in status" :value="stat.value" :label="stat.name"/>
+                            <el-option v-for="stat, index in status" :value="stat.value" :label="stat.name"
+                                       :key="index"/>
                         </el-select>
-
-                        <input type="hidden" name="status" :value="filters.status">
                     </div>
 
                     <div class="form-group col-md-6">
@@ -33,13 +33,13 @@
                                 popper-class="filters-popper"
                                 placeholder="Empresa"
                                 v-model="filters.company"
+                                value-key="id"
                                 filterable
                                 clearable
                                 default-first-option>
-                            <el-option v-for="company in companies" :value="company.id" :label="company.nickname"/>
+                            <el-option v-for="company in companies" :value="company" :label="company.nickname"
+                                       :key="company.id"/>
                         </el-select>
-
-                        <input type="hidden" name="company" :value="filters.company">
                     </div>
 
                     <div class="form-group col-md-6">
@@ -50,30 +50,26 @@
                                 popper-class="filters-popper"
                                 placeholder="Remetente"
                                 v-model="filters.sender"
+                                value-key="id"
                                 filterable
                                 clearable
                                 default-first-option>
-                            <el-option v-for="sender in senders" :value="sender.id" :label="sender.name"/>
+                            <el-option v-for="sender in senders" :value="sender" :label="sender.name" :key="sender.id"/>
                         </el-select>
-
-                        <input type="hidden" name="sender" :value="filters.sender">
                     </div>
 
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-lg-6 col-md-12">
                         <i class="mdi mdi-calendar-today icon margin-right-10"></i>
 
                         <el-date-picker
-                                class="block field"
-                                popper-class="filter-date-picker"
+                                :editable="false"
                                 v-model="filters.between"
+                                class="field"
                                 type="daterange"
-                                range-separator="até"
-                                start-placeholder="Começa em"
-                                end-placeholder="Termina em"
-                                size="large"
-                                format="dd/MM/yyyy">
+                                placeholder="Intervalo de envio"
+                                range-separator=" até "
+                                format="dd 'de' MMMM 'de' yyyy">
                         </el-date-picker>
-
                     </div>
                 </div>
 
@@ -82,14 +78,15 @@
                     Gerar Relatório
                 </button>
 
-                <button class="btn btn-blank">
+                <button class="btn btn-blank" @click.prevent="resetFilters">
                     Limpar Filtros
                 </button>
             </form>
         </div>
 
+        <pagination namespace="reports"></pagination>
         <panel class="margin-top-80">
-            <report-list :report="1" />
+            <report-list :report="1"/>
         </panel>
     </page-load>
 </template>
@@ -109,8 +106,6 @@
                     status: [],
                     company: [],
                     sender: [],
-                    sent_from: null,
-                    sent_to: null,
                     between: null
                 },
                 status: [
@@ -127,10 +122,20 @@
             onSubmit () {
                 const form = this.$refs.form
 
-                services.submitReport(`reports/1`, new FormData(form))
+                services.submitReport(`reports/1`, this.filters)
                     .then(response => {
                         this.$router.push({ name: 'reports.status.result', params: { id: response.data.id } })
                     })
+            },
+
+            resetFilters () {
+                this.filters = {
+                    document: null,
+                    status: [],
+                    company: [],
+                    sender: [],
+                    between: null
+                }
             }
         },
 

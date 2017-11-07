@@ -37,6 +37,43 @@
         }
     }
 
+    .panel-filters {
+        .filters {
+            list-style: none;
+
+            li {
+                display: inline-block;
+
+                &.filter {
+                    height: 80px;
+                    line-height: 80px;
+
+                    i {
+                        font-size: 30px;
+                        line-height: 30px;
+                        vertical-align: middle;
+                    }
+                    
+                    .info {
+                        display: inline-block;
+                        line-height: normal;
+                        vertical-align: middle;
+                        
+                        b {
+                            display: block;
+                            font-size: 12px;
+                            margin-bottom: 5px;
+                        }
+                        
+                        span {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     table {
         &.table {
             .filters {
@@ -51,7 +88,7 @@
                 }
             }
         }
-        
+
         &.table-result {
             .document {
                 b {
@@ -72,6 +109,21 @@
                         margin-left: -15%;
                     }
                 }
+            }
+        }
+    }
+
+    .result-topbar {
+        .links {
+            display: inline-block;
+            margin: 17px 0;
+            height: 40px;
+            line-height: 40px;
+        }
+
+        .pagination {
+            .btn-group {
+                margin-left: 10px;
             }
         }
     }
