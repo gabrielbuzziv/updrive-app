@@ -9,6 +9,7 @@ import './socket'
 import './wysiwyg'
 
 import moment from 'moment'
+moment.locale('pt-BR')
 window.moment = moment
 
 String.prototype.replaceAll = function(str1, str2, ignore)

@@ -1,16 +1,44 @@
 <template>
     <div class="document-item" :class="status.color">
-        <div class="document-header">
-            <div class="column toggle" @click.prevent="toggleDetails" :class="{ 'opened': showDetails }">
-                <i class="mdi mdi-chevron-down"></i>
+        <div class="document-header" :class="{ 'opened': showDetails }">
+            <div class="column name" @click="toggleDetails">
+                <h3>{{ document.name }}</h3>
+
+                <a href="#" class="company" @click.prevent="goToCompany">
+                    {{ document.company.name }}
+                </a>
+
+                <span class="flag">
+                    <i class="mdi mdi-flag margin-right-5"></i>
+                    <span>{{ flag }}</span>
+                </span>
             </div>
 
-            <div class="column name" @click="toggleDetails" :class="{ 'opened': showDetails }">
-                <h3 :class="{ 'margin-bottom-5': ! company }">{{ document.name }}</h3>
+            <div class="column data hidden-sm hidden-xs" @click.prevent="toggleDetails">
+                <ul>
+                    <li>
+                        <span>Competência</span>
+                        <b>{{ document.cycle || 'Sem competência' }}</b>
+                    </li>
 
-                <span v-if="! company">
-                    Enviado para <b class="company-anchor">{{ document.company.name }}</b>
-                </span>
+                    <li>
+                        <span>Vencimento</span>
+                        <b>{{ document.validity || 'Sem vencimento' }}</b>
+                    </li>
+
+                    <li>
+                        <span>Remetente</span>
+                        <b>{{ document.user.name }}</b>
+                    </li>
+
+                    <li>
+                        <span>Data de envio</span>
+                        <b class="datetime">
+                            <span>{{ getDate(document.created_at) }}</span>
+                            <span>{{ getHour(document.created_at) }}</span>
+                        </b>
+                    </li>
+                </ul>
             </div>
 
             <div class="column status" @click.prevent="toggleDetails" :class="{ 'opened': showDetails }">
@@ -56,42 +84,12 @@
 
         <div class="document-details" v-if="showDetails">
             <div class="row details">
-                <div class="col-md-4 item">
-                    <b>Data de envio</b>
-                    <span>{{ document.created_at }}</span>
+                <div class="col-md-6">
+                    <document-progress class="margin-left-20" :document="document"/>
                 </div>
 
-                <div class="col-md-4 item">
-                    <b>Competência</b>
-                    <span>{{ document.cycle || 'Sem Competência' }}</span>
-                </div>
-
-                <div class="col-md-4 item">
-                    <b>Vencimento</b>
-                    <span>{{ document.validity || 'Sem Validade' }}</span>
-                </div>
-
-                <div class="col-md-4 item">
-                    <b>Empresa</b>
-                    <span>{{ document.company.name }}</span>
-                </div>
-
-                <div class="col-md-4 item">
-                    <b>Remetente</b>
-                    <span>{{ document.user.name }}</span>
-                </div>
-
-                <div class="col-md-4 item">
-                    <b>Destinatário</b>
-                    <span>{{ sharedWith }}</span>
-                </div>
-
-                <div class="col-md-12">
-                    <document-progress :document="document"/>
-                </div>
-
-                <div class="col-md-12">
-                    <div class="text-center block margin-top-50">
+                <div class="col-md-6">
+                    <div class="text-right block">
                         <a :href="`${API_URL}/documents/${document.id}/protocol?token=${token}`"
                            class="btn margin-right-5"
                            target="_blank" v-if="userCan('manage-core')">
@@ -137,6 +135,22 @@
         computed: {
             hasDocumentDispatch () {
                 return this.document.dispatch && this.document.dispatch.id
+            },
+
+            flag () {
+                const tracking = this.document.dispatch.tracking.filter(track => track.status == 'delivered').length
+
+                switch (this.document.status.id) {
+                    case 2:
+                        return tracking ? 'Entregue' : 'Enviado'
+                    case 3:
+                    case 4:
+                        return 'Aberto'
+                    case 5:
+                        return 'Vencido'
+                }
+
+                return this.document
             },
 
             status () {
@@ -201,6 +215,14 @@
             goToCompany () {
                 this.toggleDetails()
                 this.$store.dispatch('updrive/UPDATE_COMPANY', this.document.company.id)
+            },
+
+            getDate (date) {
+                return moment(date, 'DD/MM/YYYY HH:mm').format('D MMM YYYY')
+            },
+
+            getHour (date) {
+                return moment(date, 'DD/MM/YYYY HH:mm').format('HH:mm')
             }
         },
     }

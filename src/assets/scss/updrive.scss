@@ -13,149 +13,14 @@
         }
     }
 
-    .table {
-        &.table-tracking {
-            tbody {
-                tr {
-                    &.warning {
-                        td {
-                            &:first-child {
-                                border-left-color: $warning;
-                            }
-                        }
-                    }
-
-                    &.success {
-                        td {
-                            &:first-child {
-                                border-left-color: $success;
-                            }
-                        }
-                    }
-
-                    &.danger {
-                        td {
-                            &:first-child {
-                                border-left-color: $danger;
-                            }
-                        }
-                    }
-
-                    &.info {
-                        td {
-                            &:first-child {
-                                border-left-color: $info;
-                            }
-                        }
-                    }
-
-                    &:first-child {
-                        td {
-                            border-top: 1px solid #fff !important;
-                        }
-                    }
-
-                    td {
-                        padding: 20px;
-
-                        &:first-child {
-                            border-left: 5px solid #fff;
-                        }
-
-                        &.tracking-status {
-                            .opened {
-                                color: $primary;
-                            }
-                        }
-
-                        &.tracking-options {
-                            .btn {
-                                background: rgba(0, 0, 0, .1);
-                            }
-                        }
-
-                        .column-label {
-                            font-size: 12px;
-                            display: block;
-                            color: $theme;
-                            margin-bottom: 5px;
-                            font-weight: 600;
-                        }
-
-                        .column-value {
-                            display: block;
-                            color: $theme;
-                            font-weight: 300;
-
-                            b {
-                                font-weight: 600;
-                            }
-                        }
-                    }
-
-                    &.details {
-                        > td {
-                            padding: 30px 30px 15px;
-                            border-left-color: #ccc;
-                            background: #f3f3f3;
-
-                            h3 {
-                                display: inline-block;
-                                margin: 0;
-                                font-size: 20px;
-                                font-weight: 300;
-                            }
-
-                            .tracking-details {
-                                ul {
-                                    padding: 0;
-                                    list-style: none;
-
-                                    li {
-                                        float: left;
-                                        margin-bottom: 15px;
-                                        margin-right: 15px;
-                                        width: calc(50% - 15px);
-
-                                        &.full {
-                                            width: 100%;
-                                            margin-right: 0;
-                                        }
-
-                                        b {
-                                            font-weight: 600;
-                                            display: block;
-                                            margin-bottom: 5px;
-                                        }
-
-                                        span {
-                                            font-weight: 300;
-                                        }
-
-                                        .message {
-                                            background: #ddd;
-                                            padding: 30px;
-                                            display: block;
-                                            border: 1px solid #ddd;
-                                            margin-top: 10px;
-                                            font-weight: 400;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
     .documents-list {
         .document-item {
-            border-left: 5px solid $primary;
+            border-left: 10px solid $primary;
             display: block;
             margin-bottom: 5px;
             width: 100%;
+            border-radius: 4px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, .09);
 
             &.warning {
                 border-color: $warning;
@@ -194,12 +59,12 @@
             }
 
             .document-header {
-                background: #f9f9f9;
+                background: #fff;
                 display: table;
                 padding: 0;
-                height: 80px;
-                line-height: 80px;
-                border-radius: 2px;
+                height: 130px;
+                line-height: 130px;
+                border-radius: 4px;
                 width: 100%;
                 cursor: pointer;
                 transition: all .2s;
@@ -226,23 +91,83 @@
                     &.name {
                         line-height: normal;
                         vertical-align: middle;
+                        padding: 0 30px;
+                        width: 30%;
 
                         h3 {
                             display: block;
-                            font-size: 16px;
+                            font-size: 18px;
                             font-weight: 700;
                             color: $theme;
                             line-height: 20px;
-                            margin: 0;
+                            margin: 0 0 10px;
+                            text-transform: uppercase;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
                         }
 
-                        span {
+                        .company {
+                            color: $info;
+                            font-weight: 400;
+                            font-size: 14px;
+                            display: inline-block;
+                            margin-bottom: 20px;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+
+                        }
+
+                        .flag {
                             display: block;
+                            font-size: 12px;
                             font-weight: 300;
 
-                            .company-anchor {
-                                font-weight: 400;
-                                color: $theme;
+                            i {
+                                color: #d1d1d1;
+                                font-size: 14px;
+                                line-height: 14px;
+                            }
+                        }
+                    }
+
+                    &.data {
+                        ul {
+                            list-style: none;
+                            margin: 0;
+                            padding: 0;
+
+                            li {
+                                display: block;
+                                font-size: 12px;
+                                margin-bottom: 5px;
+                                color: $theme-light;
+
+                                > span {
+                                    display: inline-block;
+                                    margin-right: 15px;
+                                    width: 100px;
+                                    text-align: right;
+                                    font-weight: 300;
+                                }
+
+                                > b {
+                                    font-weight: 400;
+
+                                    &.datetime {
+                                        span {
+                                            &:first-child {
+                                                font-weight: 600;
+                                                margin-right: 5px;
+                                            }
+
+                                            &:last-child {
+                                                font-weight: 300;
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
