@@ -57,7 +57,7 @@
                         <td class="text-center">
                             <div class="label" :class="document.status.label">{{ document.status.name }}</div>
                         </td>
-                        <td class="text-center">{{ document.created_at }}</td>
+                        <td class="text-center">{{ getDate(document.created_at) }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -147,7 +147,11 @@
                 const to = window.moment(between[1]).format('DD/MM/YYYY')
 
                 return `${from} até ${to}`
-            }
+            },
+
+            getDate (date) {
+                return moment(date, 'DD/MM/YYYY HH:mm').format('D MMM YYYY HH:mm')
+            },
         },
 
         mounted () {

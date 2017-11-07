@@ -27,7 +27,7 @@
                         </ul>
                     </td>
                     <td>{{ report.user.name }}</td>
-                    <td>{{ report.created_at }}</td>
+                    <td>{{ getDate(report.created_at) }}</td>
                     <td class="text-right">
                         <route href="reports.status.result" :params="{ id: report.id }" class="btn btn-default">
                             <i class="mdi mdi-magnify margin-right-5"></i>
@@ -113,7 +113,11 @@
                 const to = window.moment(between[1]).format('DD/MM/YYYY')
 
                 return `${from} até ${to}`
-            }
+            },
+
+            getDate (date) {
+                return moment(date, 'DD/MM/YYYY HH:mm').format('D MMM YYYY HH:mm')
+            },
         },
 
         mounted () {
