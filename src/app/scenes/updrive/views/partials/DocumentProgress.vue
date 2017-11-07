@@ -43,27 +43,32 @@
             },
 
             history () {
-                return this.document.history.filter(history => history.action == 3 || history.action == 4 || history.action == 5).map(history => {
-                    return {
-                        action: history.action == 5 ? 'expired' : 'opened',
-                        users: [history.user],
-                        timegroup: this.removeMinuteFromData(history.created_at),
-                        timestamp: history.created_at
-                    }
-                })
+                return this.document.tracking && this.document.tracking.length
+                    ? this.document.history.filter(history => history.action == 3 || history.action == 4 || history.action == 5).map(history => {
+                        return {
+                            action: history.action == 5 ? 'expired' : 'opened',
+                            users: [history.user],
+                            timegroup: this.removeMinuteFromData(history.created_at),
+                            timestamp: history.created_at
+                        }
+                    })
+                    : []
             },
 
             tracking () {
-                return this.document.dispatch.tracking.filter(track => track.status == 'sent' || track.status == 'delivered')
-                    .map(track => {
-                        return {
-                            action: track.status,
-                            users: [track.contact],
-                            timegroup: this.removeMinuteFromData(track.created_at),
-                            timestamp: track.created_at
-                        }
-                    })
+                return this.document.dispatch && this.document.dispatch.tracking
+                    ? this.document.dispatch.tracking.filter(track => track.status == 'sent' || track.status == 'delivered')
+                        .map(track => {
+                            return {
+                                action: track.status,
+                                users: [track.contact],
+                                timegroup: this.removeMinuteFromData(track.created_at),
+                                timestamp: track.created_at
+                            }
+                        })
+                    : []
             },
+
         },
 
         methods: {

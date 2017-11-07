@@ -63,7 +63,8 @@
                         </div>
 
                         <div class="item">
-                            <a href="#" @click.prevent="$root.$emit('details::dispatch', document.dispatch.id)" v-if="hasDocumentDispatch">
+                            <a href="#" @click.prevent="$root.$emit('details::dispatch', document.dispatch.id)"
+                               v-if="hasDocumentDispatch">
                                 <i class="mdi mdi-email margin-right-5"></i>
                                 Detalhes do e-mail
                             </a>
@@ -138,7 +139,9 @@
             },
 
             flag () {
-                const tracking = this.document.dispatch.tracking.filter(track => track.status == 'delivered').length
+                const tracking = this.document.dispatch && this.document.dispatch.tracking
+                    ? this.document.dispatch.tracking.filter(track => track.status == 'delivered').length
+                    : []
 
                 switch (this.document.status.id) {
                     case 2:
