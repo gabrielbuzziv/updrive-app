@@ -43,15 +43,16 @@
             },
 
             history () {
-                return this.document.tracking && this.document.tracking.length
-                    ? this.document.history.filter(history => history.action == 3 || history.action == 4 || history.action == 5).map(history => {
-                        return {
-                            action: history.action == 5 ? 'expired' : 'opened',
-                            users: [history.user],
-                            timegroup: this.removeMinuteFromData(history.created_at),
-                            timestamp: history.created_at
-                        }
-                    })
+                return this.document && this.document.history
+                    ? this.document.history.filter(history => history.action == 3 || history.action == 4 || history.action == 5 || history.action == 6)
+                        .map(history => {
+                            return {
+                                action: this.getActionByCode(history.action),
+                                users: [history.user],
+                                timegroup: this.removeMinuteFromData(history.created_at),
+                                timestamp: history.created_at
+                            }
+                        })
                     : []
             },
 
@@ -74,6 +75,18 @@
         methods: {
             removeMinuteFromData (timestamp) {
                 return window.moment(timestamp, 'DD/MM/YYYY HH:mm').startOf('hour').format('DD/MM/YYYY HH:mm')
+            },
+
+            getActionByCode (code) {
+                switch (code) {
+                    case 3:
+                    case 4:
+                        return 'opened'
+                    case 5:
+                        return 'expired'
+                    case 6:
+                        return 'resent'
+                }
             },
 
             getAction (action) {
@@ -102,6 +115,11 @@
                         return {
                             title: 'Falha',
                             color: 'danger'
+                        }
+                    case 'resent':
+                        return {
+                            title: 'Reenviado',
+                            color: 'warning'
                         }
                 }
             },
