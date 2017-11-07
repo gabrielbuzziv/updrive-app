@@ -7,6 +7,7 @@ import './elements'
 import './infinite-loading'
 import './socket'
 import './wysiwyg'
+import './analytics'
 
 import moment from 'moment'
 moment.locale('pt-BR')
