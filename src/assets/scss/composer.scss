@@ -218,19 +218,28 @@ $attachmentSize: 150px;
                             color: #999;
                         }
 
-                        .tags {
-                            float: right;
+                        .item {
+                            a {
+                                font-weight: 400;
+                            }
 
-                            .label {
-                                margin-left: 5px;
-                                padding: 3px 10px;
+                            .tags {
+                                display: block;
+                                font-size: 10px;
+                                margin-left: 22px;
+                                margin-top: 4px;
 
-                                i {
-                                    font-size: 10px;
-                                    line-height: 10px;
-                                    display: inline-block;
-                                    position: relative;
-                                    top: 1px;
+                                .label {
+                                    margin-left: 5px;
+                                    padding: 3px 10px;
+
+                                    i {
+                                        font-size: 10px;
+                                        line-height: 10px;
+                                        display: inline-block;
+                                        position: relative;
+                                        top: 1px;
+                                    }
                                 }
                             }
                         }

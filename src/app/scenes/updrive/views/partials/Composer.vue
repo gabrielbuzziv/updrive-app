@@ -62,11 +62,8 @@
                                     <i class="mdi mdi-email margin-right-5"></i>
                                     {{ contact.email }}
 
-                                    <span class="tags">
-                                        <span class="label" v-for="tag in contact.tags">
-                                            <i class="mdi mdi-label margin-right-5"></i>
-                                            {{ tag.name }}
-                                        </span>
+                                    <span class="tags" v-if="contact.tags.length">
+                                        {{ joinTags(contact.tags) }}
                                     </span>
                                 </a>
                             </div>
@@ -319,6 +316,9 @@
                 })
             },
 
+            joinTags (tags) {
+                return tags.map(tag => tag.name).join(', ')
+            }
         },
 
         mounted () {

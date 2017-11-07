@@ -131,8 +131,7 @@
                             .then(() => this.loadingTags = false)
                             .catch(() => this.loadingTags = false)
                     })
-                    .catch(() => {
-                    })
+                    .catch(() => this.loadingTags = false)
 
                 this.resetContext()
             },
