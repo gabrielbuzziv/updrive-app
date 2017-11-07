@@ -181,6 +181,10 @@ $attachmentSize: 150px;
                     padding: 0;
                     margin: 0;
 
+                    .contextmenu {
+                        display: inline-block;
+                    }
+
                     .selector-tags__tag,
                     .selector-tag__input {
                         margin: 3px;
