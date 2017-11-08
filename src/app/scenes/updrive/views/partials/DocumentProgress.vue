@@ -26,7 +26,7 @@
 
         computed: {
             timeline () {
-                const timeline = this.tracking.concat(this.history)
+                const timeline = this.history
 
                 return timeline.map(value => {
                     const similar = timeline.filter(line => line.action == value.action && line.timegroup == value.timegroup)
@@ -44,29 +44,14 @@
 
             history () {
                 return this.document && this.document.history
-                    ? this.document.history.filter(history => history.action == 3 || history.action == 4 || history.action == 5 || history.action == 6)
-                        .map(history => {
-                            return {
-                                action: this.getActionByCode(history.action),
-                                users: [history.user],
-                                timegroup: this.removeMinuteFromData(history.created_at),
-                                timestamp: history.created_at
-                            }
-                        })
-                    : []
-            },
-
-            tracking () {
-                return this.document.dispatch && this.document.dispatch.tracking
-                    ? this.document.dispatch.tracking.filter(track => track.status == 'sent' || track.status == 'delivered')
-                        .map(track => {
-                            return {
-                                action: track.status,
-                                users: [track.contact],
-                                timegroup: this.removeMinuteFromData(track.created_at),
-                                timestamp: track.created_at
-                            }
-                        })
+                    ? this.document.history.map(history => {
+                        return {
+                            action: history.action,
+                            users: [history.user],
+                            timegroup: this.removeMinuteFromData(history.created_at),
+                            timestamp: history.created_at
+                        }
+                    })
                     : []
             },
 
@@ -77,50 +62,45 @@
                 return window.moment(timestamp, 'DD/MM/YYYY HH:mm').startOf('hour').format('DD/MM/YYYY HH:mm')
             },
 
-            getActionByCode (code) {
-                switch (code) {
-                    case 3:
-                    case 4:
-                        return 'opened'
-                    case 5:
-                        return 'expired'
-                    case 6:
-                        return 'resent'
-                }
-            },
-
             getAction (action) {
                 switch (action) {
-                    case 'sent':
+                    case 2:
                         return {
                             title: 'Enviado',
                             color: 'warning'
                         }
-                    case 'delivered':
-                        return {
-                            title: 'Entregue',
-                            color: 'info'
-                        }
-                    case 'opened':
+                    case 3:
+                    case 4:
                         return {
                             title: 'Aberto',
                             color: 'success'
                         }
-                    case 'expired':
+                    case 5:
                         return {
                             title: 'Vencido',
                             color: 'danger'
                         }
-                    case 'dropped':
-                        return {
-                            title: 'Falha',
-                            color: 'danger'
-                        }
-                    case 'resent':
+                    case 6:
                         return {
                             title: 'Reenviado',
                             color: 'warning'
                         }
+                    case 7:
+                        return {
+                            title: 'Entregue',
+                            color: 'info'
+                        }
+                    case 8:
+                        return {
+                            title: 'Lido',
+                            color: 'info'
+                        }
+                    case 9:
+                        return {
+                            title: 'Falha',
+                            color: 'danger'
+                        }
+
                 }
             },
 

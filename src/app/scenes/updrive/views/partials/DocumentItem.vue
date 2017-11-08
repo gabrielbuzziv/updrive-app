@@ -139,13 +139,13 @@
             },
 
             flag () {
-                const tracking = this.document.dispatch && this.document.dispatch.tracking
-                    ? this.document.dispatch.tracking.filter(track => track.status == 'delivered').length
+                const delivered = this.document.history
+                    ? this.document.history.filter(history => history.action == 7).length
                     : []
 
                 switch (this.document.status.id) {
                     case 2:
-                        return tracking ? 'Entregue' : 'Enviado'
+                        return delivered ? 'Entregue' : 'Enviado'
                     case 3:
                     case 4:
                         return 'Aberto'
