@@ -90,6 +90,15 @@
                         margin-bottom: 3px;
                     }
                 }
+
+                .failed {
+                    display: block;
+                    margin-top: 15px;
+                    font-size: 12px;
+                    font-weight: 300;
+                    font-style: italic;
+                    color: $danger;
+                }
             }
         }
     }

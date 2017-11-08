@@ -13,7 +13,16 @@
                 <div class="description">
                     <span class="user" v-for="user in item.users">
                         {{ user ? user.email : 'Sistema' }}
+
+                        <button class="btn btn-default btn-xs btn-rounded margin-left-20" v-if="item.action == 'failed'">
+                            <i class="mdi mdi-refresh margin-right-5"></i>
+                            Reenviar
+                        </button>
                     </span>
+
+                    <p class="failed" v-if="item.action == 'failed'">
+                        Verifique se o e-mail do destintário está correto. Geralmente falhas no envio ocorrem pois o e-mail do destinatário não existe.
+                    </p>
                 </div>
             </li>
         </ul>
@@ -58,7 +67,7 @@
 
             tracking () {
                 return this.document.dispatch && this.document.dispatch.tracking
-                    ? this.document.dispatch.tracking.filter(track => track.status == 'sent' || track.status == 'delivered')
+                    ? this.document.dispatch.tracking.filter(track => track.status == 'sent' || track.status == 'delivered' || track.status == 'failed')
                         .map(track => {
                             return {
                                 action: track.status,
@@ -111,9 +120,9 @@
                             title: 'Vencido',
                             color: 'danger'
                         }
-                    case 'dropped':
+                    case 'failed':
                         return {
-                            title: 'Falha',
+                            title: 'Envio falhou',
                             color: 'danger'
                         }
                     case 'resent':
