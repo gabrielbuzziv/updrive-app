@@ -22,7 +22,7 @@
                                class="margin-left-20"
                                clearable
                                @change="updateStatus">
-                        <el-option v-for="status in statuses" :value="status.id" :label="status.name" :key="status.id"></el-option>
+                        <el-option v-for="status in statuses" :value="status.status" :label="status.name" :key="status.status"></el-option>
                     </el-select>
                 </div>
 
@@ -44,9 +44,9 @@
                 query: null,
                 status: 0,
                 statuses: [
-                    { id: 2, name: 'Pendente' },
-                    { id: 3, name: 'Aberto' },
-                    { id: 4, name: 'Vencido' },
+                    { status: 'pending', name: 'Pendente' },
+                    { status: 'opened', name: 'Aberto' },
+                    { status: 'expired', name: 'Vencido' },
                 ]
             }
         },
