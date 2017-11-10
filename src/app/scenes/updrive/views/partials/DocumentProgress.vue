@@ -13,7 +13,14 @@
                 <div class="description">
                     <span class="user" v-for="user in item.users">
                         {{ user ? user.email : 'Sistema' }}
+
+                        <button class="btn btn-default btn-sm btn-rounded" v-if="item.action == 9">
+                            <i class="mdi mdi-refresh margin-right-5"></i>
+                            Reenviar
+                        </button>
                     </span>
+
+                    <p class="info" v-if="item.description">{{ item.description }}</p>
                 </div>
             </li>
         </ul>
@@ -29,7 +36,7 @@
                 const timeline = this.history
 
                 return timeline.map(value => {
-                    const similar = timeline.filter(line => line.action == value.action && line.timegroup == value.timegroup)
+                    const similar = timeline.filter(line => line.action == value.action && line.timestamp == value.timestamp)
                     const remove = similar.filter(sim => sim != value)
 
                     remove.forEach(r => {
@@ -48,8 +55,8 @@
                         return {
                             action: history.action,
                             users: [history.user],
-                            timegroup: this.removeMinuteFromData(history.created_at),
-                            timestamp: history.created_at
+                            timestamp: history.created_at,
+                            description: history.description
                         }
                     })
                     : []
@@ -58,10 +65,6 @@
         },
 
         methods: {
-            removeMinuteFromData (timestamp) {
-                return window.moment(timestamp, 'DD/MM/YYYY HH:mm').startOf('hour').format('DD/MM/YYYY HH:mm')
-            },
-
             getAction (action) {
                 switch (action) {
                     case 2:
@@ -92,12 +95,12 @@
                         }
                     case 8:
                         return {
-                            title: 'Lido',
-                            color: 'info'
+                            title: 'E-mail aberto',
+                            color: 'secondary'
                         }
                     case 9:
                         return {
-                            title: 'Falha',
+                            title: 'Falha no Envio',
                             color: 'danger'
                         }
 

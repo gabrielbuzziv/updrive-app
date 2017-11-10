@@ -62,14 +62,6 @@
                             </a>
                         </div>
 
-                        <div class="item">
-                            <a href="#" @click.prevent="$root.$emit('details::dispatch', document.dispatch.id)"
-                               v-if="hasDocumentDispatch">
-                                <i class="mdi mdi-email margin-right-5"></i>
-                                Detalhes do e-mail
-                            </a>
-                        </div>
-
                         <div class="divider"></div>
 
                         <div class="item">
