@@ -58,6 +58,18 @@
                 }
             }
 
+            &.gray {
+                border-color: #888;
+
+                .document-header {
+                    .column {
+                        &.status {
+                            background: #888;
+                        }
+                    }
+                }
+            }
+
             .document-header {
                 background: #fff;
                 display: table;

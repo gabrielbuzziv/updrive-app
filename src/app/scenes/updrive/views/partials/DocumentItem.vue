@@ -62,14 +62,6 @@
                             </a>
                         </div>
 
-                        <div class="item">
-                            <a href="#" @click.prevent="$root.$emit('details::dispatch', document.dispatch.id)"
-                               v-if="hasDocumentDispatch">
-                                <i class="mdi mdi-email margin-right-5"></i>
-                                Detalhes do e-mail
-                            </a>
-                        </div>
-
                         <div class="divider"></div>
 
                         <div class="item">
@@ -115,6 +107,13 @@
                 <div class="clearfix"></div>
             </div>
         </div>
+
+        <div class="alert" v-if="document.status.id == 6">
+            <em>
+                O destinatário não abriu o documento, foram feito 3 tentativas de envio.
+                O envio automático do documento foi pausado, tente entrar em contato com o destinatário e informar o envio.
+            </em>
+        </div>
     </div>
 </template>
 
@@ -139,18 +138,20 @@
             },
 
             flag () {
-                const tracking = this.document.dispatch && this.document.dispatch.tracking
-                    ? this.document.dispatch.tracking.filter(track => track.status == 'delivered').length
+                const delivered = this.document.history
+                    ? this.document.history.filter(history => history.action == 7).length
                     : []
 
                 switch (this.document.status.id) {
                     case 2:
-                        return tracking ? 'Entregue' : 'Enviado'
+                        return delivered ? 'Entregue' : 'Enviado'
                     case 3:
                     case 4:
                         return 'Aberto'
                     case 5:
                         return 'Vencido'
+                    case 6:
+                        return 'Pausado'
                 }
 
                 return this.document
@@ -175,6 +176,12 @@
                             label: 'Vencido',
                             color: 'danger',
                             icon: 'mdi-close-circle'
+                        }
+                    case 6:
+                        return {
+                            label: 'Pausado',
+                            color: 'gray',
+                            icon: 'mdi-pause'
                         }
                 }
             },

@@ -144,7 +144,7 @@
             },
 
             valid () {
-                return this.hasCompany && this.form.contacts.length && this.form.attachments.length
+                return this.hasCompany && this.form.contacts.length && this.form.attachments.length && ! this.hasExceededLimit && ! this.hasExceededSize
             },
 
             attachmentClass () {
@@ -167,7 +167,7 @@
             },
 
             hasExceededLimit () {
-                return this.files.amount > 20
+                return this.files.amount > 15
             },
 
             hasExceededSize () {
@@ -176,6 +176,18 @@
 
             tags () {
                 return this.$store.getters['updrive/GET_TAGS']
+            }
+        },
+
+        watch: {
+            files () {
+                if (this.files.amount > 15) {
+                    this.$message.error('Você pode anexar apenas 15 documentos por envio.')
+                }
+
+                if (this.files.size >= 52428800) {
+                    this.$message.error('Você atingiu o limite de tamanho de 50MB por envio.')
+                }
             }
         },
 

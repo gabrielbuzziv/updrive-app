@@ -5,7 +5,7 @@
         </div>
 
         <span class="message">
-            <b>{{ data.contact.email }}</b>
+            <b>{{ data.recipient.email }}</b>
             abriu o e-mail "{{ data.subject }}".
         </span>
     </div>

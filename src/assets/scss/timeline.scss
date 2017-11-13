@@ -61,6 +61,18 @@
                 }
             }
 
+            &.primary {
+                &:after {
+                    background: $primary;
+                }
+            }
+
+            &.secondary {
+                &:after {
+                    background: $secondary;
+                }
+            }
+
             .title {
                 color: $theme;
                 font-size: 16px;
@@ -91,13 +103,11 @@
                     }
                 }
 
-                .failed {
+                .info {
                     display: block;
-                    margin-top: 15px;
+                    margin: 20px 0 0;
                     font-size: 12px;
-                    font-weight: 300;
                     font-style: italic;
-                    color: $danger;
                 }
             }
         }
