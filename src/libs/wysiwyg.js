@@ -14,5 +14,6 @@ Vue.use(VueSummernote, {
         ['color', ['color']],
         ['para', ['ul', 'ol', 'paragraph']],
     ],
-    disableResizeEditor: true
+    disableResizeEditor: true,
+    disableDragAndDrop: true
 })
