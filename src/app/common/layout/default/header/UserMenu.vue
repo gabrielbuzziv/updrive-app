@@ -7,6 +7,8 @@
                 </div>
 
                 {{ user.name }}
+
+                <i class="mdi mdi-chevron-down margin-left-10"></i>
             </template>
 
             <template slot="items">

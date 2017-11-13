@@ -149,9 +149,11 @@
                                         vertical-align: middle;
                                         padding: 0;
                                         background: none;
+                                        color: $theme;
 
                                         &:hover {
                                             background: none;
+                                            color: $theme;
                                         }
 
                                         i {
@@ -215,7 +217,11 @@
                                     font-size: 18px;
                                     font-weight: 300;
                                     display: block;
-                                    margin-bottom: 15px;
+                                    margin-bottom: 10px;
+                                }
+
+                                p {
+                                    margin-bottom: 0;
                                 }
                             }
                         }

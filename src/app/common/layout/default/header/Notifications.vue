@@ -13,11 +13,9 @@
                 <div class="item header">
                     <span>Notificações</span>
 
-                    <el-tooltip content="Configurações de notificação" placement="bottom-end">
-                        <route href="settings.notifications">
-                            <i class="mdi mdi-settings"></i>
-                        </route>
-                    </el-tooltip>
+                    <route href="settings.notifications" title="Configurar Notificações">
+                        <i class="mdi mdi-settings"></i>
+                    </route>
                 </div>
 
                 <div class="notifications-items" v-if="user.notifications.length">
@@ -30,11 +28,9 @@
                     </div>
                 </div>
 
-                <div class="notifications-empty" v-else>
+                <div class="notifications-empty text-center" v-else>
                     <h4>Sem novas notificações</h4>
-                    <p>As notificações são exibidas de acordo com as suas
-                        <route href="settings.notifications">configurações de notificação</route>.
-                    </p>
+                    <p>Você não tem novas notificações no momento.</p>
                 </div>
             </template>
         </dropdown>
