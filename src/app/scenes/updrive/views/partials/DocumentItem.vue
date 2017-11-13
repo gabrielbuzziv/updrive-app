@@ -107,6 +107,13 @@
                 <div class="clearfix"></div>
             </div>
         </div>
+
+        <div class="alert" v-if="document.status.id == 6">
+            <em>
+                O destinatário não abriu o documento, foram feito 3 tentativas de envio.
+                O envio automático do documento foi pausado, tente entrar em contato com o destinatário e informar o envio.
+            </em>
+        </div>
     </div>
 </template>
 
@@ -143,6 +150,8 @@
                         return 'Aberto'
                     case 5:
                         return 'Vencido'
+                    case 6:
+                        return 'Pausado'
                 }
 
                 return this.document
@@ -167,6 +176,12 @@
                             label: 'Vencido',
                             color: 'danger',
                             icon: 'mdi-close-circle'
+                        }
+                    case 6:
+                        return {
+                            label: 'Pausado',
+                            color: 'gray',
+                            icon: 'mdi-pause'
                         }
                 }
             },

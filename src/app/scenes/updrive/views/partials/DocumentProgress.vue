@@ -100,7 +100,7 @@
                         }
                     case 9:
                         return {
-                            title: 'Falha no Envio',
+                            title: 'Falha no envio',
                             color: 'danger'
                         }
 
