@@ -1,5 +1,5 @@
 <template>
-    <div class="document-item" :class="status.color">
+    <div class="document-item" :class="[status.color, document.status.id == 6 ? 'margin-top-20' : '', document.status.id == 6 ? 'margin-bottom-20' : '']">
         <div class="document-header" :class="{ 'opened': showDetails }">
             <div class="column name" @click="toggleDetails">
                 <h3>{{ document.name }}</h3>
@@ -108,7 +108,7 @@
             </div>
         </div>
 
-        <div class="alert" v-if="document.status.id == 6">
+        <div class="alert margin-bottom-0" v-if="document.status.id == 6">
             <em>
                 O destinatário não abriu o documento, foram feito 3 tentativas de envio.
                 O envio automático do documento foi pausado, tente entrar em contato com o destinatário e informar o envio.
