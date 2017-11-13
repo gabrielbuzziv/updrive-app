@@ -26,14 +26,6 @@
                 </small>
             </div>
 
-            <div class="form-group">
-                <label>Observação</label>
-                <textarea name="note" class="form-control field" rows="5" v-model="document.note"></textarea>
-                <small class="helper-block offset">
-                    Qualquer informação extra sobre o documento pode ser inserido aqui.
-                </small>
-            </div>
-
             <div class="el-dialog__footer no-padding no-border">
                 <div class="text-left">
                     <button class="btn btn-success btn-rounded" @click="onSubmit" :disabled="loading || saving">
