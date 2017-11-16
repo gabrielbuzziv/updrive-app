@@ -1,13 +1,15 @@
 const path = require('path')
 const webpack = require('webpack')
 const Dotenv = require('dotenv-webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: './src/main.js',
     output: {
-        path: path.resolve(__dirname, './dist'),
-        publicPath: '/dist/',
-        filename: 'build.js'
+        path: path.join(__dirname, "./dist", "[hash]"),
+        publicPath: "/dist/[hash]/",
+        filename: "[hash].build.js",
+        chunkFilename: "[id].[hash].build.js"
     },
     module: {
         rules: [
@@ -74,6 +76,12 @@ module.exports = {
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery"
+        }),
+
+        new HtmlWebpackPlugin({
+            title: 'UP Drive',
+            filename: `${__dirname}/index.html`,
+            template: `${__dirname}/template.html`,
         })
     ]
 }
