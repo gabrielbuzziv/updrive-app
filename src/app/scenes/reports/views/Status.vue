@@ -112,6 +112,7 @@
                     { value: [2], name: 'Pendente' },
                     { value: [3, 4], name: 'Aberto' },
                     { value: [5], name: 'Vencido' },
+                    { value: [6], name: 'Pausado' },
                 ],
                 companies: [],
                 senders: []

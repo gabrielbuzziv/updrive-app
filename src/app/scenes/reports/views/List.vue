@@ -105,6 +105,8 @@
                     return 'Aberto'
                 } else if (status == 5) {
                     return 'Vencido'
+                } else if (status == 6) {
+                    return 'Pausado'
                 }
             },
 
