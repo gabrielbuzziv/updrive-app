@@ -111,5 +111,12 @@ export default {
      */
     getDispatchDetails (id) {
         return window.axios.get(`updrive/${id}/document-dispatch`)
+    },
+
+    /**
+     * @param id
+     */
+    resendDocument (id, recipients = null) {
+        return window.axios.post(`updrive/${id}/resend`, { recipients })
     }
 }

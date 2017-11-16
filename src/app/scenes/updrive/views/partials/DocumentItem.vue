@@ -56,6 +56,13 @@
 
                     <template slot="items">
                         <div class="item">
+                            <a href="#" @click.prevent="resend">
+                                <i class="mdi mdi-refresh margin-right-5"></i>
+                                Reenviar Documento
+                            </a>
+                        </div>
+
+                        <div class="item">
                             <a href="#" @click.prevent="edit">
                                 <i class="mdi mdi-pencil margin-right-5"></i>
                                 Editar
@@ -233,6 +240,23 @@
 
             getHour (date) {
                 return moment(date, 'DD/MM/YYYY HH:mm').format('HH:mm')
+            },
+
+            resend () {
+                this.$confirm(`Reenviar documento "${this.document.name}" para ${this.sharedWith}`, `Deseja reenviar o documento?`, {
+                    confirmButtonText: 'Reenviar',
+                    cancelButtonText: 'Cancelar',
+                    type: 'error'
+                }).then(() => {
+                    services.resendDocument(this.document.id)
+                        .then(response => {
+                            this.$message.success(`Documentos reenviado com sucesso.`)
+                            this.$store.dispatch('updrive/FETCH_ALL')
+                        })
+                        .catch(() => {
+                            this.$message.error(`Ops, não foi possível reenviar o documento, tente mais tarde.`)
+                        })
+                })
             }
         },
     }

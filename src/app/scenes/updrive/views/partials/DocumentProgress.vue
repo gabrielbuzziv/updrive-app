@@ -14,7 +14,7 @@
                     <span class="user" v-for="user in item.users">
                         {{ user ? user.email : 'Sistema' }}
 
-                        <button class="btn btn-default btn-sm btn-rounded" v-if="item.action == 9">
+                        <button class="btn btn-default btn-sm btn-rounded margin-left-10" v-if="item.action == 9" @click.prevent="resend(user)">
                             <i class="mdi mdi-refresh margin-right-5"></i>
                             Reenviar
                         </button>
@@ -28,6 +28,8 @@
 </template>
 
 <script>
+    import services from '../../services'
+
     export default {
         props: ['document'],
 
@@ -110,6 +112,23 @@
             getDate (date) {
                 return moment(date, 'DD/MM/YYYY HH:mm').format('D MMM YYYY HH:mm')
             },
+
+            resend (user) {
+                this.$confirm(`Reenviar documento "${this.document.name}" para ${user.name}`, `Deseja reenviar o documento?`, {
+                    confirmButtonText: 'Reenviar',
+                    cancelButtonText: 'Cancelar',
+                    type: 'error'
+                }).then(() => {
+                    services.resendDocument(this.document.id, [user])
+                        .then(response => {
+                            this.$message.success(`Documentos reenviado com sucesso.`)
+                            this.$store.dispatch('updrive/FETCH_ALL')
+                        })
+                        .catch(() => {
+                            this.$message.error(`Ops, não foi possível reenviar o documento, tente mais tarde.`)
+                        })
+                })
+            }
         }
     }
 </script>
