@@ -109,10 +109,10 @@
                     between: null
                 },
                 status: [
-                    { value: [2], name: 'Pendente' },
-                    { value: [3, 4], name: 'Aberto' },
-                    { value: [5], name: 'Vencido' },
-                    { value: [6], name: 'Pausado' },
+                    { value: 2, name: 'Pendente' },
+                    { value: 3, name: 'Aberto' },
+                    { value: 4, name: 'Vencido' },
+                    { value: 5, name: 'Pausado' },
                 ],
                 companies: [],
                 senders: []

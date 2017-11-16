@@ -73,6 +73,13 @@
                 }
             }
 
+            &.gray {
+                &:after {
+                    background: $theme-light;
+                }
+            }
+
+
             .title {
                 color: $theme;
                 font-size: 16px;

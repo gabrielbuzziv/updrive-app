@@ -105,6 +105,11 @@
                             title: 'Falha no envio',
                             color: 'danger'
                         }
+                    case 10:
+                        return {
+                            title: 'Pausado',
+                            color: 'gray'
+                        }
 
                 }
             },

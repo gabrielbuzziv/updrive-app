@@ -1,6 +1,6 @@
 <template>
     <page-load :loading="loading" id="reports">
-        <panel class="panel-filters" v-if="report.filters && report.filters.length">
+        <panel class="panel-filters" v-if="report.filters">
             <ul class="filters">
                 <li class="filter col-md-4" v-for="filter, index in report.filters" v-if="isValidFilter(filter)">
                     <i class="mdi margin-right-15" :class="getFilter(filter, index).icon"></i>
@@ -98,7 +98,7 @@
                     case 'status':
                         return 'Status'
                     case 'between':
-                        return 'Periodo de Envio'
+                        return 'Período de Envio'
                 }
             },
 
@@ -135,8 +135,10 @@
             getStatusValue (status) {
                 if (status == 2) {
                     return 'Pendente'
-                } else if (status == '3,4') {
+                } else if (status == 3) {
                     return 'Aberto'
+                } else if (status == 4) {
+                    return 'Vencido'
                 } else if (status == 5) {
                     return 'Vencido'
                 }

@@ -22,7 +22,7 @@
                                class="margin-left-20"
                                clearable
                                @change="updateStatus">
-                        <el-option v-for="status in statuses" :value="status.status" :label="status.name"
+                        <el-option v-for="status in statuses" :value="status.id" :label="status.name"
                                    :key="status.status"></el-option>
                     </el-select>
                 </div>
@@ -45,10 +45,10 @@
                 query: null,
                 status: 0,
                 statuses: [
-                    { status: 'pending', name: 'Pendente' },
-                    { status: 'opened', name: 'Aberto' },
-                    { status: 'expired', name: 'Vencido' },
-                    { status: 'paused', name: 'Pausado' },
+                    { id: 2, name: 'Pendente' },
+                    { id: 3, name: 'Aberto' },
+                    { id: 4, name: 'Vencido' },
+                    { id: 5, name: 'Pausado' },
                 ]
             }
         },
@@ -60,6 +60,7 @@
 
             updateStatus () {
                 this.$store.dispatch('updrive/UPDATE_DOCUMENTS_STATUS', this.status)
+                this.$store.commit('updrive/PAGE', 1)
             }
         },
 

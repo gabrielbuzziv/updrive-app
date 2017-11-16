@@ -101,11 +101,11 @@
             getStatusValue (status) {
                 if (status == 2) {
                     return 'Pendente'
-                } else if (status == '3,4') {
+                } else if (status == 3) {
                     return 'Aberto'
-                } else if (status == 5) {
+                } else if (status == 4) {
                     return 'Vencido'
-                } else if (status == 6) {
+                } else if (status == 5) {
                     return 'Pausado'
                 }
             },
