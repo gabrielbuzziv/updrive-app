@@ -1,7 +1,7 @@
 <template>
     <div class="timeline">
         <ul>
-            <li :class="getAction(item.action).color" v-for="item in timeline">
+            <li :class="getAction(item.action).color" v-for="item in timeline" v-if="checkIfUserCan(item.action)">
                 <span class="title">
                     {{ getAction(item.action).title }}
                 </span>
@@ -14,7 +14,8 @@
                     <span class="user" v-for="user in item.users">
                         {{ user ? user.email : 'Sistema' }}
 
-                        <button class="btn btn-default btn-sm btn-rounded margin-left-10" v-if="item.action == 9" @click.prevent="resend(user)">
+                        <button class="btn btn-default btn-sm btn-rounded margin-left-10" v-if="item.action == 9"
+                                @click.prevent="resend(user)">
                             <i class="mdi mdi-refresh margin-right-5"></i>
                             Reenviar
                         </button>
@@ -133,6 +134,11 @@
                             this.$message.error(`Ops, não foi possível reenviar o documento, tente mais tarde.`)
                         })
                 })
+            },
+
+            checkIfUserCan (action) {
+
+                return [7, 8, 9, 10].indexOf(action) > -1 ? this.userCan('manage-updrive') : true
             }
         }
     }

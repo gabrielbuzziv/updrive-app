@@ -44,7 +44,7 @@
 
                 if (this.open) {
                     this.$emit('open')
-                }
+              k  }
             },
 
             close () {
