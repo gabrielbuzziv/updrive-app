@@ -9,7 +9,7 @@ module.exports = merge(common, {
 
     output: {
         path: path.resolve(__dirname, './dist', '[hash]'),
-        publicPath: '/dist/[hash]',
+        publicPath: '/dist/[hash]/',
         filename: 'build.[hash].js',
     },
 
