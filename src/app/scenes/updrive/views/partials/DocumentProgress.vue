@@ -137,8 +137,7 @@
             },
 
             checkIfUserCan (action) {
-
-                return [7, 8, 9, 10].indexOf(action) > -1 ? this.userCan('manage-updrive') : true
+                return [7, 8, 9, 10].indexOf(action) > -1 ? this.userCan('manage-core') : true
             }
         }
     }
