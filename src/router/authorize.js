@@ -5,24 +5,29 @@ export default (to, from, next) => {
     const requireLogin = to.meta.auth || false
     const requirePermission = to.meta.permission || null
 
-    store.commit('global/VALIDATION_ERROR', [])
+    if (store.getters['global/GET_STATUS'] === false && to.name != 'inactive') {
+        next({ name: 'inactive' })
+    } else {
 
-    if (requireLogin) {
-        if (isEmpty(store.getters['auth/IS_LOGGED'])) {
-            next({ name: 'auth.login' })
-        } else {
-            if (requirePermission) {
-                const permissions = store.getters['auth/GET_USER'].permissions
-                if (! find(permissions, permission => permission == requirePermission)) {
-                    next({ name: 'updrive' })
+        store.commit('global/VALIDATION_ERROR', [])
+
+        if (requireLogin) {
+            if (isEmpty(store.getters['auth/IS_LOGGED'])) {
+                next({ name: 'auth.login' })
+            } else {
+                if (requirePermission) {
+                    const permissions = store.getters['auth/GET_USER'].permissions
+                    if (! find(permissions, permission => permission == requirePermission)) {
+                        next({ name: 'updrive' })
+                    } else {
+                        next()
+                    }
                 } else {
                     next()
                 }
-            } else {
-                next()
             }
+        } else {
+            next()
         }
-    } else {
-        next()
     }
 }

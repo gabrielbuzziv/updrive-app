@@ -1,5 +1,6 @@
 import Default from 'common/layout/default/Main'
 import Authenticate from 'common/layout/authenticate/Main'
+import Inactive from 'common/layout/inactive/Main'
 import { routes as auth } from './scenes/auth'
 import { routes as companies } from './scenes/companies'
 import { routes as contacts } from './scenes/contacts'
@@ -30,5 +31,11 @@ export default [
         children: [
             ...auth
         ]
+    },
+
+    {
+        path: '/',
+        name: 'inactive',
+        component: Inactive,
     },
 ]

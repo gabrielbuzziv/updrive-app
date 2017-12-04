@@ -1,4 +1,8 @@
 export default {
+    'global/GET_STATUS' ({ status }) {
+        return status
+    },
+
     'global/GET_ACCOUNT' ({ account }) {
         return account
     },

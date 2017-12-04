@@ -1,4 +1,8 @@
 export default {
+    'global/STATUS' (state, data) {
+        state.status = data
+    },
+
     'global/ACCOUNT' (state, data) {
         state.account = data
     },

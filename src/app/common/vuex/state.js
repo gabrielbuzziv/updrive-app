@@ -1,4 +1,5 @@
 export default {
+    status: true,
     account: {},
     sidebar: localStorage.getItem('sidebar') || true,
     axios_queue: 0,

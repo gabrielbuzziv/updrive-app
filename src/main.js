@@ -15,9 +15,25 @@ new Vue({
     render: h => h(App),
 
     computed: {
+        status () {
+            return this.$store.getters['global/GET_STATUS']
+        },
+
         user () {
             return this.$store.getters['auth/GET_USER']
         }
+    },
+
+    watch: {
+        status () {
+            if (this.status === false) {
+                this.$router.push({ name: 'inactive'})
+            }
+        }
+    },
+
+    beforeMount () {
+        this.$store.dispatch('global/FETCH_ACCOUNT_STATUS')
     },
 
     mounted () {

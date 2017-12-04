@@ -1,9 +1,12 @@
 export default {
+    'global/FETCH_ACCOUNT_STATUS' (context, request) {
+        window.axios.get(`/accounts/status`)
+            .then(response => context.commit('global/STATUS', response.data.status))
+    },
+
     'global/FETCH_ACCOUNT' (context, request) {
         window.axios.get(`/account`)
-            .then(response => {
-                context.commit('global/ACCOUNT', response.data)
-            })
+            .then(response => context.commit('global/ACCOUNT', response.data))
     },
 
     'global/SET_SIDEBAR' (context, request) {
