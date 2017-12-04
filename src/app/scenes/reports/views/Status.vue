@@ -37,7 +37,7 @@
                                 filterable
                                 clearable
                                 default-first-option>
-                            <el-option v-for="company in companies" :value="company" :label="company.nickname"
+                            <el-option v-for="company in companies" :value="company" :label="company.name"
                                        :key="company.id"/>
                         </el-select>
                     </div>
