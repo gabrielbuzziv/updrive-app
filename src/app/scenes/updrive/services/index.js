@@ -110,7 +110,7 @@ export default {
      * @param id
      */
     getDispatchDetails (id) {
-        return window.axios.get(`updrive/${id}/document-dispatch`)
+        return window.axios.get(`updrive/${id}/dispatches`)
     },
 
     /**

@@ -63,6 +63,13 @@
                         </div>
 
                         <div class="item">
+                            <a href="#" @click.prevent="details">
+                                <i class="mdi mdi-magnify margin-right-5"></i>
+                                Detalhes do Envio
+                            </a>
+                        </div>
+
+                        <div class="item">
                             <a href="#" @click.prevent="edit">
                                 <i class="mdi mdi-pencil margin-right-5"></i>
                                 Editar
@@ -202,6 +209,10 @@
         methods: {
             toggleDetails () {
                 this.showDetails = ! this.showDetails
+            },
+
+            details () {
+                this.$root.$emit('details::dispatch', this.document.id)
             },
 
             edit () {
