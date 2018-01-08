@@ -1,5 +1,5 @@
 <template>
-    <div id="notice" v-if="daysLeft > 0">
+    <div id="notice" v-if="daysLeft > 0 && daysLeft <= 7">
         <div class="message">
             <h4>{{ notice }}</h4>
             <p>Fale conosco para continuar utilizando a ferramenta.</p>
