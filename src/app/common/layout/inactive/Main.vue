@@ -5,8 +5,10 @@
                 <div class="col-md-12">
 
                     <header>
-                        <h1>Lamentamos informa isso, mas...</h1>
-                        <h2>Esta página... faleceu</h2>
+                        <h1>Infelizmente, seu perído de testes chegou ao fim!</h1>
+                        <h2>
+                            Entre em contato conosco para continuar utilizando o UP Drive.
+                        </h2>
                     </header>
 
                     <div class="illustration">

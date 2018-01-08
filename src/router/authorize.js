@@ -5,7 +5,7 @@ export default (to, from, next) => {
     const requireLogin = to.meta.auth || false
     const requirePermission = to.meta.permission || null
 
-    if (store.getters['global/GET_STATUS'] === false && to.name != 'inactive') {
+    if (store.getters['global/GET_STATUS'].status === false && to.name != 'inactive') {
         next({ name: 'inactive' })
     } else {
 
