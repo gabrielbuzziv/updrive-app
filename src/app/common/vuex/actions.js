@@ -1,7 +1,11 @@
 export default {
     'global/FETCH_ACCOUNT_STATUS' (context, request) {
-        window.axios.get(`/accounts/status`)
-            .then(response => context.commit('global/STATUS', response.data))
+        return window.axios.get(`/accounts/status`)
+            .then(response => {
+                context.commit('global/STATUS', response.data)
+
+                return response
+            })
     },
 
     'global/FETCH_ACCOUNT' (context, request) {

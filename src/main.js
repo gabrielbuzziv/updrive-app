@@ -32,10 +32,6 @@ new Vue({
         }
     },
 
-    beforeMount () {
-        this.$store.dispatch('global/FETCH_ACCOUNT_STATUS')
-    },
-
     mounted () {
         if (this.$route.meta.auth) {
             this.$store.dispatch('auth/FETCH_USER')

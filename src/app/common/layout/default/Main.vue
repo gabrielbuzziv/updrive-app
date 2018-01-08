@@ -9,6 +9,8 @@
         </section>
 
         <slot name="modal"></slot>
+
+        <layout-notice />
     </div>
 </template>
 
@@ -16,16 +18,14 @@
     import LayoutHeader from './header/Main'
     import LayoutNav from './Nav'
     import LayoutContent from './Content'
+    import LayoutNotice from './Notice'
 
     export default {
         components: {
             LayoutHeader,
             LayoutNav,
-            LayoutContent
-        }
+            LayoutContent,
+            LayoutNotice
+        },
     }
 </script>
-
-<style lang="scss">
-    @import './src/assets/scss/app';
-</style>

@@ -1,0 +1,46 @@
+#notice {
+    padding: 15px;
+    font-size: 16px;
+    color: #fff;
+    width: 100%;
+    display: block;
+    background: $success;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 9999;
+    text-align: center;
+
+    .message {
+        text-align: left;
+        display: inline-block;
+        vertical-align: middle;
+        
+        h4 {
+            display: block;
+            margin: 0 0 5px;
+            font-weight: 600;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        p {
+            margin: 0;
+            font-size: 14px;
+            font-weight: 300;
+        }
+    }
+
+    .btn {
+        vertical-align: middle;
+
+        &.btn-success {
+            background: darken($success, 5%);
+            padding: 10px;
+            font-size: 14px;
+            font-weight: 300;
+            display: inline-block;
+            margin-left: 25px;
+        }
+    }
+}
